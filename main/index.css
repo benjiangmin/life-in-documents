@@ -217,22 +217,75 @@ body {
     height: 55%;
     border-radius: 0px 0px 30px 30px;
     margin: 0px 15px 15px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.add-item-form {
+    display: flex;
+    gap: 3px;
+    width: 100%;
+}
+.box-1-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0px 35px;
+}
+.box-1-display > h1 {
+    font-size: 4rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: #FFFFF0;
+}
+.item-name-input {
+    border-radius: 20px 5px 5px 20px;
+    border-width: 0px;
+    width: 50%;
+    padding: 0px 20px;
+}
+.select-type-form {
+    border-radius: 5px;
+    border-width: 0px;
+    width: 30%;
+}
+.price-input-form {
+    border-radius: 5px;
+    border-width: 0px;
+    width: 10%;
+}
+.add-item-button {
+    border-radius: 5px 20px 20px 5px;
+    border-width: 0px;
+    width: 10%;
+}
+
 .box-2 {
     background-color: rgb(104, 122, 104);
     height: 45%;
     border-radius: 30px 30px 0px 0px;
     margin: 15px 15px 0px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .box-3 {
     background-color: rgb(77, 157, 113);
     height: 30%;
     border-radius: 30px 0px 0px 30px;
     margin: 30px 0px 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .box-4 {
-    background-color: rgb(90, 125, 65);
+    background-color: rgb(165, 194, 145);
     height: 70%;
     border-radius: 30px 0px 0px 30px;
     margin: 15px 0px 20px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
