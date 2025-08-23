@@ -60,7 +60,33 @@ import MysoQuittingProsAndCons from "../src/Documents/ProsAndCons/MysoQuittingPr
 import ProsAndConsVbXc from "../src/Documents/ProsAndCons/ProsAndConsVbXc/ProsAndConsVbXc"
 import ProsConsTrack from "../src/Documents/ProsAndCons/ProsConsTrack/ProsConsTrack"
 
+import CanadaTrip from "../src/Documents/RecreationalRecords/CanadaTrip/CanadaTrip"
+import ChinaTrip from "../src/Documents/RecreationalRecords/ChinaTrip/ChinaTrip"
+import SpringBreak2024 from "../src/Documents/RecreationalRecords/SpringBreak2024/SpringBreak2024"
+import VacationCaliforniaTrip from "../src/Documents/RecreationalRecords/VacationCaliforniaTrip/VacationCaliforniaTrip"
+import VacationCaliforniaTrip2 from "../src/Documents/RecreationalRecords/VacationCaliforniaTrip2/VacationCaliforniaTrip2"
+import VacationFloridaTrip from "../src/Documents/RecreationalRecords/VacationFloridaTrip/VacationFloridaTrip"
+import VacationMichiganTrip from "../src/Documents/RecreationalRecords/VacationMichiganTrip/VacationMichiganTrip"
+import VacationSouthAfricaTrip from "../src/Documents/RecreationalRecords/VacationSouthAfricaTrip/VacationSouthAfrica"
+import WinterBreak2022 from "../src/Documents/RecreationalRecords/WinterBreak2022/WinterBreak2022"
+import WinterBreak2023 from "../src/Documents/RecreationalRecords/WinterBreak2023/WinterBreak2023"
 
+import IMissYouFriend from "../src/Documents/DownBadStuff/IMissYouFriend/IMissYouFriend"
+import LetterToRiri from "../src/Documents/DownBadStuff/LetterToRiri/LetterToRiri"
+import LetterToRiriPt2 from "../src/Documents/DownBadStuff/LetterToRiri/LetterToRiriPt2/LetterToRiriPt2"
+import ProgressOfRecoveryRiri from "../src/Documents/DownBadStuff/ProgressOfRecoveryRiri/ProgressOfRecoveryRiri"
+import ReasonsWhyICantTalkToIrina from "../src/Documents/DownBadStuff/ReasonsWhyICantTalkToIrina/ReasonsWhyICantTalkToIrina"
+import Uhhh from "../src/Documents/DownBadStuff/Uhhh/Uhhh"
+
+import CalisthenicsPlan from "../src/Documents/Other/CalisthenicsPlan/CalisthenicsPlan"
+import CollegeCalisthenics from "../src/Documents/Other/CollegeCalisthenics/CollegeCalisthenics"
+import CollegeProcessCries from "../src/Documents/Other/CollegeProcessCries/CollegeProcessCries"
+import ItsTimeForAChange from "../src/Documents/Other/ItsTimeForAChange/ItsTimeForAChange"
+import ItsTimeForAChangeAgain from "../src/Documents/Other/ItsTimeForAChangeAgain/ItsTimeForAChangeAgain"
+import NationalParksProgress from "../src/Documents/Other/NationalParksProgress/NationalParksProgress"
+import SomethingNewIveLearned from "../src/Documents/Other/SomethingNewIveLearned/SomethingNewIveLearned"
+import StrechingRoutine from "../src/Documents/Other/StrechingRoutine/StrechingRoutine"
+import ThePerson from "../src/Documents/Other/ThePerson/ThePerson"
 
 export default function App() {
     return (
@@ -139,6 +165,34 @@ export default function App() {
                 <Route path="/lists/mysoQuittingProsCons" element={<MysoQuittingProsAndCons />} />
                 <Route path="/lists/prosConsTrack" element={<ProsConsTrack />} />
                 <Route path="/lists/amke2024ShouldIGo" element={<Amke2024ShouldIGo />} />  
+
+                <Route path="/lists/vacationCaliforniaTrip" element={<VacationCaliforniaTrip />} />
+                <Route path="/lists/winterBreak2022" element={<WinterBreak2022 />} />
+                <Route path="/lists/vacationFloridaTrip" element={<VacationFloridaTrip />} />
+                <Route path="/lists/vacationMichiganTrip" element={<VacationMichiganTrip />} />
+                <Route path="/lists/vacationSouthAfricaTrip" element={<VacationSouthAfricaTrip />} />
+                <Route path="/lists/canadaTrip" element={<CanadaTrip />} />
+                <Route path="/lists/winterBreak2023" element={<WinterBreak2023 />} />
+                <Route path="/lists/springBreak2024" element={<SpringBreak2024 />} />
+                <Route path="/lists/chinaTrip2024" element={<ChinaTrip />} />
+                <Route path="/lists/vacationCaliforniaTrip2" element={<VacationCaliforniaTrip2 />} />
+
+                <Route path="/lists/progressOfRecoveryRiri" element={<ProgressOfRecoveryRiri />} />
+                <Route path="/lists/letterToRiri" element={<LetterToRiri />} />
+                <Route path="/lists/lettersToRiriPt2" element={<LetterToRiriPt2 />} />
+                <Route path="/lists/iMissYouFriend" element={<IMissYouFriend />} />
+                <Route path="/lists/reasonsCantTalkToIrina" element={<ReasonsWhyICantTalkToIrina />} />
+                <Route path="/lists/uhhh" element={<Uhhh />} />
+                
+                <Route path="/lists/thePerson" element={<ThePerson />} />
+                <Route path="/lists/nationalParksProgress" element={<NationalParksProgress />} />
+                <Route path="/lists/itsTimeForAChange" element={<ItsTimeForAChange />} />
+                <Route path="/lists/itsTimeForAChangeAgain" element={<ItsTimeForAChangeAgain />} />
+                <Route path="/lists/calisthenicsPlan" element={<CalisthenicsPlan />} />
+                <Route path="/lists/collegeProcessCries" element={<CollegeProcessCries />} />
+                <Route path="/lists/somethingNewIveLearned" element={<SomethingNewIveLearned />} />
+                <Route path="/lists/strechingRoutine" element={<StrechingRoutine />} />
+                <Route path="/lists/collegeCalisthenics" element={<CollegeCalisthenics />} />
 
             </Routes>
         </Router>
