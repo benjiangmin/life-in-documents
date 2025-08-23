@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./Home"
-import SecondaryPage from "./secondary_page"
+import SecondaryPage from "./SecondaryPage"
 import Pages from "./Pages"
 import DocumentRoutes from "./Routes"
 
