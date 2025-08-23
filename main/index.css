@@ -132,8 +132,21 @@ body {
 .home-icon:hover {
     transform: scale(1.05);
 }
+.back-button {
+    background: transparent;
+    border: none;
+    outline: none;      
+    cursor: pointer;     
+    padding: 0;               
+}
 .sidebar {
+    align-items: center;
     background-color: #a0e0b1;
+    display: flex;
+    flex-direction: column;
+    max-width: 60px;
+    height: 100vh;
+
 }
 
 .secondary-page {
@@ -183,4 +196,8 @@ body {
 .document-buttons > a {
     color: #355e2e;
     text-decoration: none;
+}
+
+.money-main {
+    display: flex;
 }

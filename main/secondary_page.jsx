@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom"
-import homeImage from "../src/images/home.png"
 import DocumentsBar from "./DocumentsBar"
+import Sidebar from "./Sidebar"
 
 export default function SecondaryPage(props) {
     return (
         <section className="secondary-page">
-            <Link to="/" className="sidebar">
-                <img src={homeImage} alt="Home" className="home-icon"/>
-            </Link>
+            <Sidebar />
             <section className="maintext-side">
-                
                 <h1>{props.title}</h1>
                 <p>{props.description}</p>
 
