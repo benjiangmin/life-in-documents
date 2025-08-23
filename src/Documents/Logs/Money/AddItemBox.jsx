@@ -7,10 +7,16 @@ export default function AddItemBox( {onAddItem} ) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!item || !type || !price) return; 
+        if (!item || !type || !price) return;
 
-        const newItem = { item, type, price: parseFloat(price) };
-        onAddItem(newItem); 
+        const newItem = {
+            item,
+            type,
+            price: parseFloat(price),
+            date: new Date() 
+        };
+
+        onAddItem(newItem);
 
         setItem("");
         setType("");
@@ -36,6 +42,7 @@ export default function AddItemBox( {onAddItem} ) {
                     <option value="food">food</option>
                     <option value="clothing">clothing</option>
                     <option value="entertainment">games</option>
+                    <option value="abby">abby</option>
                     <option value="other">other</option>
                 </select>
                 <br /><br />

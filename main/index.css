@@ -331,7 +331,7 @@ body {
     font-size: 1rem;
     font-family: "Winky Rough";
     display: flex;
-    padding-left: 20px;
+    padding-left: 10px;
     justify-content: space-between;
     color: #355e2e;
 }
@@ -340,4 +340,30 @@ body {
 }
 .item-buttons > :active {
     background-color: #368f66;
+}
+.item-name {
+    text-align: left;
+    flex: 1;
+    font-family: "Coming Soon";
+}
+.item-day {
+    margin-right: 5px;
+    font-weight: bold;
+}
+.currently-viewing-text {
+    font-family: "Coming Soon";
+    font-size: 1.5rem;
+    margin: 0px;
+    color: #a9edbb;
+}
+.display-date {
+    font-size: 3rem;
+    margin:0px;
+    color: #FFFFF0;
+}
+.box-3-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
