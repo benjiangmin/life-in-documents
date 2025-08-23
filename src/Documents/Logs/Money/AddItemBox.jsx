@@ -1,15 +1,16 @@
 import React from "react"
 
-export default function AddItemBox() {
+export default function AddItemBox( {onAddItem} ) {
     const [item, setItem] = React.useState("")
     const [type, setType] = React.useState("")
     const [price, setPrice] = React.useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!item || !type || !price) return; // simple validation
+        if (!item || !type || !price) return; 
 
-        console.log({ item, type, price: parseFloat(price) }); // for now, just log
+        const newItem = { item, type, price: parseFloat(price) };
+        onAddItem(newItem); 
 
         setItem("");
         setType("");
@@ -31,11 +32,11 @@ export default function AddItemBox() {
                 <br /><br />
 
                 <select className="select-type-form" value={type} onChange={(e) => setType(e.target.value)} required>
-                    <option value="">--Select type--</option>
-                    <option value="food">Food</option>
-                    <option value="clothing">Clothing</option>
-                    <option value="entertainment">Entertainment</option>
-                    <option value="other">Other</option>
+                    <option value="" disabled selected>select type</option>
+                    <option value="food">food</option>
+                    <option value="clothing">clothing</option>
+                    <option value="entertainment">games</option>
+                    <option value="other">other</option>
                 </select>
                 <br /><br />
 
