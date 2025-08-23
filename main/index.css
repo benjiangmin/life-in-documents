@@ -1,0 +1,186 @@
+.page-break {
+    background-color: red;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#FFFFF0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Winky Rough";
+}
+
+.header-section {
+    height: auto;
+    background-color: #a9edbb;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    display: flex;
+    justify-content: center;
+    font-size: 5rem;
+}
+.welcome-text > h1 {
+    color: #FFFFF0;
+    font-family: "Winky Rough";
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 300px;
+}
+.searchbar > label {
+    padding: 0 20px;
+    font-family: "Winky Rough";
+    color: #50995b;
+    margin-bottom: 3px;
+}
+.searchbar > input {
+    height: 50px;
+    width: 600px;
+    padding: 0 30px;
+    border-radius: 20px;
+    border-width: 0;
+    margin-bottom: 10px;
+}
+
+.display-section {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.display-section > h3 {
+    font-family: "Winky Rough";
+    color: #50995b;
+    margin-bottom: 3px;
+}
+.main-display-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-display-section > h3 {
+    margin-bottom: 2px;
+    font-family: "Coming Soon";
+    color: #355e2e;
+}
+.button-containers {
+    background-color: #a1c6ab;
+    border-radius: 15px 15px 0 0;
+    height: 100vh;
+    width: calc(100% - 175px); 
+    padding: 50px 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px ;
+}
+.button-containers > :link {
+    background-color: #eef2ee;
+    border-radius: 10px;
+    border-width: 0px;
+    font-size: 2rem;
+    font-family: "Winky Rough";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-containers > a {
+    color: #355e2e;
+    text-decoration: none;
+}
+.button-containers > :link:hover {
+  background-color: #4ba87f; 
+}
+.button-containers > :link:active {
+  background-color: #368f66; 
+}
+
+.maintext-side {
+    background-color: #a9edbb;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.maintext-side > h1 {
+    color: #FFFFF0;
+    font-family: "Winky Rough";
+    font-size: 4rem;
+    margin-bottom: 1px;
+    margin-top: 10px;
+}
+.maintext-side > p {
+    margin-top: 0px;
+    font-family: "Coming Soon";
+    margin-bottom: 100px;
+}
+.home-icon {
+    height: 60px;
+    margin-top: 10px;
+}
+.home-icon:hover {
+    transform: scale(1.05);
+}
+.sidebar {
+    background-color: #a0e0b1;
+}
+
+.secondary-page {
+  height: 100vh;
+  display: flex;
+}
+
+.display-side {
+  background-color: #a1c6ab;
+  width: 100%;
+  margin: 50px 0px 50px 50px;       
+  border-radius: 50px 0 0 50px;
+  padding: 30px 0 30px 50px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.secondary-display { 
+    flex: 1; 
+    min-height: 0; 
+    display: flex; 
+    flex-direction: column; }
+.document-buttons { 
+    flex: 1; 
+    min-height: 0; 
+    overflow-y: scroll; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; }
+
+.document-buttons > :link {
+    background-color: #eef2ee;
+    border-radius: 10px 0px 0px 10px;
+    border-width: 0px;
+    font-size: 2rem;
+    font-family: "Winky Rough";
+    display: flex;
+    padding-left: 20px;
+}
+.document-buttons > :link:hover {
+    background-color: #4ba87f; 
+}
+.document-buttons > link:active {
+    background-color: #368f66;
+}
+.document-buttons > a {
+    color: #355e2e;
+    text-decoration: none;
+}
