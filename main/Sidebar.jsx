@@ -8,9 +8,9 @@ export default function Sidebar() {
 
     const handleBack = () => {
         if (window.history.length > 1) {
-            navigate(-1) // go back if possible
+            navigate(-1) 
         } else {
-            navigate("/") // fallback to home
+            navigate("/") 
         }
     }
 

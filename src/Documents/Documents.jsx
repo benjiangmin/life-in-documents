@@ -25,15 +25,15 @@ const Documents = {
         { name: "2023's biggest thanks", path: "/daily/BiggestThanks2023" },
         { name: "2024's enormous thanks", path: "/daily/EnormousThanks2024" },
         { name: "2025's largest gratitudes", path: "/daily/LargestGratitudes2025" },
-        { name: "journal prompts 1", path: "/daily/journalPrompts1" },
-        { name: "journal prompts 2", path: "/daily/journalPrompts2" }
+        { name: "journal prompts 1", path: "/daily/JournalPrompts1" },
+        { name: "journal prompts 2", path: "/daily/JournalPrompts2" }
     ],
     jesus: [
         { name: "bible 2023", path: "/jesus/bible2023" },
         { name: "bible 2024", path: "/jesus/bible2024" },
         { name: "devotions 2025", path: "/jesus/devotions2025" },
         { name: "friends 7.0 bible study", path: "/jesus/FriendsBibleStudy7" },
-        { name: "prayer", path: "/jesus/prayer" }
+        { name: "prayer", path: "/jesus/Prayer" }
     ],
     newYearsThings: [
         { name: "new years resolutions", path: "/newYearsThings/newYearsResolutions" },
