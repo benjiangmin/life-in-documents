@@ -50,7 +50,6 @@ body {
     border-width: 0;
     margin-bottom: 10px;
 }
-
 .display-section {
     background-color: white;
     display: flex;
@@ -173,7 +172,7 @@ body {
 .document-buttons { 
     flex: 1; 
     min-height: 0; 
-    overflow-y: scroll; 
+    overflow-y: auto; 
     display: flex; 
     flex-direction: column; 
     gap: 10px; }
@@ -200,4 +199,40 @@ body {
 
 .money-main {
     display: flex;
+    background-color: #FFFFF0;
+}
+.column-1 {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 100vh;
+}
+.column-2 {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+.box-1 {
+    background-color: rgb(108, 150, 126);
+    height: 55%;
+    border-radius: 0px 0px 30px 30px;
+    margin: 0px 15px 15px 30px;
+}
+.box-2 {
+    background-color: rgb(104, 122, 104);
+    height: 45%;
+    border-radius: 30px 30px 0px 0px;
+    margin: 15px 15px 0px 30px;
+}
+.box-3 {
+    background-color: rgb(77, 157, 113);
+    height: 30%;
+    border-radius: 30px 0px 0px 30px;
+    margin: 30px 0px 15px 15px;
+}
+.box-4 {
+    background-color: rgb(90, 125, 65);
+    height: 70%;
+    border-radius: 30px 0px 0px 30px;
+    margin: 15px 0px 20px 15px;
 }

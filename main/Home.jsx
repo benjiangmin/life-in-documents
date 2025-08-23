@@ -48,7 +48,7 @@ export default function Home() {
                     {results.length > 0 && (
                         <div className="search-results">
                             {results.map((r) => (
-                                <button
+                                <button 
                                     key={r.path}
                                     onClick={() => handleClick(r.path)}
                                 >
