@@ -22,6 +22,18 @@ export default function Money() {
         setItems((prev) => [...prev, newItem]);
     };
 
+    const updateItem = (index, updatedItem) => {
+        setItems(prev => {
+            const newItems = [...prev];
+            newItems[index] = updatedItem;
+            return newItems;
+        });
+    };
+
+    const deleteItem = (index) => {
+        setItems((prev) => prev.filter((_, i) => i !== index));
+    };
+
     return (
         <section className="money-main">
             <Sidebar />
@@ -39,7 +51,7 @@ export default function Money() {
                     <DateBox />
                 </section>
                 <section className="box-4">
-                    <DisplayItemsBox items={items} />
+                    <DisplayItemsBox items={items} onUpdateItem={updateItem} onDeleteItem={deleteItem}/>
                 </section>
             </section>
         </section>

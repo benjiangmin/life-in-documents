@@ -13,7 +13,7 @@ export default function AddItemBox( {onAddItem} ) {
             item,
             type,
             price: parseFloat(price),
-            date: new Date() 
+            date: new Date().toISOString().slice(0, 10)
         };
 
         onAddItem(newItem);
@@ -40,6 +40,7 @@ export default function AddItemBox( {onAddItem} ) {
                 <select className="select-type-form" value={type} onChange={(e) => setType(e.target.value)} required>
                     <option value="" disabled selected>select type</option>
                     <option value="food">food</option>
+                    <option value="groceries">groceries</option>
                     <option value="clothing">clothing</option>
                     <option value="games">games</option>
                     <option value="abby">abby</option>

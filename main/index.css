@@ -516,15 +516,75 @@ body {
     font-family: "Winky Rough";
     color: #1f543c;
 }
+.popup-button:hover {
+    transform: scale(1.1);
+}
 .input-button {
     height: 40px;
     font-family: "Coming Soon";
-    border-radius: 20px;
+    border-radius: 5px;
     border-width: 0px;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.change-item-input {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border-width: 0px;
+    padding-left: 10px;
+    font-family: "Coming Soon";
+    color: #1f543c;
+    text-align: left;
+}
+.date {
+    width: 302px;
+}
+.type {
+    width: 312px;
+}
+
+.change-item-popup {
+  background: #a0e0b1;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10000;     
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.change-item-popup > h3 {
+    font-size: 1.8rem;
+    color:#FFFFF0;
+}
+.item-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+.change-item-buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    width: 100%;
+    gap: 30px;
+}
+.change-item-buttons > button {
+    height: 30px;
+    width: 60px;
+    border-radius: 20px;
+    border-width: 0px;
+    font-family: "Winky Rough";
+    color: #1f543c;
+}
+.change-item-buttons > button:hover {
+    transform: scale(1.1)
+}
+
+

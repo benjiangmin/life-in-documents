@@ -1,30 +1,139 @@
-export default function DisplayItemsBox({ items }) {
-  // helper to get ordinal suffix
+import React, { useState } from "react";
+
+export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
+  const [editingIndex, setEditingIndex] = useState(null); // index of item being edited
+  const [tempItem, setTempItem] = useState(null); // temp copy of item being edited
+
   const getOrdinal = (n) => {
     const s = ["th", "st", "nd", "rd"];
     const v = n % 100;
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
   };
 
+  const handleSave = () => {
+    onUpdateItem(editingIndex, tempItem);
+    setEditingIndex(null);
+    setTempItem(null);
+  };
+
   return (
     <>
       <h1 className="items-text">items:</h1>
-      <section className="display-items-box">
+        <section className="display-items-box">
         <div className="item-buttons">
-          {items.slice().reverse().map((entry, index) => {
-            const day = new Date(entry.date).getDate();
-            const dayWithSuffix = getOrdinal(day);
+          {items
+            .slice() // make a copy
+            .sort((a, b) => new Date(b.date) - new Date(a.date)) // sort descending
+            .map((entry, index) => {
+              const day = new Date(entry.date + "T00:00").getDate();
+              const dayWithSuffix = getOrdinal(day);
 
-            return (
-              <button key={index} className="item-button">
-                <span className="item-day">{dayWithSuffix}:</span>
-                <span className="item-name">{entry.item}</span>
-                <span className="item-price">${entry.price.toFixed(2)}</span>
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={index}
+                  className="item-button"
+                  onClick={() => {
+                    setEditingIndex(index);
+                    setTempItem({ ...entry });
+                  }}
+                >
+                  <span className="item-day">{dayWithSuffix}:</span>
+                  <span className="item-name">{entry.item}</span>
+                  <span className="item-price">${entry.price.toFixed(2)}</span>
+                </button>
+              );
+            })}
+
         </div>
       </section>
+
+      {/* Edit Popup */}
+      {editingIndex !== null && tempItem && (
+        <div className="popup-overlay">
+          <div className="change-item-popup">
+            <h3>edit item</h3>
+
+            <label className="item-labels">
+              item name:
+              <input
+                className="change-item-input"
+                type="text"
+                value={tempItem.item}
+                onChange={(e) =>
+                  setTempItem({ ...tempItem, item: e.target.value })
+                }
+              />
+            </label>
+
+            <label className="item-labels">
+              type:
+              <select
+                className="change-item-input type"
+                value={tempItem.type}
+                onChange={(e) =>
+                  setTempItem({ ...tempItem, type: e.target.value })
+                }
+              >
+                <option value="food">food</option>
+                <option value="clothing">clothing</option>
+                <option value="games">games</option>
+                <option value="abby">abby</option>
+                <option value="other">other</option>
+                <option value="groceries">groceries</option>
+              </select>
+            </label>
+
+            <label className="item-labels">
+              price:
+              <input
+                className="change-item-input"
+                type="number"
+                value={tempItem.price}
+                step="0.01"
+                onChange={(e) =>
+                  setTempItem({ ...tempItem, price: parseFloat(e.target.value) })
+                }
+              />
+            </label>
+
+            <label className="item-labels">
+              date:
+              <input
+                className="change-item-input date"
+                type="date"
+                value={tempItem.date.slice(0, 10)} // format for date input
+                onChange={(e) =>
+                  setTempItem({ ...tempItem, date: e.target.value })
+                }
+              />
+            </label>
+
+            <section className="change-item-buttons">
+              <button
+                  onClick={() => {
+                    onDeleteItem(editingIndex); 
+                    setEditingIndex(null);
+                    setTempItem(null);
+                  }}
+                  style={{ marginLeft: "10px", backgroundColor: "#a33939", color: "white" }}
+                >
+                  delete
+              </button>
+              <button onClick={handleSave}>save</button>
+              
+              <button
+                onClick={() => {
+                  setEditingIndex(null);
+                  setTempItem(null);
+                }}
+              >
+                cancel
+              </button>
+
+            </section>
+          </div>
+        </div>
+      )}
     </>
   );
 }

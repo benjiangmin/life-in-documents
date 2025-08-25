@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function BudgetBox({ items }) {
-    const [budget, setBudget] = useState(500); // hardcoded budget for now
+    const [budget, setBudget] = useState(400); // hardcoded budget
     const [isEditing, setIsEditing] = useState(false); 
     const [newBudget, setNewBudget] = useState(budget); 
 
@@ -53,24 +53,28 @@ export default function BudgetBox({ items }) {
 
         <section className="item-details">
             <section className="item-details-display">
-            <h1>food:</h1>
-            <h2>${(totalsByType.food || 0).toFixed(2)}</h2>
+                <h1>food:</h1>
+                <h2>${(totalsByType.food || 0).toFixed(2)}</h2>
             </section>
             <section className="item-details-display">
-            <h1>clothing:</h1>
-            <h2>${(totalsByType.clothing || 0).toFixed(2)}</h2>
+                <h1>groceries:</h1>
+                <h2>${(totalsByType.groceries || 0).toFixed(2)}</h2>
             </section>
             <section className="item-details-display">
-            <h1>games:</h1>
-            <h2>${(totalsByType.games || 0).toFixed(2)}</h2>
+                <h1>clothing:</h1>
+                <h2>${(totalsByType.clothing || 0).toFixed(2)}</h2>
             </section>
             <section className="item-details-display">
-            <h1>abby:</h1>
-            <h2>${(totalsByType.abby || 0).toFixed(2)}</h2>
+                <h1>games:</h1>
+                <h2>${(totalsByType.games || 0).toFixed(2)}</h2>
             </section>
             <section className="item-details-display">
-            <h1>other:</h1>
-            <h2>${(totalsByType.other || 0).toFixed(2)}</h2>
+                <h1>abby:</h1>
+                <h2>${(totalsByType.abby || 0).toFixed(2)}</h2>
+            </section>
+            <section className="item-details-display">
+                <h1>other:</h1>
+                <h2>${(totalsByType.other || 0).toFixed(2)}</h2>
             </section>
         </section>
 
