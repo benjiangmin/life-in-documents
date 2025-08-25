@@ -41,7 +41,7 @@ export default function AddItemBox( {onAddItem} ) {
                     <option value="" disabled selected>select type</option>
                     <option value="food">food</option>
                     <option value="clothing">clothing</option>
-                    <option value="entertainment">games</option>
+                    <option value="games">games</option>
                     <option value="abby">abby</option>
                     <option value="other">other</option>
                 </select>

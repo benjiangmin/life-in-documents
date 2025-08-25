@@ -6,11 +6,21 @@ import DisplayItemsBox from "./DisplayItemsBox"
 import React from "react"
 
 export default function Money() {
-    const [items, setItems] = React.useState([])
+    // 1. Load saved items from localStorage (if any) when the component starts
+    const [items, setItems] = React.useState(() => {
+        const saved = localStorage.getItem("items"); 
+        return saved ? JSON.parse(saved) : []; // if found, parse it back into an array
+    });
 
+    // 2. Every time `items` changes, save it to localStorage
+    React.useEffect(() => {
+        localStorage.setItem("items", JSON.stringify(items));
+    }, [items]);
+
+    // 3. Function for adding a new item
     const addItem = (newItem) => {
-        setItems((prev) => [...prev, newItem])
-    }
+        setItems((prev) => [...prev, newItem]);
+    };
 
     return (
         <section className="money-main">
@@ -20,7 +30,7 @@ export default function Money() {
                     <AddItemBox onAddItem={addItem} />
                 </section>
                 <section className="box-2">
-                    <BudgetBox />
+                    <BudgetBox items={items}/>
                 </section>
             </section>
 

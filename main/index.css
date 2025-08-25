@@ -216,7 +216,7 @@ body {
 }
 .box-1 {
     background-color: rgb(108, 150, 126);
-    height: 55%;
+    height: 40%;
     border-radius: 0px 0px 30px 30px;
     margin: 0px 15px 15px 30px;
     display: flex;
@@ -263,8 +263,13 @@ body {
     width: 10%;
     font-family: "Coming Soon";
     padding: 0 10px;
-
 }
+.price-input-form::-webkit-outer-spin-button,
+.price-input-form::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .add-item-button {
     border-radius: 5px 20px 20px 5px;
     border-width: 0px;
@@ -273,13 +278,12 @@ body {
 }
 
 .box-2 {
-    background-color: rgb(104, 122, 104);
-    height: 45%;
+    background-color: rgb(123, 155, 111);
+    height: 60%;
     border-radius: 30px 30px 0px 0px;
     margin: 15px 15px 0px 30px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .box-3 {
     background-color: rgb(77, 157, 113);
@@ -291,7 +295,7 @@ body {
     align-items: center;
 }
 .box-4 {
-    background-color: rgb(165, 194, 145);
+    background-color: rgb(165, 191, 148);
     height: 70vh;
     width: 59.4%;
     border-radius: 30px 0px 0px 30px;
@@ -366,4 +370,161 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+.box-2-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    width: 100%;
+    position: relative;
+}
+.budget-text-display {
+    font-size: 4rem;
+    margin-bottom: 35px;
+    margin-top: 0px;
+    color: #FFFFF0;
+
+}
+.budget-detailed-display {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+.column-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.budget-budget-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 70px;
+    color: #eef2ee;
+    font-family: "Coming Soon";
+}
+.budget-budget-display > h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.spent-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    color: #eef2ee;
+    font-family: "Coming Soon";
+}
+.spent-display > h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.left-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 70px;
+    color: #eef2ee;
+    font-family: "Coming Soon";
+}
+.left-display > h2, h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.break-line {
+    width: calc(100% - 90px);
+    height: 5px;
+    background-color: rgb(212, 216, 212);
+    margin-top: 45px;
+    border-radius: 40px;
+}
+.item-details-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.item-details-display > h1 {
+    text-align: right;
+    width: 100px;
+    margin: 0px;
+    font-size: 1rem;
+    color: #ddddc6;
+}
+.item-details-display > h2 {
+    text-align: right;
+    margin: 0px;
+    font-family: "Coming Soon";
+    color:#1f543c;
+}
+.item-details {
+    position: absolute;
+    top: 215px;
+    left: 185px;
+}
+.popup-overlay {
+  position: fixed;      
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;       
+}
+
+.popup {
+  background: #a0e0b1;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10000;     
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.popup > h3 {
+    font-size: 1.8rem;
+    color:#FFFFF0;
+}
+.clickable-budget {
+    text-decoration: none;
+}
+.clickable-budget:hover {
+    font-weight: bold;
+    color: #355e2e;
+}
+.popup-buttons-container {
+    display: flex;
+    gap: 20px;
+}
+.popup-button {
+    height: 30px;
+    border-radius: 20px;
+    border-width: 0px;
+    width: 60px;
+    font-family: "Winky Rough";
+    color: #1f543c;
+}
+.input-button {
+    height: 40px;
+    font-family: "Coming Soon";
+    border-radius: 20px;
+    border-width: 0px;
+    padding-left: 30px;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
