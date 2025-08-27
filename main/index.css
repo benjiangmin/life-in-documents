@@ -172,12 +172,18 @@ body {
     display: flex; 
     flex-direction: column; }
 .document-buttons { 
+    position: relative;
     flex: 1; 
-    min-height: 0; 
+    transition: right 0.5s ease;
     overflow-y: auto; 
     display: flex; 
     flex-direction: column; 
-    gap: 10px; }
+    gap: 10px; 
+    overflow-x: hidden;
+}
+.document-buttons.show {
+    right: 0;
+}
 
 .document-buttons > :link {
     background-color: #eef2ee;

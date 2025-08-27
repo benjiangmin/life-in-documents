@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import AppRoutes from "./Routes"
 import Pages from "./Pages"
@@ -7,21 +7,27 @@ import Pages from "./Pages"
 export default function Home() {
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
+    const [visible, setVisible] = useState(false) // <-- for animation
     const navigate = useNavigate()
 
-    const handleChange = (e) => {
-    const value = e.target.value
-    setQuery(value)
+    useEffect(() => {
+        const timer = setTimeout(() => setVisible(true), 50)
+        return () => clearTimeout(timer)
+    }, [])
 
-    if (value.trim() === "") {
-        setResults([])  // clear results if nothing typed
-    } else {
-        const filtered = AppRoutes.filter(route =>
-            (route.title || "").toLowerCase().includes(value.toLowerCase())
-        )
-        setResults(filtered)
+    const handleChange = (e) => {
+        const value = e.target.value
+        setQuery(value)
+
+        if (value.trim() === "") {
+            setResults([])  // clear results if nothing typed
+        } else {
+            const filtered = AppRoutes.filter(route =>
+                (route.title || "").toLowerCase().includes(value.toLowerCase())
+            )
+            setResults(filtered)
+        }
     }
-}
 
     const handleClick = (path) => {
         navigate(path)
@@ -32,12 +38,11 @@ export default function Home() {
     return (
         <>
             <section className="header-section">
-
-            <section className="welcome-text">
+                <section className="welcome-text">
                     <h1>welcome back, benjamin</h1>
-            </section>
+                </section>
 
-            <div className="searchbar">
+                <div className="searchbar">
                     <label>search for a document:</label>
                     <input
                         type="text"
@@ -58,20 +63,26 @@ export default function Home() {
                         </div>
                     )}
                 </div>
-
             </section>
 
             <section className="main-display-section">
                 <h3>browse through full list of documents below:</h3>
                 <section className="button-containers">
-                    {Pages.map(page => (
-                        <Link key={page.path} to={page.path}>
+                    {Pages.map((page, index) => (
+                        <Link
+                            key={page.path}
+                            to={page.path}
+                            style={{
+                                opacity: visible ? 1 : 0,
+                                transform: visible ? "translateY(0)" : "translateY(20px)",
+                                transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`,
+                            }}
+                        >
                             {page.title}
                         </Link>
                     ))}
                 </section>
             </section>
-
         </>
     )
 }
