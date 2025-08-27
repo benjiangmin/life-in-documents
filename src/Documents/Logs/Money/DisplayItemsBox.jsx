@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
-  const [editingIndex, setEditingIndex] = useState(null); // index of item being edited
-  const [tempItem, setTempItem] = useState(null); // temp copy of item being edited
+export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
+  const [editingIndex, setEditingIndex] = useState(null); // index in full items array
+  const [tempItem, setTempItem] = useState(null);
 
   const getOrdinal = (n) => {
     const s = ["th", "st", "nd", "rd"];
@@ -11,29 +11,31 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
   };
 
   const handleSave = () => {
-    onUpdateItem(editingIndex, tempItem);
-    setEditingIndex(null);
-    setTempItem(null);
+    if (editingIndex !== null) {
+      onUpdateItem(editingIndex, tempItem);
+      setEditingIndex(null);
+      setTempItem(null);
+    }
   };
 
   return (
     <>
       <h1 className="items-text">items:</h1>
-        <section className="display-items-box">
+      <section className="display-items-box">
         <div className="item-buttons">
           {items
-            .slice() // make a copy
-            .sort((a, b) => new Date(b.date) - new Date(a.date)) // sort descending
-            .map((entry, index) => {
+            .slice()
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((entry) => {
               const day = new Date(entry.date + "T00:00").getDate();
               const dayWithSuffix = getOrdinal(day);
 
               return (
                 <button
-                  key={index}
+                  key={entry.id || entry.date + entry.item} // use stable key
                   className="item-button"
                   onClick={() => {
-                    setEditingIndex(index);
+                    setEditingIndex(entry.index); // use original index
                     setTempItem({ ...entry });
                   }}
                 >
@@ -43,7 +45,6 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
                 </button>
               );
             })}
-
         </div>
       </section>
 
@@ -91,7 +92,10 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
                 value={tempItem.price}
                 step="0.01"
                 onChange={(e) =>
-                  setTempItem({ ...tempItem, price: parseFloat(e.target.value) })
+                  setTempItem({
+                    ...tempItem,
+                    price: parseFloat(e.target.value) || 0,
+                  })
                 }
               />
             </label>
@@ -101,7 +105,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
               <input
                 className="change-item-input date"
                 type="date"
-                value={tempItem.date.slice(0, 10)} // format for date input
+                value={tempItem.date.slice(0, 10)}
                 onChange={(e) =>
                   setTempItem({ ...tempItem, date: e.target.value })
                 }
@@ -110,17 +114,20 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
 
             <section className="change-item-buttons">
               <button
-                  onClick={() => {
-                    onDeleteItem(editingIndex); 
-                    setEditingIndex(null);
-                    setTempItem(null);
-                  }}
-                  style={{ marginLeft: "10px", backgroundColor: "#a33939", color: "white" }}
-                >
-                  delete
+                onClick={() => {
+                  onDeleteItem(editingIndex);
+                  setEditingIndex(null);
+                  setTempItem(null);
+                }}
+                style={{
+                  marginLeft: "10px",
+                  backgroundColor: "#a33939",
+                  color: "white",
+                }}
+              >
+                delete
               </button>
               <button onClick={handleSave}>save</button>
-              
               <button
                 onClick={() => {
                   setEditingIndex(null);
@@ -129,7 +136,6 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem}) {
               >
                 cancel
               </button>
-
             </section>
           </div>
         </div>

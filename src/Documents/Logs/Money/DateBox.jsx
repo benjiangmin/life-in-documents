@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import LeftArrow from "../../../../src/images/leftArrow.png"
+import RightArrow from "../../../../src/images/rightArrow.png"
 
-export default function DateBox() {
-  const [currentDate, setCurrentDate] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentDate(new Date());
-    }, 1000); 
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const formattedDate = currentDate.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long", 
-  });
+export default function DateBox({ currentMonth, onChangeMonth }) {
+  const monthName = currentMonth.toLocaleString("default", { month: "long" });
+  const year = currentMonth.getFullYear();
 
   return (
     <section className="box-3-display">
-        <h1 className="currently-viewing-text">currently viewing:</h1>
-        <h1 className="display-date">{formattedDate}</h1>
+      <h1 className="currently-viewing-text">currently viewing:</h1>
+      <div className="display-date">
+        <button className="arrow-images left" onClick={() => onChangeMonth(-1)}>
+          <img src={LeftArrow} />
+        </button>
+        <span className="month-text">{monthName} {year}</span>
+        <button className="arrow-images right" onClick={() => onChangeMonth(1)}>
+          <img src={RightArrow} />
+        </button>
+      </div>
     </section>
-  )
+  );
 }

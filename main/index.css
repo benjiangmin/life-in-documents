@@ -25,8 +25,8 @@ body {
 .welcome-text > h1 {
     color: #FFFFF0;
     font-family: "Winky Rough";
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-top: 100px;
 }
 
 .searchbar {
@@ -72,6 +72,7 @@ body {
     margin-bottom: 2px;
     font-family: "Coming Soon";
     color: #355e2e;
+    margin-top: 40px;
 }
 .button-containers {
     background-color: #a1c6ab;
@@ -201,6 +202,7 @@ body {
 .money-main {
     display: flex;
     background-color: #FFFFF0;
+    max-width: 100%;
 }
 .column-1 {
     display: flex;
@@ -297,7 +299,6 @@ body {
 .box-4 {
     background-color: rgb(165, 191, 148);
     height: 70vh;
-    width: 59.4%;
     border-radius: 30px 0px 0px 30px;
     margin: 15px 0px 30px 15px;
     display: flex;
@@ -361,15 +362,19 @@ body {
     color: #a9edbb;
 }
 .display-date {
-    font-size: 3rem;
-    margin:0px;
-    color: #FFFFF0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
 }
+
 .box-3-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 
@@ -586,5 +591,29 @@ input[type=number]::-webkit-inner-spin-button {
 .change-item-buttons > button:hover {
     transform: scale(1.1)
 }
+
+.arrow-images {
+  background: transparent;
+  border: none;
+  padding: 0;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+.arrow-images:hover {
+    transform: scale(1.4);
+}
+.month-text {
+    font-size: 4rem;
+    color:#FFFFF0;
+}
+.left {
+    left: 350px;
+}
+.right {
+    right: 350px;
+}
+
 
 
