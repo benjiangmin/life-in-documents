@@ -50,7 +50,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
 
       {/* Edit Popup */}
       {editingIndex !== null && tempItem && (
-        <div className="popup-overlay">
+        <div className="popup-overlay overlay-for-box-4">
           <div className="change-item-popup">
             <h3>edit item</h3>
 

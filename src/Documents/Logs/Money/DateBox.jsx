@@ -13,7 +13,7 @@ export default function DateBox({ currentMonth, onChangeMonth }) {
         <button className="arrow-images left" onClick={() => onChangeMonth(-1)}>
           <img src={LeftArrow} />
         </button>
-        <span className="month-text">{monthName} {year}</span>
+        <h1 className="month-text">{monthName} {year}</h1>
         <button className="arrow-images right" onClick={() => onChangeMonth(1)}>
           <img src={RightArrow} />
         </button>
