@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
-  const [editingIndex, setEditingIndex] = useState(null); // index in full items array
+  const [editingId, setEditingId] = useState(null); // use id, not index
   const [tempItem, setTempItem] = useState(null);
 
   const getOrdinal = (n) => {
@@ -11,9 +11,9 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
   };
 
   const handleSave = () => {
-    if (editingIndex !== null) {
-      onUpdateItem(editingIndex, tempItem);
-      setEditingIndex(null);
+    if (editingId !== null) {
+      onUpdateItem(editingId, tempItem);
+      setEditingId(null);
       setTempItem(null);
     }
   };
@@ -32,15 +32,15 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
 
               return (
                 <button
-                  key={entry.id || entry.date + entry.item} // use stable key
+                  key={entry.id}
                   className="item-button"
                   onClick={() => {
-                    setEditingIndex(entry.index); // use original index
+                    setEditingId(entry.id);
                     setTempItem({ ...entry });
                   }}
                 >
                   <span className="item-day">{dayWithSuffix}:</span>
-                  <span className="item-name">{entry.item}</span>
+                  <span className="item-name">{entry.name}</span>
                   <span className="item-price">${entry.price.toFixed(2)}</span>
                 </button>
               );
@@ -49,7 +49,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
       </section>
 
       {/* Edit Popup */}
-      {editingIndex !== null && tempItem && (
+      {editingId !== null && tempItem && (
         <div className="popup-overlay overlay-for-box-4">
           <div className="change-item-popup">
             <h3>edit item</h3>
@@ -59,9 +59,9 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
               <input
                 className="change-item-input"
                 type="text"
-                value={tempItem.item}
+                value={tempItem.name}
                 onChange={(e) =>
-                  setTempItem({ ...tempItem, item: e.target.value })
+                  setTempItem({ ...tempItem, name: e.target.value })
                 }
               />
             </label>
@@ -92,10 +92,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
                 value={tempItem.price}
                 step="0.01"
                 onChange={(e) =>
-                  setTempItem({
-                    ...tempItem,
-                    price: parseFloat(e.target.value) || 0,
-                  })
+                  setTempItem({ ...tempItem, price: parseFloat(e.target.value) || 0 })
                 }
               />
             </label>
@@ -115,8 +112,8 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
             <section className="change-item-buttons">
               <button
                 onClick={() => {
-                  onDeleteItem(editingIndex);
-                  setEditingIndex(null);
+                  onDeleteItem(editingId);
+                  setEditingId(null);
                   setTempItem(null);
                 }}
                 style={{
@@ -130,7 +127,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
               <button onClick={handleSave}>save</button>
               <button
                 onClick={() => {
-                  setEditingIndex(null);
+                  setEditingId(null);
                   setTempItem(null);
                 }}
               >

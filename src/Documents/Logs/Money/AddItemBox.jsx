@@ -6,20 +6,22 @@ export default function AddItemBox( {onAddItem} ) {
     const [price, setPrice] = React.useState("")
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!item || !type || !price) return;
+        e.preventDefault()
+        if (!item || !type || !price) return
 
         const newItem = {
-            item,
+            name: item, // match Supabase column
             type,
             price: parseFloat(price),
-            date: new Date().toLocaleDateString("en-CA") 
-        };
-        onAddItem(newItem);
+            date: new Date().toLocaleDateString("en-CA"),
+            budget_id: 1 // default budget id
+        }
 
-        setItem("");
-        setType("");
-        setPrice("");
+        onAddItem(newItem)
+
+        setItem("")
+        setType("")
+        setPrice("")
     }
 
     return (

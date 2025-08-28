@@ -8,97 +8,99 @@ import DisplayItemsBox from "./DisplayItemsBox"
 import React from "react"
 
 export default function Money() {
-      async function fetchItems() {
+  const [items, setItems] = React.useState([])
+  const [monthlyBudgets, setMonthlyBudgets] = React.useState({})
+  const [currentMonth, setCurrentMonth] = React.useState(new Date())
+  const [visible, setVisible] = React.useState(false)
+
+  // Animate visibility
+  React.useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 50)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Fetch items from Supabase on mount
+  React.useEffect(() => {
+    async function fetchItems() {
       const { data, error } = await supabase.from("items").select("*")
-      console.log(data)
+      if (error) console.error("Fetch error:", error)
+      else setItems(data)
     }
-
     fetchItems()
-    
-    const [items, setItems] = React.useState(() => {
-      const saved = localStorage.getItem("items"); 
-      return saved ? JSON.parse(saved) : [];
-    });
-    const [monthlyBudgets, setMonthlyBudgets] = React.useState(() => {
-        const saved = localStorage.getItem("monthlyBudgets");
-        return saved ? JSON.parse(saved) : {}; // e.g. { "2025-8": 400 }
-    });
-    const [currentMonth, setCurrentMonth] = React.useState(new Date());
-    const [visible, setVisible] = React.useState(false)
-    React.useEffect(() => {
-      const timer = setTimeout(() => setVisible(true), 50); // small delay for mount
-      return () => clearTimeout(timer);
-    }, []);
+  }, [])
 
+  // Add item to Supabase and state
+  const addItem = async (newItem) => {
+    const { data, error } = await supabase.from("items").insert([newItem]).select()
+    if (error) console.error("Insert error:", error)
+    else {
+      console.log("Insert succeeded:", data)
+      setItems(prev => [...prev, data[0]])
+    }
+  }
 
-      
-      //Items logic.
-      const addItem = (newItem) => setItems(prev => [...prev, newItem]);
-      const deleteItem = (index) => setItems(prev => prev.filter((_, i) => i !== index));
-      const filteredItems = items
-      .map((entry, index) => ({ ...entry, index }))
-      .filter(entry => {
-        const entryDate = new Date(entry.date + "T00:00");
-        return (
-          entryDate.getMonth() === currentMonth.getMonth() &&
-          entryDate.getFullYear() === currentMonth.getFullYear()
-        );
-      });
-      const updateItem = (index, updatedItem) => {
-        setItems(prev => {
-          const newItems = [...prev];
-          newItems[index] = updatedItem;
-          return newItems;
-        });
-      };
-      React.useEffect(() => {
-        localStorage.setItem("items", JSON.stringify(items));
-      }, [items]);
-    
-      //Month logic.
-      const monthKey = `${currentMonth.getFullYear()}-${currentMonth.getMonth() + 1}`;
-      function changeMonth(offset) {
-        setCurrentMonth(prev => {
-          const newDate = new Date(prev);
-          newDate.setMonth(prev.getMonth() + offset);
-          return newDate;
-        });
-      }
-        
-      //Budget logic.
-      const currentBudget = monthlyBudgets[monthKey] || 200;
-      const updateBudget = (newBudget) => {
-        setMonthlyBudgets(prev => {
-          const updated = { ...prev, [monthKey]: newBudget };
-          localStorage.setItem("monthlyBudgets", JSON.stringify(updated));
-          return updated;
-        });
-      };
+  // Delete item from Supabase and state
+  const deleteItem = async (id) => {
+    const { error } = await supabase.from("items").delete().eq("id", id)
+    if (error) console.error("Delete error:", error)
+    else setItems(prev => prev.filter(item => item.id !== id))
+  }
+
+  // Update item in Supabase and state
+  const updateItem = async (id, updatedItem) => {
+    const { data, error } = await supabase
+      .from("items")
+      .update(updatedItem)
+      .eq("id", id)
+      .select()
+    if (error) console.error("Update error:", error)
+    else setItems(prev => prev.map(item => item.id === id ? data[0] : item))
+  }
+
+  // Filter items for current month
+  const filteredItems = items.filter(entry => {
+    const entryDate = new Date(entry.date + "T00:00")
+    return (
+      entryDate.getMonth() === currentMonth.getMonth() &&
+      entryDate.getFullYear() === currentMonth.getFullYear()
+    )
+  })
+
+  // Month navigation
+  const monthKey = `${currentMonth.getFullYear()}-${currentMonth.getMonth() + 1}`
+  const changeMonth = (offset) => {
+    setCurrentMonth(prev => {
+      const newDate = new Date(prev)
+      newDate.setMonth(prev.getMonth() + offset)
+      return newDate
+    })
+  }
+
+  // Budget logic
+  const currentBudget = monthlyBudgets[monthKey] || 200
+  const updateBudget = (newBudget) => {
+    setMonthlyBudgets(prev => ({ ...prev, [monthKey]: newBudget }))
+  }
 
   return (
     <section className="money-main">
       <Sidebar />
       <section className="column-1">
         <section className={`box-1 ${visible ? "visible" : ""}`}>
-          <AddItemBox 
-            onAddItem={addItem} 
-          />
+          <AddItemBox onAddItem={addItem} />
         </section>
         <section className={`box-2 ${visible ? "visible" : ""}`}>
           <BudgetBox 
             items={filteredItems} 
             budget={currentBudget} 
-            onUpdateBudget={updateBudget}
+            onUpdateBudget={updateBudget} 
           />
         </section>
       </section>
 
       <section className="column-2">
         <section className={`box-3 ${visible ? "visible" : ""}`}>
-          <DateBox 
-            currentMonth={currentMonth} 
-            onChangeMonth={changeMonth} 
-          />
+          <DateBox currentMonth={currentMonth} onChangeMonth={changeMonth} />
         </section>
         <section className={`box-4 ${visible ? "visible" : ""}`}>
           <DisplayItemsBox 
