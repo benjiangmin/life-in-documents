@@ -29,46 +29,54 @@ export default function Money() {
     fetchItems()
   }, [])
 
-  // Add item to Supabase and state
+  // Fetch budget for current month
+  React.useEffect(() => {
+    async function fetchBudget() {
+      const monthKey = `${currentMonth.getFullYear()}-${currentMonth.getMonth() + 1}`
+      const { data, error } = await supabase
+        .from("budgets")
+        .select("*")
+        .eq("year_month", monthKey)
+        .single() // expect only one row
+
+      if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found
+        console.error("Budget fetch error:", error)
+      } else if (data) {
+        setMonthlyBudgets(prev => ({ ...prev, [monthKey]: data.amount }))
+      } else {
+        // default budget if none exists
+        setMonthlyBudgets(prev => ({ ...prev, [monthKey]: 200 }))
+      }
+    }
+    fetchBudget()
+  }, [currentMonth])
+
+  // Add item
   const addItem = async (newItem) => {
     const { data, error } = await supabase.from("items").insert([newItem]).select()
     if (error) console.error("Insert error:", error)
-    else {
-      console.log("Insert succeeded:", data)
-      setItems(prev => [...prev, data[0]])
-    }
+    else setItems(prev => [...prev, data[0]])
   }
 
-  // Delete item from Supabase and state
+  // Delete item
   const deleteItem = async (id) => {
     const { error } = await supabase.from("items").delete().eq("id", id)
     if (error) console.error("Delete error:", error)
     else setItems(prev => prev.filter(item => item.id !== id))
   }
 
+  // Update item
   const updateItem = async (id, updatedItem) => {
-  const { id: _, ...itemToUpdate } = updatedItem; // exclude id
-  const { data, error } = await supabase
-    .from("items")
-    .update(itemToUpdate)
-    .eq("id", id)
-    .select(); // <-- important
+    const { id: _, ...itemToUpdate } = updatedItem
+    const { data, error } = await supabase
+      .from("items")
+      .update(itemToUpdate)
+      .eq("id", id)
+      .select() // important to get updated row
 
-  if (error) console.error("Update error:", error)
-  else setItems(prev => prev.map(item => item.id === id ? data[0] : item))
-
-  console.log("Supabase returned:", data);
-}
-
-
-  // Filter items for current month
-  const filteredItems = items.filter(entry => {
-    const entryDate = new Date(entry.date + "T00:00")
-    return (
-      entryDate.getMonth() === currentMonth.getMonth() &&
-      entryDate.getFullYear() === currentMonth.getFullYear()
-    )
-  })
+    if (error) console.error("Update error:", error)
+    else setItems(prev => prev.map(item => item.id === id ? data[0] : item))
+  }
 
   // Month navigation
   const monthKey = `${currentMonth.getFullYear()}-${currentMonth.getMonth() + 1}`
@@ -82,9 +90,30 @@ export default function Money() {
 
   // Budget logic
   const currentBudget = monthlyBudgets[monthKey] || 200
-  const updateBudget = (newBudget) => {
+  const updateBudget = async (newBudget) => {
     setMonthlyBudgets(prev => ({ ...prev, [monthKey]: newBudget }))
+
+    // Upsert budget in Supabase
+    const { data, error } = await supabase
+      .from("budgets")
+      .upsert(
+        { year_month: monthKey, amount: newBudget },
+        { onConflict: ["year_month"] } // 👈 important
+      )
+      .select()
+
+    if (error) console.error("Budget upsert error:", error)
   }
+
+
+  // Filter items for current month
+  const filteredItems = items.filter(entry => {
+    const entryDate = new Date(entry.date + "T00:00")
+    return (
+      entryDate.getMonth() === currentMonth.getMonth() &&
+      entryDate.getFullYear() === currentMonth.getFullYear()
+    )
+  })
 
   return (
     <section className="money-main">
