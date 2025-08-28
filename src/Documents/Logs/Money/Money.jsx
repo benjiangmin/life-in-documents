@@ -46,16 +46,20 @@ export default function Money() {
     else setItems(prev => prev.filter(item => item.id !== id))
   }
 
-  // Update item in Supabase and state
   const updateItem = async (id, updatedItem) => {
-    const { data, error } = await supabase
-      .from("items")
-      .update(updatedItem)
-      .eq("id", id)
-      .select()
-    if (error) console.error("Update error:", error)
-    else setItems(prev => prev.map(item => item.id === id ? data[0] : item))
-  }
+  const { id: _, ...itemToUpdate } = updatedItem; // exclude id
+  const { data, error } = await supabase
+    .from("items")
+    .update(itemToUpdate)
+    .eq("id", id)
+    .select(); // <-- important
+
+  if (error) console.error("Update error:", error)
+  else setItems(prev => prev.map(item => item.id === id ? data[0] : item))
+
+  console.log("Supabase returned:", data);
+}
+
 
   // Filter items for current month
   const filteredItems = items.filter(entry => {

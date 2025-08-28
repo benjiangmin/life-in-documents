@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
-  const [editingId, setEditingId] = useState(null); // use id, not index
+  const [editingId, setEditingId] = useState(null);
   const [tempItem, setTempItem] = useState(null);
 
   const getOrdinal = (n) => {
@@ -11,7 +11,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
   };
 
   const handleSave = () => {
-    if (editingId !== null) {
+    if (editingId !== null && tempItem) {
       onUpdateItem(editingId, tempItem);
       setEditingId(null);
       setTempItem(null);
@@ -27,7 +27,8 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
             .slice()
             .sort((a, b) => new Date(b.date) - new Date(a.date))
             .map((entry) => {
-              const day = new Date(entry.date + "T00:00").getDate();
+              if (!entry.id) return null; // skip items without id
+              const day = entry.date ? new Date(entry.date + "T00:00").getDate() : 1;
               const dayWithSuffix = getOrdinal(day);
 
               return (
@@ -36,19 +37,24 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
                   className="item-button"
                   onClick={() => {
                     setEditingId(entry.id);
-                    setTempItem({ ...entry });
+                    setTempItem({
+                      id: entry.id,
+                      name: entry.name || "",
+                      type: entry.type || "other",
+                      price: Number(entry.price) || 0,
+                      date: entry.date ? entry.date.slice(0, 10) : new Date().toISOString().slice(0, 10),
+                    });
                   }}
                 >
                   <span className="item-day">{dayWithSuffix}:</span>
-                  <span className="item-name">{entry.name}</span>
-                  <span className="item-price">${entry.price.toFixed(2)}</span>
+                  <span className="item-name">{entry.name || ""}</span>
+                  <span className="item-price">${Number(entry.price || 0).toFixed(2)}</span>
                 </button>
               );
             })}
         </div>
       </section>
 
-      {/* Edit Popup */}
       {editingId !== null && tempItem && (
         <div className="popup-overlay overlay-for-box-4">
           <div className="change-item-popup">
@@ -60,9 +66,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
                 className="change-item-input"
                 type="text"
                 value={tempItem.name}
-                onChange={(e) =>
-                  setTempItem({ ...tempItem, name: e.target.value })
-                }
+                onChange={(e) => setTempItem({ ...tempItem, name: e.target.value })}
               />
             </label>
 
@@ -71,9 +75,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
               <select
                 className="change-item-input type"
                 value={tempItem.type}
-                onChange={(e) =>
-                  setTempItem({ ...tempItem, type: e.target.value })
-                }
+                onChange={(e) => setTempItem({ ...tempItem, type: e.target.value })}
               >
                 <option value="food">food</option>
                 <option value="clothing">clothing</option>
@@ -89,11 +91,9 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
               <input
                 className="change-item-input"
                 type="number"
-                value={tempItem.price}
                 step="0.01"
-                onChange={(e) =>
-                  setTempItem({ ...tempItem, price: parseFloat(e.target.value) || 0 })
-                }
+                value={tempItem.price || 0}
+                onChange={(e) => setTempItem({ ...tempItem, price: parseFloat(e.target.value) || 0 })}
               />
             </label>
 
@@ -102,10 +102,8 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
               <input
                 className="change-item-input date"
                 type="date"
-                value={tempItem.date.slice(0, 10)}
-                onChange={(e) =>
-                  setTempItem({ ...tempItem, date: e.target.value })
-                }
+                value={tempItem.date || new Date().toISOString().slice(0, 10)}
+                onChange={(e) => setTempItem({ ...tempItem, date: e.target.value })}
               />
             </label>
 
@@ -116,11 +114,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
                   setEditingId(null);
                   setTempItem(null);
                 }}
-                style={{
-                  marginLeft: "10px",
-                  backgroundColor: "#a33939",
-                  color: "white",
-                }}
+                style={{ marginLeft: "10px", backgroundColor: "#a33939", color: "white" }}
               >
                 delete
               </button>
