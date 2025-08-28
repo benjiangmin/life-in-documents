@@ -1,3 +1,5 @@
+import { supabase } from "./supabaseClient"
+
 import Sidebar from "../../../../main/Sidebar"
 import AddItemBox from "./AddItemBox"
 import BudgetBox from "./BudgetBox"
@@ -6,6 +8,13 @@ import DisplayItemsBox from "./DisplayItemsBox"
 import React from "react"
 
 export default function Money() {
+      async function fetchItems() {
+      const { data, error } = await supabase.from("items").select("*")
+      console.log(data)
+    }
+
+    fetchItems()
+    
     const [items, setItems] = React.useState(() => {
       const saved = localStorage.getItem("items"); 
       return saved ? JSON.parse(saved) : [];
@@ -57,7 +66,7 @@ export default function Money() {
       }
         
       //Budget logic.
-      const currentBudget = monthlyBudgets[monthKey] || 400;
+      const currentBudget = monthlyBudgets[monthKey] || 200;
       const updateBudget = (newBudget) => {
         setMonthlyBudgets(prev => {
           const updated = { ...prev, [monthKey]: newBudget };

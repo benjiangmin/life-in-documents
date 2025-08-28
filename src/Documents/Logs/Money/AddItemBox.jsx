@@ -13,7 +13,7 @@ export default function AddItemBox( {onAddItem} ) {
             item,
             type,
             price: parseFloat(price),
-            date: new Date().toLocaleDateString("en-CA") // ✅ local date, no UTC shift
+            date: new Date().toLocaleDateString("en-CA") 
         };
         onAddItem(newItem);
 
