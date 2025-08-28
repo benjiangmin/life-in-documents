@@ -1,0 +1,394 @@
+[
+  {
+    "year": 2022,
+    "month": 9,
+    "day": 23,
+    "price": 37.0,
+    "item": "Anthony’s adidas sweatshirt for his birthday",
+    "type": "clothing"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 7,
+    "price": 10.0,
+    "item": "Stupid chinese books i accidently threw away that i had to pay for",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 8,
+    "price": 10.35,
+    "item": "Some food at Kopp’s (chicken ltm and 1 scoop vanilla ice cream if you wanna be specific)",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 8,
+    "price": 7.35,
+    "item": "Burger for edward out of the kindness of my heart…",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 10,
+    "price": 5.0,
+    "item": "Some chicken thingies from kwik trip",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 11,
+    "price": 27.0,
+    "item": "Food at culvers, treating cooper and lokland as well",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 11,
+    "price": 3.0,
+    "item": "Nachos money that I owed David",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 16,
+    "price": 50.0,
+    "item": "Backpack that I actually needed",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 10,
+    "day": 21,
+    "price": 25.0,
+    "item": "Chipotle food for me and cooper",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 1,
+    "price": 2.0,
+    "item": "I don't even know, owed anthony for something he kept bugging me for",
+    "type": "abby"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 2,
+    "price": 19.0,
+    "item": "Food at Murfs, treat cooper and lokland too",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 4,
+    "price": 10.0,
+    "item": "Coaches’ gift money (volleyball)",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 7,
+    "price": 25.0,
+    "item": "Jonathan’s birthday gift",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 11,
+    "price": 13.0,
+    "item": "Chipotle food…this time for just myself",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 13,
+    "price": 30.0,
+    "item": "Birthday gift (JBL speaker for sandy)",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 20,
+    "price": 106.0,
+    "item": "Christmas spending spree #1",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 21,
+    "price": 14.0,
+    "item": "Little portion for gift for dad",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 21,
+    "price": 76.0,
+    "item": "Christmas spending spree #2",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 25,
+    "price": 10.0,
+    "item": "Food at mall",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 25,
+    "price": 41.0,
+    "item": "Link’s awakening",
+    "type": "games"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 26,
+    "price": 88.0,
+    "item": "Christmas spending spree #3",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 11,
+    "day": 29,
+    "price": 15.0,
+    "item": "Chipotle food",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 3,
+    "price": 3.18,
+    "item": "2 McChickens…heh",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 3,
+    "price": 9.0,
+    "item": "Arm sleeve for anthony",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 3,
+    "price": 6.0,
+    "item": "Fleece slippers for me",
+    "type": "clothing"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 3,
+    "price": 8.0,
+    "item": "New wallet",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 4,
+    "price": 5.0,
+    "item": "Bake sale stuff",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 4,
+    "price": 96.0,
+    "item": "Christmas spending spree #4",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 6,
+    "price": 1.0,
+    "item": "One singular cookie",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 7,
+    "price": 15.0,
+    "item": "Fish medicine for my sick fishies",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 9,
+    "price": 11.0,
+    "item": "Jersey Mike’s Chipotle chicken sub",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 12,
+    "price": 18.0,
+    "item": "Christmas spending spree #5",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 12,
+    "price": 16.0,
+    "item": "Split gift w/ anthony for sandy",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 13,
+    "price": 3.0,
+    "item": "School lunch food mashed potatoes",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 14,
+    "price": 10.0,
+    "item": "Part of anthony’s gift (supplements)",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 16,
+    "price": 17.0,
+    "item": "Christmas spending spree #6",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 16,
+    "price": 7.0,
+    "item": "Yummy gummy bears",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 16,
+    "price": 10.0,
+    "item": "White elephant (smol lego set)",
+    "type": "games"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 22,
+    "price": 6.0,
+    "item": "Part of sweater gift for mom",
+    "type": "clothing"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 22,
+    "price": 20.0,
+    "item": "Bag thing gift for mom",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 23,
+    "price": 100.0,
+    "item": "Bought a jacket. Good purchase.",
+    "type": "clothing"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 24,
+    "price": 40.0,
+    "item": "Dad’s gift of airpods",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 25,
+    "price": 0.6,
+    "item": "Art of war",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 30,
+    "price": 17.77,
+    "item": "Candies for me, nate, and ethan",
+    "type": "food"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 30,
+    "price": 3.49,
+    "item": "Pencils",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 30,
+    "price": 6.99,
+    "item": "Pencil holder",
+    "type": "other"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 30,
+    "price": 2.0,
+    "item": "Just gave anthony and jonathan a dollar each for no reason at all",
+    "type": "abby"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 31,
+    "price": 10.0,
+    "item": "Nike sweatshirt from jonathan",
+    "type": "clothing"
+  },
+  {
+    "year": 2022,
+    "month": 12,
+    "day": 31,
+    "price": 4.0,
+    "item": "Pretzels",
+    "type": "food"
+  }
+]
