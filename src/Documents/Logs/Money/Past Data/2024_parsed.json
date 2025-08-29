@@ -1,0 +1,762 @@
+[
+  {"date": "2024-01-06", "name": "Chick fil a for three", "type": "food", "price": 37},
+  {"date": "2024-01-10", "name": "McDonald’s", "type": "food", "price": 7},
+  {"date": "2024-01-14", "name": "Algae scrubber", "type": "other", "price": 9},
+  {"date": "2024-01-14", "name": "Hair paste thing??", "type": "other", "price": 23},
+  {"date": "2024-01-16", "name": "Potbelly’s", "type": "food", "price": 8},
+  {"date": "2024-01-18", "name": "National park keychains", "type": "other", "price": 12},
+  {"date": "2024-01-20", "name": "Snapchat streak saver", "type": "other", "price": 1.05},
+  {"date": "2024-01-20", "name": "Kwik trip for 3", "type": "groceries", "price": 13},
+  {"date": "2024-01-26", "name": "Snack cart", "type": "food", "price": 1},
+  {"date": "2024-01-28", "name": "Culver’s for me and Edward", "type": "food", "price": 31},
+  {
+    "date": "2024-02-08",
+    "name": "Thin mints",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2024-02-08",
+    "name": "Candy funds",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2024-02-24",
+    "name": "For micah’s mission trip",
+    "type": "other",
+    "price": 50
+  },
+  {
+    "date": "2024-02-26",
+    "name": "Temu stuff (lights, spray bottle, humidifier)",
+    "type": "other",
+    "price": 25
+  },
+  {
+    "date": "2024-02-29",
+    "name": "seroogy",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2024-02-29",
+    "name": "Spotify plan (regular one, then I bought the student one afterwards so kinda wasted 12 bucks)",
+    "type": "other",
+    "price": 12
+  },
+  {
+    "date": "2024-03-01",
+    "name": "mini golfing",
+    "type": "other",
+    "price": 7
+  },
+  {
+    "date": "2024-03-01",
+    "name": "McDonald’s",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2024-03-02",
+    "name": "Irina’s weighted blanket",
+    "type": "other",
+    "price": 40
+  },
+  {
+    "date": "2024-03-08",
+    "name": "Seroogy",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2024-03-08",
+    "name": "Kopp’s for 3",
+    "type": "food",
+    "price": 20
+  },
+  {
+    "date": "2024-03-09",
+    "name": "haircut",
+    "type": "other",
+    "price": 45
+  },
+  {
+    "date": "2024-03-12",
+    "name": "Olive Garden for two",
+    "type": "food",
+    "price": 47
+  },
+  {
+    "date": "2024-03-17",
+    "name": "Cheesecake for three",
+    "type": "food",
+    "price": 100
+  },
+  {
+    "date": "2024-03-21",
+    "name": "Snack cart for a couple people",
+    "type": "food",
+    "price": 3.5
+  },
+  {
+    "date": "2024-03-24",
+    "name": "Mario kart",
+    "type": "games",
+    "price": 12
+  },
+  {
+    "date": "2024-04-02",
+    "name": "Temu stuff",
+    "type": "other",
+    "price": 14
+  },
+  {
+    "date": "2024-04-06",
+    "name": "Sushi at meiji",
+    "type": "food",
+    "price": 20
+  },
+  {
+    "date": "2024-04-08",
+    "name": "Olive garden w/ mother",
+    "type": "food",
+    "price": 55
+  },
+  {
+    "date": "2024-04-13",
+    "name": "Meiji food",
+    "type": "food",
+    "price": 17
+  },
+  {
+    "date": "2024-04-14",
+    "name": "Hype boy outfit 😬",
+    "type": "clothing",
+    "price": 24
+  },
+  {
+    "date": "2024-04-19",
+    "name": "Guitar repairs",
+    "type": "other",
+    "price": 51
+  },
+  {
+    "date": "2024-04-20",
+    "name": "Stef’s gift, airtag holders, and a squirt gun",
+    "type": "other",
+    "price": 40
+  },
+  {
+    "date": "2024-04-20",
+    "name": "Keychain",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2024-04-20",
+    "name": "Mcdonalds",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2024-04-24",
+    "name": "Meiji food",
+    "type": "food",
+    "price": 15
+  },
+  {
+    "date": "2024-04-29",
+    "name": "Olympic training center keychain",
+    "type": "other",
+    "price": 12
+  },
+  {
+    "date": "2024-04-29",
+    "name": "Garden of the Gods keychain",
+    "type": "other",
+    "price": 12
+  },
+  {
+    "date": "2024-05-01",
+    "name": "Meiji food",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2024-05-02",
+    "name": "Sea salt spray and leave in conditioner",
+    "type": "other",
+    "price": 23
+  },
+  {
+    "date": "2024-05-06",
+    "name": "school lunch ch",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2024-05-07",
+    "name": "School lunch (so overpriced gawdayyum)",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2024-05-10",
+    "name": "Leo’s and I’s Oscar’s",
+    "type": "food",
+    "price": 7
+  },
+  {
+    "date": "2024-05-11",
+    "name": "Big mac (meiji version)",
+    "type": "food",
+    "price": 12
+  },
+  {
+    "date": "2024-05-17",
+    "name": "Kopps for me and edward",
+    "type": "food",
+    "price": 12
+  },
+  {
+    "date": "2024-05-26",
+    "name": "Kwik trip stuff",
+    "type": "food",
+    "price": 4
+  },
+  {
+    "date": "2024-05-29",
+    "name": "Sending transcript from uwm to madison",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2024-06-02",
+    "name": "food at dim sum at chicago for 4 (but me and Leo split)",
+    "type": "food",
+    "price": 79
+  },
+  {
+    "date": "2024-06-02",
+    "name": "Bubble tea at chicago for three",
+    "type": "food",
+    "price": 23
+  },
+  {
+    "date": "2024-06-05",
+    "name": "Sushi at meiji",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2024-06-07",
+    "name": "McDonald’s",
+    "type": "food",
+    "price": 4.44
+  },
+  {
+    "date": "2024-06-08",
+    "name": "Meiji food",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2024-06-10",
+    "name": "Noah’s ark foodd",
+    "type": "food",
+    "price": 16
+  },
+  {
+    "date": "2024-06-10",
+    "name": "Culver's food",
+    "type": "food",
+    "price": 13
+  },
+  {
+    "date": "2024-06-17",
+    "name": "McDonald’s for me and Edword",
+    "type": "food",
+    "price": 18.22
+  },
+  {
+    "date": "2024-06-17",
+    "name": "cone for Leo",
+    "type": "food",
+    "price": 2.32
+  },
+  {
+    "date": "2024-06-18",
+    "name": "Zaks gift",
+    "type": "other",
+    "price": 30
+  },
+  {
+    "date": "2024-06-19",
+    "name": "K18 conditioner",
+    "type": "other",
+    "price": 38
+  },
+  {
+    "date": "2024-06-22",
+    "name": "subway",
+    "type": "food",
+    "price": 14
+  },
+  {
+    "date": "2024-06-22",
+    "name": "Parking ticket",
+    "type": "other",
+    "price": 35
+  },
+  {
+    "date": "2024-06-26",
+    "name": "Me and leo’s ice cream at a creamery",
+    "type": "food",
+    "price": 16
+  },
+  {
+    "date": "2024-06-26",
+    "name": "Food at el gaucho’s (kinda not even good ngl)",
+    "type": "food",
+    "price": 46
+  },
+  {
+    "date": "2024-06-28",
+    "name": "Me and sophies food (golly so much money)",
+    "type": "food",
+    "price": 50
+  },
+  {
+    "date": "2024-07-01",
+    "name": "Pruno ingredients (wtf am I doing)",
+    "type": "other",
+    "price": 20
+  },
+  {
+    "date": "2024-07-05",
+    "name": "Meijers stuff",
+    "type": "other",
+    "price": 24
+  },
+  {
+    "date": "2024-07-07",
+    "name": "Edward giftcard with leo (100 in total, also this budget is not going to stick)",
+    "type": "other",
+    "price": 50
+  },
+  {
+    "date": "2024-07-08",
+    "name": "Despicable me",
+    "type": "other",
+    "price": 6
+  },
+  {
+    "date": "2024-07-08",
+    "name": "Olive garden",
+    "type": "food",
+    "price": 25
+  },
+  {
+    "date": "2024-07-09",
+    "name": "pokemon go coins (I’m actually cooked)",
+    "type": "games",
+    "price": 5
+  },
+  {
+    "date": "2024-07-11",
+    "name": "poke coins (I’m actually screwed)",
+    "type": "games",
+    "price": 5
+  },
+  {
+    "date": "2024-07-11",
+    "name": "Food with nate mommy chu, yuna/evie/knife/sprite/hachi, and idiot",
+    "type": "food",
+    "price": 20
+  },
+  {
+    "date": "2024-07-12",
+    "name": "Meijer stuff",
+    "type": "food",
+    "price": 17
+  },
+  {
+    "date": "2024-07-12",
+    "name": "POKE COINS WHAT THE FACK AM I DOING",
+    "type": "games",
+    "price": 5
+  },
+  {
+    "date": "2024-07-12",
+    "name": "POKECOINS I. AM. FACKED.",
+    "type": "games",
+    "price": 10
+  },
+  {
+    "date": "2024-07-13",
+    "name": "Officially dead meat, more pokecoins. Last time this month I swear",
+    "type": "games",
+    "price": 9
+  },
+  {
+    "date": "2024-07-15",
+    "name": "Gas (kill me)",
+    "type": "other",
+    "price": 47
+  },
+  {
+    "date": "2024-07-15",
+    "name": "Ice cweam (that’s it I swear)",
+    "type": "food",
+    "price": 9
+  },
+  {
+    "date": "2024-07-18",
+    "name": "Mini golf for 3",
+    "type": "other",
+    "price": 36
+  },
+  {
+    "date": "2024-07-18",
+    "name": "Tip for tatianna",
+    "type": "other",
+    "price": 20
+  },
+  {
+    "date": "2024-07-21",
+    "name": "Deodorant and pimple patches",
+    "type": "other",
+    "price": 15
+  },
+  {
+    "date": "2024-07-23",
+    "name": "Gas (budget doesn’t exist)",
+    "type": "other",
+    "price": 25
+  },
+  {
+    "date": "2024-07-27",
+    "name": "Meiji food (it was my last day cmon)",
+    "type": "food",
+    "price": 15
+  },
+  {
+    "date": "2024-07-30",
+    "name": "‘Paid for’ matthew’s 10 buck popcorn with a 20 dollar bill but he forgot to pay me back and I won't see him for a while",
+    "type": "other",
+    "price": 20
+  },
+  {
+    "date": "2024-07-30",
+    "name": "Shoes at mall",
+    "type": "clothing",
+    "price": 43
+  },
+  {
+    "date": "2024-07-30",
+    "name": "2 shirts at mall",
+    "type": "clothing",
+    "price": 32
+  },
+  {
+    "date": "2024-07-30",
+    "name": "Notebook at target",
+    "type": "other",
+    "price": 9
+  },
+  {
+    "date": "2024-07-30",
+    "name": "Texas roadhouse with nate",
+    "type": "food",
+    "price": 50
+  },
+  {
+    "date": "2024-08-02",
+    "name": "Meijer stuff (anthony’s candy)",
+    "type": "groceries",
+    "price": 28
+  },
+  {
+    "date": "2024-08-02",
+    "name": "Sendik's stuff (irina’s gift)",
+    "type": "other",
+    "price": 13
+  },
+  {
+    "date": "2024-08-27",
+    "name": "Trashy madison chinese food",
+    "type": "food",
+    "price": 11
+  },
+  {
+    "date": "2024-08-28",
+    "name": "Madison bus ticket",
+    "type": "other",
+    "price": 31
+  },
+  {
+    "date": "2024-08-28",
+    "name": "Bike pass",
+    "type": "other",
+    "price": 89
+  },
+  {
+    "date": "2024-08-29",
+    "name": "Toilet paper",
+    "type": "groceries",
+    "price": 5
+  },
+  {
+    "date": "2024-08-30",
+    "name": "Ice skates",
+    "type": "other",
+    "price": 7
+  },
+  {
+    "date": "2024-09-01",
+    "name": "pokemon coins",
+    "type": "games",
+    "price": 5
+  },
+  {
+    "date": "2024-09-02",
+    "name": "Textbooks : (",
+    "type": "other",
+    "price": 76
+  },
+  {
+    "date": "2024-09-02",
+    "name": "gyro and peach oolong tea (kinda bussin)",
+    "type": "food",
+    "price": 26
+  },
+  {
+    "date": "2024-09-04",
+    "name": "Cs textbook",
+    "type": "other",
+    "price": 48
+  },
+  {
+    "date": "2024-09-05",
+    "name": "Math textbook ARGHHHH",
+    "type": "other",
+    "price": 100
+  },
+  {
+    "date": "2024-09-07",
+    "name": "Taiwan little eats bruhHHHHH (with leo)",
+    "type": "food",
+    "price": 36
+  },
+  {
+    "date": "2024-09-13",
+    "name": "Mcdonalds for two 😢",
+    "type": "food",
+    "price": 26
+  },
+  {
+    "date": "2024-09-17",
+    "name": "Mcdonalds for…one…",
+    "type": "food",
+    "price": 16
+  },
+  {
+    "date": "2024-09-29",
+    "name": "Taste of sichuan with marissa",
+    "type": "food",
+    "price": 20
+  },
+  {
+    "date": "2024-10-01",
+    "name": "Shein pants…lets see how this goes…(it went pretty well)",
+    "type": "clothing",
+    "price": 13
+  },
+  {
+    "date": "2024-10-03",
+    "name": "Food with abby (worth it)",
+    "type": "abby",
+    "price": 19
+  },
+  {
+    "date": "2024-10-04",
+    "name": "Application fee for housing (not worth it)",
+    "type": "other",
+    "price": 25
+  },
+  {
+    "date": "2024-10-09",
+    "name": "Canes (abby took a little bit)",
+    "type": "food",
+    "price": 12
+  },
+  {
+    "date": "2024-10-10",
+    "name": "Ians pizza (marisa was there)",
+    "type": "food",
+    "price": 11
+  },
+  {
+    "date": "2024-10-15",
+    "name": "Wiscard for laundry",
+    "type": "other",
+    "price": 16
+  },
+  {
+    "date": "2024-10-15",
+    "name": "Ians pizza",
+    "type": "food",
+    "price": 11
+  },
+  {
+    "date": "2024-10-15",
+    "name": "clay (for Abby maybe)",
+    "type": "abby",
+    "price": 10
+  },
+  {
+    "date": "2024-10-23",
+    "name": "Teamoji (Abby)",
+    "type": "abby",
+    "price": 15
+  },
+  {
+    "date": "2024-11-14",
+    "name": "Mcdonalds with abby",
+    "type": "abby",
+    "price": 11
+  },
+  {
+    "date": "2024-11-18",
+    "name": "Pokecoins",
+    "type": "games",
+    "price": 5
+  },
+  {
+    "date": "2024-11-19",
+    "name": "Thanksgiving banquet",
+    "type": "food",
+    "price": 8
+  },
+  {
+    "date": "2024-11-20",
+    "name": "Laundry",
+    "type": "other",
+    "price": 15.50
+  },
+  {
+    "date": "2024-11-22",
+    "name": "Canes",
+    "type": "food",
+    "price": 12
+  },
+  {
+    "date": "2024-11-25",
+    "name": "Noodles w/ abby",
+    "type": "abby",
+    "price": 29
+  },
+  {
+    "date": "2024-11-25",
+    "name": "Tea w/ abby",
+    "type": "abby",
+    "price": 6
+  },
+  {
+    "date": "2024-11-30",
+    "name": "Pho",
+    "type": "food",
+    "price": 15
+  },
+  {
+    "date": "2024-11-30",
+    "name": "A sweater",
+    "type": "clothing",
+    "price": 33
+  },
+  {
+    "date": "2024-12-2",
+    "name": "Target stuff (gummy bears and an iced tea)",
+    "type": "food",
+    "price": 6
+  },
+  {
+    "date": "2024-12-4",
+    "name": "A mouse for white elephant (lowk i hope i get it)",
+    "type": "other",
+    "price": 13
+  },
+  {
+    "date": "2024-12-5",
+    "name": "Me and Abby boba",
+    "type": "abby",
+    "price": 13
+  },
+  {
+    "date": "2024-12-7",
+    "name": "Me and Abby food (kinda bad noodles place)",
+    "type": "abby",
+    "price": 25
+  },
+  {
+    "date": "2024-12-8",
+    "name": "Mcdjonadls",
+    "type": "food",
+    "price": 7
+  },
+  {
+    "date": "2024-12-10",
+    "name": "Jimmy johns",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2024-12-11",
+    "name": "Taste of sichuan",
+    "type": "food",
+    "price": 11
+  },
+  {
+    "date": "2024-12-15",
+    "name": "TLE with ab",
+    "type": "abby",
+    "price": 36
+  },
+  {
+    "date": "2024-12-17",
+    "name": "Camp cantina? Pretty good lowk.",
+    "type": "food",
+    "price": 18
+  },
+  {
+    "date": "2024-12-27",
+    "name": "Two snapchat streak savers (nate and keira 😭)",
+    "type": "other",
+    "price": 2
+  },
+  {
+    "date": "2024-12-29",
+    "name": "Kungfutea",
+    "type": "food",
+    "price": 7
+  },
+  {
+    "date": "2024-12-30",
+    "name": "Olive garden (me and johnny)",
+    "type": "food",
+    "price": 50
+  },
+  {
+    "date": "2024-12-31",
+    "name": "A shirt",
+    "type": "clothing",
+    "price": 11
+  },
+  {
+    "date": "2024-12-31",
+    "name": "Christmas shopping lists",
+    "type": "other",
+    "price": 279
+  }
+]

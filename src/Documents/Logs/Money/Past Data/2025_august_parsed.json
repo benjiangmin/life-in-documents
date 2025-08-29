@@ -1,0 +1,18 @@
+[
+  { "date": "2025-08-10", "name": "Mouse pad", "type": "other", "price": 10 },
+  { "date": "2025-08-10", "name": "Frozen yogurt", "type": "food", "price": 5 },
+  { "date": "2025-08-10", "name": "New keyboard (going to return this one) and also speakers finally", "type": "other", "price": 90 },
+  { "date": "2025-08-12", "name": "The Witcher games trilogy?", "type": "games", "price": 12 },
+  { "date": "2025-08-13", "name": "Texas roadhouse (I hope she liked my tip of over 25% I think! Hopefully it makes up for it)", "type": "food", "price": 20 },
+  { "date": "2025-08-14", "name": "New speakers (going to return these ones)", "type": "other", "price": 70 },
+  { "date": "2025-08-17", "name": "Night stand", "type": "other", "price": 48 },
+  { "date": "2025-08-18", "name": "Charging station (rip my old one it served me well)", "type": "other", "price": 0 },
+  { "date": "2025-08-18", "name": "Haircut (not worth it)", "type": "other", "price": 30 },
+  { "date": "2025-08-24", "name": "House stuff", "type": "other", "price": 56 },
+  { "date": "2025-08-26", "name": "Hoisin sauce and chicken powder", "type": "groceries", "price": 7 },
+  { "date": "2025-08-27", "name": "Flowers for ab", "type": "other", "price": 12 },
+  { "date": "2025-08-27", "name": "Command hooks", "type": "other", "price": 7 },
+  { "date": "2025-08-28", "name": "Crispy chicken sammich", "type": "food", "price": 6 },
+  { "date": "2025-08-28", "name": "Groceries (chicken alfredo time!)", "type": "groceries", "price": 15 },
+  { "date": "2025-08-28", "name": "Laundry", "type": "other", "price": 2 }
+]

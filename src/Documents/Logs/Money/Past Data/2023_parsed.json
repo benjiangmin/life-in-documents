@@ -1,0 +1,1040 @@
+[
+  {
+    "date": "2023-01-05",
+    "name": "School lunch, ended up just getting a burger but i can use the rest on other stuff later",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-01-09",
+    "name": "Paid off dues and a cookie",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-01-11",
+    "name": "Another cookie, yet again, but one for lokland too",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-01-13",
+    "name": "Cookie…again",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-01-15",
+    "name": "Gardettos and chips for anthony",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-01-20",
+    "name": "Sushi",
+    "type": "food",
+    "price": 24
+  },
+  {
+    "date": "2023-01-21",
+    "name": "Laundry basket",
+    "type": "other",
+    "price": 13.72
+  },
+  {
+    "date": "2023-01-21",
+    "name": "2 fish (aquarium kind)",
+    "type": "other",
+    "price": 6.31
+  },
+  {
+    "date": "2023-01-24",
+    "name": "Track merch…",
+    "type": "clothing",
+    "price": 115
+  },
+  {
+    "date": "2023-01-26",
+    "name": "A bet with stef with her saying hi to ethan",
+    "type": "other",
+    "price": 5
+  },
+  {
+    "date": "2023-01-29",
+    "name": "Prisoner of azkaban on the kindle",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2023-02-01",
+    "name": "Cookie",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-02-05",
+    "name": "Treated Dad and I to Culvers",
+    "type": "food",
+    "price": 22.45
+  },
+  {
+    "date": "2023-02-06",
+    "name": "Lunch stuff at school, bought vishist something",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-02-10",
+    "name": "Cookie and a bag of chips",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-02-11",
+    "name": "Soda",
+    "type": "food",
+    "price": 0.75
+  },
+  {
+    "date": "2023-02-11",
+    "name": "Iced coffee at McDonalds",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-02-13",
+    "name": "Chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-02-14",
+    "name": "Chips and Chips for Vishisht",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-02-15",
+    "name": "Chips and Cookie for Vishist",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-02-17",
+    "name": "2 Seroogy bars at MYSO, one for jonathan",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-02-18",
+    "name": "Chickfila for the fam",
+    "type": "food",
+    "price": 69.98
+  },
+  {
+    "date": "2023-02-19",
+    "name": "Paid for Jonathan’s filament",
+    "type": "other",
+    "price": 12
+  },
+  {
+    "date": "2023-02-19",
+    "name": "Paid part of the amount for my glasses",
+    "type": "other",
+    "price": 100
+  },
+  {
+    "date": "2023-02-23",
+    "name": "Put some money in my lunch account",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-02-24",
+    "name": "Owed anthony some money for a pair of shorts",
+    "type": "clothing",
+    "price": 6
+  },
+  {
+    "date": "2023-02-24",
+    "name": "Seroogy bars(4)",
+    "type": "food",
+    "price": 8
+  },
+  {
+    "date": "2023-02-26",
+    "name": "Pants(3), socks, and sunglasses",
+    "type": "clothing",
+    "price": 78.71
+  },
+  {
+    "date": "2023-02-28",
+    "name": "Yet another seroogy bar",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-03-02",
+    "name": "ANOTHER SEROOGY BAR STOP",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-03-04",
+    "name": "Pair of shoes (nike flyknit infinity 2)",
+    "type": "clothing",
+    "price": 39.99
+  },
+  {
+    "date": "2023-03-04",
+    "name": "Fishies!",
+    "type": "other",
+    "price": 5.86
+  },
+  {
+    "date": "2023-03-11",
+    "name": "An iced tea",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-03-12",
+    "name": "A box",
+    "type": "other",
+    "price": 6
+  },
+  {
+    "date": "2023-03-12",
+    "name": "A new dresser",
+    "type": "other",
+    "price": 30
+  },
+  {
+    "date": "2023-03-16",
+    "name": "Bagel",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-03-16",
+    "name": "2 seroogy bars",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-03-16",
+    "name": "Paid for Jonathan’s filament",
+    "type": "other",
+    "price": 15
+  },
+  {
+    "date": "2023-03-19",
+    "name": "Marker holder for my calendar",
+    "type": "other",
+    "price": 5.26
+  },
+  {
+    "date": "2023-03-19",
+    "name": "2 baskets (for my underwear and socks)",
+    "type": "other",
+    "price": 25.2
+  },
+  {
+    "date": "2023-03-20",
+    "name": "Bag of chips",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-03-21",
+    "name": "Bagel",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-03-24",
+    "name": "Chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-04-01",
+    "name": "Stuff over spring break vacation, miscellaneous souvenirs and whatnot",
+    "type": "other",
+    "price": 70
+  },
+  {
+    "date": "2023-04-05",
+    "name": "Seroogy bar",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-04-05",
+    "name": "2 posters",
+    "type": "other",
+    "price": 27
+  },
+  {
+    "date": "2023-04-07",
+    "name": "White board erasers, markers, a poster, and a whiteboard",
+    "type": "other",
+    "price": 24.22
+  },
+  {
+    "date": "2023-04-07",
+    "name": "Hamilton funko pop for lee",
+    "type": "other",
+    "price": 15.81
+  },
+  {
+    "date": "2023-04-11",
+    "name": "Half a McChicken lol",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-04-12",
+    "name": "3 posters (2 small pokemon ones, one hamilton one)",
+    "type": "other",
+    "price": 31.88
+  },
+  {
+    "date": "2023-04-14",
+    "name": "2 Seroogy bars…I thought I was done.",
+    "type": "food",
+    "price": 4
+  },
+  {
+    "date": "2023-04-18",
+    "name": "Bag of chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-04-20",
+    "name": "Bag of chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-04-20",
+    "name": "Bag of chips (again?) and a hot dog",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-04-23",
+    "name": "A buncha mcflurry shortackey whatevers",
+    "type": "food",
+    "price": 26
+  },
+  {
+    "date": "2023-04-24",
+    "name": "Bag of chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-04-29",
+    "name": "Meiji food with the bois one last time",
+    "type": "food",
+    "price": 15.29
+  },
+  {
+    "date": "2023-05-01",
+    "name": "Relay for life",
+    "type": "other",
+    "price": 6
+  },
+  {
+    "date": "2023-05-03",
+    "name": "My treat at Nando’s for 3 people",
+    "type": "food",
+    "price": 82
+  },
+  {
+    "date": "2023-05-02",
+    "name": "Chips",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-05-08",
+    "name": "Chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-05-11",
+    "name": "Chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-05-12",
+    "name": "Chipotle (so unworth it they give you nothing)",
+    "type": "food",
+    "price": 11.17
+  },
+  {
+    "date": "2023-05-12",
+    "name": "Chips (i gotta stop)",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-05-16",
+    "name": "Chips (bruh)",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-05-17",
+    "name": "Pizza",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-05-17",
+    "name": "Chipotle",
+    "type": "food",
+    "price": 9.91
+  },
+  {
+    "date": "2023-05-21",
+    "name": "Flowers for Irina",
+    "type": "other",
+    "price": 14.75
+  },
+  {
+    "date": "2023-05-22",
+    "name": "Chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-05-26",
+    "name": "McDonalds",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-05-31",
+    "name": "Chips and guac at chipotle",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-06-01",
+    "name": "Bought ice cream for anthony (I owed him some money)",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-06-03",
+    "name": "Bubblr for me and a starry for Cerek",
+    "type": "food",
+    "price": 8
+  },
+  {
+    "date": "2023-06-04",
+    "name": "Slowly paying off my debt to Anthony",
+    "type": "other",
+    "price": 2
+  },
+  {
+    "date": "2023-06-04",
+    "name": "Coaches gifts",
+    "type": "other",
+    "price": 25
+  },
+  {
+    "date": "2023-06-05",
+    "name": "Chips",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-06-06",
+    "name": "Fitbit band",
+    "type": "other",
+    "price": 31.55
+  },
+  {
+    "date": "2023-06-07",
+    "name": "Badger boys bag",
+    "type": "other",
+    "price": 21.05
+  },
+  {
+    "date": "2023-06-17",
+    "name": "Laufey merch for zak",
+    "type": "other",
+    "price": 37.5
+  },
+  {
+    "date": "2023-06-17",
+    "name": "Airpods",
+    "type": "other",
+    "price": 210
+  },
+  {
+    "date": "2023-06-17",
+    "name": "Father’s day treat",
+    "type": "food",
+    "price": 70
+  },
+  {
+    "date": "2023-06-19",
+    "name": "Airpod case",
+    "type": "other",
+    "price": 16.18
+  },
+  {
+    "date": "2023-06-21",
+    "name": "Iced coffee",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-06-30",
+    "name": "Bubble tea",
+    "type": "food",
+    "price": 6
+  },
+  {
+    "date": "2023-06-30",
+    "name": "Owed anthony money for something i forgot",
+    "type": "other",
+    "price": 5
+  },
+  {
+    "date": "2023-07-01",
+    "name": "Owed mom money for something I forgot",
+    "type": "other",
+    "price": 30
+  },
+  {
+    "date": "2023-07-03",
+    "name": "McDonalds and whatnot",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-07-03",
+    "name": "Six flag tickets",
+    "type": "other",
+    "price": 50
+  },
+  {
+    "date": "2023-07-04",
+    "name": "Spotify premium",
+    "type": "other",
+    "price": 6
+  },
+  {
+    "date": "2023-07-07",
+    "name": "Gave edward some Mcdonalds money",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2023-07-07",
+    "name": "Cheesecake lookin caramel lookin ice cream fudge lookin thing",
+    "type": "food",
+    "price": 7
+  },
+  {
+    "date": "2023-07-07",
+    "name": "Off brand chicken sandwich at six flags",
+    "type": "food",
+    "price": 15
+  },
+  {
+    "date": "2023-07-09",
+    "name": "Milk thing",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-07-09",
+    "name": "Baking goods",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-07-09",
+    "name": "Chipotle",
+    "type": "food",
+    "price": 11
+  },
+  {
+    "date": "2023-07-13",
+    "name": "Food from meiji",
+    "type": "food",
+    "price": 30
+  },
+  {
+    "date": "2023-07-13",
+    "name": "Sword stand",
+    "type": "other",
+    "price": 9
+  },
+  {
+    "date": "2023-07-14",
+    "name": "Murfs food (for 3 people)",
+    "type": "food",
+    "price": 21.13
+  },
+  {
+    "date": "2023-07-15",
+    "name": "Volleyball tournament",
+    "type": "other",
+    "price": 40
+  },
+  {
+    "date": "2023-07-18",
+    "name": "Bikes and ice cream (madison summer camp, totally worth it, super fun)",
+    "type": "other",
+    "price": 34
+  },
+  {
+    "date": "2023-07-19",
+    "name": "…bikes and ice cream…again.",
+    "type": "other",
+    "price": 15
+  },
+  {
+    "date": "2023-07-21",
+    "name": "Bucky the badger stuffed animal",
+    "type": "other",
+    "price": 20
+  },
+  {
+    "date": "2023-07-22",
+    "name": "Apple watch/airpod charger stand",
+    "type": "other",
+    "price": 20
+  },
+  {
+    "date": "2023-07-24",
+    "name": "McDonalds",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-07-26",
+    "name": "McDonalds",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-07-26",
+    "name": "Pho for me and daisy",
+    "type": "food",
+    "price": 55
+  },
+  {
+    "date": "2023-07-27",
+    "name": "Meiji food",
+    "type": "food",
+    "price": 8
+  },
+  {
+    "date": "2023-07-28",
+    "name": "fish",
+    "type": "other",
+    "price": 6
+  },
+  {
+    "date": "2023-07-28",
+    "name": "McDonalds AGAIN",
+    "type": "food",
+    "price": 16
+  },
+  {
+    "date": "2023-07-29",
+    "name": "Snacks and movie",
+    "type": "food",
+    "price": 20
+  },
+  {
+    "date": "2023-07-30",
+    "name": "McDonalds",
+    "type": "food",
+    "price": 11
+  },
+  {
+    "date": "2023-08-05",
+    "name": "McDonalds",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-08-05",
+    "name": "Souvenirs from michigan trip",
+    "type": "other",
+    "price": 18
+  },
+  {
+    "date": "2023-08-07",
+    "name": "Culvers",
+    "type": "food",
+    "price": 21
+  },
+  {
+    "date": "2023-08-08",
+    "name": "Drawstring bag",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2023-08-08",
+    "name": "Apple watches for anthony and jonathan, split 3 ways (me, zak, leo)",
+    "type": "other",
+    "price": 162
+  },
+  {
+    "date": "2023-08-08",
+    "name": "Laufey sweater for Leo",
+    "type": "clothing",
+    "price": 75
+  },
+  {
+    "date": "2023-08-08",
+    "name": "My dress up darling manga set for Zak",
+    "type": "other",
+    "price": 85
+  },
+  {
+    "date": "2023-08-10",
+    "name": "Part of mom’s fitbit",
+    "type": "other",
+    "price": 35
+  },
+  {
+    "date": "2023-08-13",
+    "name": "Chipotle for mom",
+    "type": "food",
+    "price": 9.88
+  },
+  {
+    "date": "2023-08-19",
+    "name": "food",
+    "type": "food",
+    "price": 15
+  },
+  {
+    "date": "2023-09-01",
+    "name": "posters",
+    "type": "other",
+    "price": 12
+  },
+  {
+    "date": "2023-09-03",
+    "name": "chipotle for two",
+    "type": "food",
+    "price": 23.59
+  },
+  {
+    "date": "2023-09-08",
+    "name": "chipotle",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-09-06",
+    "name": "McDonalds",
+    "type": "food",
+    "price": 6
+  },
+  {
+    "date": "2023-09-09",
+    "name": "Chipotle",
+    "type": "food",
+    "price": 20
+  },
+  {
+    "date": "2023-09-15",
+    "name": "Senior shirt",
+    "type": "clothing",
+    "price": 21
+  },
+  {
+    "date": "2023-09-21",
+    "name": "Snacks from the special needs kids",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-09-24",
+    "name": "Potbelly",
+    "type": "food",
+    "price": 7
+  },
+  {
+    "date": "2023-09-27",
+    "name": "Potbelly ( for Liam too )",
+    "type": "food",
+    "price": 14
+  },
+  {
+    "date": "2023-09-28",
+    "name": "snacks",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-10-03",
+    "name": "Bagel club",
+    "type": "food",
+    "price": 4
+  },
+  {
+    "date": "2023-10-04",
+    "name": "McDonald’s",
+    "type": "food",
+    "price": 6
+  },
+  {
+    "date": "2023-10-05",
+    "name": "Paid bennet back for a sub",
+    "type": "other",
+    "price": 6
+  },
+  {
+    "date": "2023-10-05",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-10-06",
+    "name": "potbelly’s",
+    "type": "food",
+    "price": 7
+  },
+  {
+    "date": "2023-10-09",
+    "name": "Culver’s",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-10-10",
+    "name": "McDonald’s",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-10-11",
+    "name": "Chick Fil A",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-10-15",
+    "name": "subway",
+    "type": "food",
+    "price": 23
+  },
+  {
+    "date": "2023-10-17",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-10-18",
+    "name": "Mcdonalds",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-10-19",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-10-24",
+    "name": "Culvers (for 3)",
+    "type": "food",
+    "price": 34
+  },
+  {
+    "date": "2023-10-28",
+    "name": "Porn blocker",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2023-11-02",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-11-03",
+    "name": "Mcdonalds",
+    "type": "food",
+    "price": 4
+  },
+  {
+    "date": "2023-11-06",
+    "name": "Nhs fee >:(",
+    "type": "other",
+    "price": 20
+  },
+  {
+    "date": "2023-11-06",
+    "name": "Minecraft 😬",
+    "type": "games",
+    "price": 30
+  },
+  {
+    "date": "2023-11-09",
+    "name": "Coaches gift",
+    "type": "other",
+    "price": 10
+  },
+  {
+    "date": "2023-11-09",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-11-10",
+    "name": "SNAPCHAT STREAK SAVER BRUHHH",
+    "type": "other",
+    "price": 1
+  },
+  {
+    "date": "2023-11-10",
+    "name": "Dip bars",
+    "type": "other",
+    "price": 30
+  },
+  {
+    "date": "2023-11-12",
+    "name": "Tsaocaa",
+    "type": "food",
+    "price": 35.36
+  },
+  {
+    "date": "2023-11-14",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-11-15",
+    "name": "Jersey mikes",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-11-17",
+    "name": "Mcdonalds",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-11-21",
+    "name": "chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-11-22",
+    "name": "kfc",
+    "type": "food",
+    "price": 32
+  },
+  {
+    "date": "2023-11-28",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-11-29",
+    "name": "chipotle",
+    "type": "food",
+    "price": 10
+  },
+  {
+    "date": "2023-12-02",
+    "name": "Snapchat streak saver",
+    "type": "other",
+    "price": 1
+  },
+  {
+    "date": "2023-12-03",
+    "name": "McDonald’s",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-12-08",
+    "name": "dads sushi roll",
+    "type": "food",
+    "price": 3
+  },
+  {
+    "date": "2023-12-07",
+    "name": "Deodorant",
+    "type": "other",
+    "price": 4
+  },
+  {
+    "date": "2023-12-10",
+    "name": "potbelly",
+    "type": "food",
+    "price": 5
+  },
+  {
+    "date": "2023-12-10",
+    "name": "Sea salt spray and snhs gift",
+    "type": "other",
+    "price": 7
+  },
+  {
+    "date": "2023-12-04",
+    "name": "Culver’s",
+    "type": "food",
+    "price": 4
+  },
+  {
+    "date": "2023-12-12",
+    "name": "Snack cart",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-12-13",
+    "name": "Culver’s",
+    "type": "food",
+    "price": 2
+  },
+  {
+    "date": "2023-12-14",
+    "name": "White elephant gift",
+    "type": "other",
+    "price": 7
+  },
+  {
+    "date": "2023-12-15",
+    "name": "chips",
+    "type": "food",
+    "price": 1
+  },
+  {
+    "date": "2023-12-30",
+    "name": "christmas shopping lists",
+    "type": "other",
+    "price": 683
+  }
+]

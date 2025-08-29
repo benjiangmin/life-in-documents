@@ -5,7 +5,7 @@
     "day": 23,
     "price": 37.0,
     "item": "Anthony’s adidas sweatshirt for his birthday",
-    "type": "clothing"
+    "type": "other"
   },
   {
     "year": 2022,
@@ -29,7 +29,7 @@
     "day": 8,
     "price": 7.35,
     "item": "Burger for edward out of the kindness of my heart…",
-    "type": "food"
+    "type": "other"
   },
   {
     "year": 2022,
@@ -77,7 +77,7 @@
     "day": 1,
     "price": 2.0,
     "item": "I don't even know, owed anthony for something he kept bugging me for",
-    "type": "abby"
+    "type": "other"
   },
   {
     "year": 2022,
@@ -301,7 +301,7 @@
     "day": 16,
     "price": 10.0,
     "item": "White elephant (smol lego set)",
-    "type": "games"
+    "type": "other"
   },
   {
     "year": 2022,
@@ -309,7 +309,7 @@
     "day": 22,
     "price": 6.0,
     "item": "Part of sweater gift for mom",
-    "type": "clothing"
+    "type": "other"
   },
   {
     "year": 2022,
@@ -373,7 +373,7 @@
     "day": 30,
     "price": 2.0,
     "item": "Just gave anthony and jonathan a dollar each for no reason at all",
-    "type": "abby"
+    "type": "other"
   },
   {
     "year": 2022,
