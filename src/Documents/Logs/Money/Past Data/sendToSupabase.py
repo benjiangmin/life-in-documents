@@ -8,26 +8,22 @@ supabase = create_client(url, key)
 
 # Get the folder where this script lives
 BASE_DIR = os.path.dirname(__file__)  
-json_path = os.path.join(BASE_DIR, "2022_parsed.json")
+json_path = os.path.join(BASE_DIR, "2025_august_parsed.json")
 
 # Open the JSON file using the full path
 with open(json_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
-# Transform to match Supabase columns
+# Format data for Supabase
 formatted_data = []
 for entry in data:
-    # Convert month name to number
-    month_number = entry["month"]
-
-    date_str = f"{entry['year']}-{month_number:02d}-{entry['day']:02d}"  # e.g., "2022-09-23"
     formatted_data.append({
-        "date": date_str,
-        "price": entry["price"],
-        "name": entry["item"],  # <-- renamed for Supabase
-        "type": entry["type"]  # optional, can leave blank
+        "date": entry["date"],  # already in YYYY-MM-DD format
+        "price": entry.get("price", 0),
+        "name": entry.get("name") or entry.get("item", ""),
+        "type": entry.get("type", "other")
     })
 
-# Batch insert into Supabase
+# Insert into Supabase
 response = supabase.from_("items").insert(formatted_data).execute()
 
