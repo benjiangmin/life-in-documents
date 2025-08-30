@@ -47,41 +47,47 @@ export default function DateBox({ currentMonth, onChangeMonth }) {
       {showPopup && (
         <div className="popup-overlay-date">
           <div className="popup-box-date">
-            <div className="popup-header">
-              <button
-                className="year-arrow"
-                onClick={() => setPopupYear(popupYear - 1)}
-              >
-                <img src={LeftArrow} />
-              </button>
-              <h2 className="popup-year">{popupYear}</h2>
-              <button
-                className="year-arrow"
-                onClick={() => setPopupYear(popupYear + 1)}
-              >
-                <img src={RightArrow} />
-              </button>
-            </div>
-
-            <div className="months-grid">
-              {months.map((m, i) => (
+            <div className="popup-content-date">
+              {/* LEFT COLUMN: Year controls + Close */}
+              <div className="year-controls">
                 <button
-                  key={i}
-                  onClick={() => handleMonthSelect(i)}
-                  className={`month-button ${
-                    popupYear === year && i === currentMonth.getMonth()
-                      ? "active"
-                      : ""
-                  }`}
+                  className="year-arrow"
+                  onClick={() => setPopupYear(popupYear - 1)}
                 >
-                  {m}
+                  <img src={LeftArrow} />
                 </button>
-              ))}
-            </div>
+                <h2 className="popup-year">{popupYear}</h2>
+                <button
+                  className="year-arrow"
+                  onClick={() => setPopupYear(popupYear + 1)}
+                >
+                  <img src={RightArrow} />
+                </button>
+                <button
+                  className="close-button"
+                  onClick={() => setShowPopup(false)}
+                >
+                  close
+                </button>
+              </div>
 
-            <button className="close-button" onClick={() => setShowPopup(false)}>
-              close
-            </button>
+              {/* RIGHT COLUMN: Months */}
+              <div className="months-grid">
+                {months.map((m, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleMonthSelect(i)}
+                    className={`month-button ${
+                      popupYear === year && i === currentMonth.getMonth()
+                        ? "active"
+                        : ""
+                    }`}
+                  >
+                    {m}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}
