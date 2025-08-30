@@ -649,6 +649,9 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     color:#FFFFF0;
 }
+.month-text:hover {
+    color: #1f543c;
+}
 .left {
     left: 100px;
     top: 30px;
@@ -657,6 +660,98 @@ input[type=number]::-webkit-inner-spin-button {
     right: 100px;
     top: 30px;
 }
+
+.popup-overlay-date {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border-radius: 30px 0px 0px 30px;
+}
+
+.popup-box-date {
+  background: #a0e0b1;
+  border-radius: 15px;
+  width: 70%;
+  text-align: center;
+}
+
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 15px 0;
+  padding: 0px 30px 0px 30px;
+}
+
+.month-button {
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #FFFFF0;
+  cursor: pointer;
+  font-family: "Coming Soon";
+  font-weight: bold;
+  color: #1f543c;
+}
+.month-button:hover {
+    background-color: #4ba87f;
+}
+
+.month-button.active {
+  background: #679162;
+  font-weight: bold;
+  color: #FFFFF0;
+}
+.month-button.active:hover {
+    background-color: #4ba87f;
+}
+
+.close-button {
+  background: #eef2ee;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  border-width: 0px;
+  font-family: "Winky Rough";
+  color: #1f543c;
+}
+.close-button:hover {
+    transform: scale(1.1);
+}
+
+.popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.year-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 24px;
+}
+.year-arrow:hover {
+    transform: scale(1.1);
+}
+.year-arrow img {
+  width: 100%;
+  height: 100%;
+}
+.popup-year {
+    color: #FFFFF0;
+}
+
+
 
 
 
