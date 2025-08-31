@@ -55,14 +55,25 @@ export default function BudgetBox({ items, budget, onUpdateBudget }) {
 
       <section className="break-line"></section>
 
-      <section className="item-details">
-        {["food","groceries","clothing","games","abby","other"].map(type => (
-          <section key={type} className="item-details-display">
-            <h1>{type}:</h1>
-            <h2>${(totalsByType[type] || 0).toFixed(2)}</h2>
+      <section className="item-details-bargraph">
+        {["food","groceries","clothing","games","abby","other"].map(type => {
+          const categoryTotal = totalsByType[type] || 0;
+          const heightPercent = spent > 0 ? (categoryTotal / spent) * 100 : 0;
+
+          return (
+            <section key={type} className="bar-container">
+              <div className="bar-wrapper">
+                <div 
+                  className="bar"
+                  style={{ height: `${heightPercent}%` }}
+                ></div>
+              </div>
+              <p className="bar-label">{type}</p>
+              <p className="bar-value">${categoryTotal.toFixed(2)}</p>
           </section>
-        ))}
-      </section>
+          );
+        })}
+    </section>
 
       {isEditing && (
         <div className="popup-overlay">
