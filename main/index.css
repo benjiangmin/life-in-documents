@@ -765,25 +765,30 @@ input[type=number]::-webkit-inner-spin-button {
 
 .item-details-bargraph {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;   /* spread bars evenly */
   align-items: flex-end;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 2vw;                        /* relative spacing */
+  margin-top: 2vh;
+  width: 100%;                     /* take full container width */
+  max-width: 800px;                /* optional cap for large screens */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bar-container {
+  flex: 1;                         /* bars scale evenly */
+  max-width: 80px;                 /* don’t get too wide */
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60px;
 }
 
 .bar-wrapper {
-  height: 200px;       /* chart height */
+  height: 20vh;                    /* scales with screen height */
   width: 100%;
   display: flex;
   align-items: flex-end;
-  background: #eee;    /* optional: faint background */
+  background: #eee;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -793,6 +798,20 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: #80cfa9;
   transition: height 0.3s ease;
 }
+
+.bar-label {
+  color: #FFFFF0;
+  font-size: clamp(0.7rem, 1vw, 1rem);  /* responsive text */
+  margin-top: 0.5em;
+}
+
+.bar-value {
+  color: #eef2ee;
+  font-family: "Coming Soon";
+  font-size: clamp(0.7rem, 1vw, 1rem);
+  margin-top: 0px;
+}
+
 
 
 
