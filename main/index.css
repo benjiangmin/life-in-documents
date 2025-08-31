@@ -304,6 +304,7 @@ body {
     transform: translateY(50px);
     opacity: 0;
     transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
+    padding: 0px 40px 0px 40px;
 }
 .box-2.visible {
   transform: translateY(0);
@@ -769,9 +770,7 @@ input[type=number]::-webkit-inner-spin-button {
   align-items: flex-end;
   gap: 2vw;                       
   margin-top: 2vh;
-  width: 100%;                     
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;        
 }
 
 .bar-container {
