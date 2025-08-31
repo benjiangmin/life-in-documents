@@ -765,26 +765,25 @@ input[type=number]::-webkit-inner-spin-button {
 
 .item-details-bargraph {
   display: flex;
-  justify-content: space-around;   /* spread bars evenly */
+  justify-content: space-around;   
   align-items: flex-end;
-  gap: 2vw;                        /* relative spacing */
+  gap: 2vw;                       
   margin-top: 2vh;
-  width: 100%;                     /* take full container width */
-  max-width: 800px;                /* optional cap for large screens */
+  width: 100%;                     
   margin-left: auto;
   margin-right: auto;
 }
 
 .bar-container {
-  flex: 1;                         /* bars scale evenly */
-  max-width: 80px;                 /* don’t get too wide */
+  flex: 1;                         
+  max-width: 80px;                 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .bar-wrapper {
-  height: 20vh;                    /* scales with screen height */
+  height: 20vh;                    
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -801,7 +800,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .bar-label {
   color: #FFFFF0;
-  font-size: clamp(0.7rem, 1vw, 1rem);  /* responsive text */
+  font-size: clamp(0.7rem, 1vw, 1rem);  
   margin-top: 0.5em;
 }
 
