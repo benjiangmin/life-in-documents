@@ -764,13 +764,17 @@ input[type=number]::-webkit-inner-spin-button {
   transform: scale(1.1);
 }
 
+:root {
+  --bar-gap: clamp(10px, 2vw, 40px);
+}
+
 .item-details-bargraph {
   display: flex;
-  justify-content: space-around;   
+  justify-content: center;
   align-items: flex-end;
-  gap: 2vw;                       
+  gap: var(--bar-gap);
   margin-top: 2vh;
-  width: 100%;        
+  width: 100%;
 }
 
 .bar-container {
@@ -810,11 +814,6 @@ input[type=number]::-webkit-inner-spin-button {
   margin-top: 0px;
 }
 
-
-
-
-
-
-
-
-
+.todo-main-display {
+    display: flex;
+}
