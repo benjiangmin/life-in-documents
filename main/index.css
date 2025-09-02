@@ -850,19 +850,21 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;     /* stack classes vertically */
   width: 100%;
+  gap: 3px;
 }
 
 .class {
-  flex: 1;                    /* equal share of height */
+  flex: 1;
   display: flex;
-  justify-content: center;    /* center content vertically */
-  align-items: center;        /* center content horizontally */
-  border: 1px solid #ddd;     /* divider between classes */
-  background: white;
+  flex-direction: column;   /* stack title + assignments vertically */
+  justify-content: flex-start;
+  align-items: stretch;     /* make children take full width */
 }
-
-.class h2 {
-  margin-bottom: 0.5rem;
+.class > h2 {
+    padding-left: 40px;
+    margin: 10px 0px 0px 0px;
+    color: #FFFFF0;
+    font-size: 2rem;
 }
 
 .assignments-section {
@@ -871,24 +873,33 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  background-color: white;
+  border-radius: 30px 30px 0px 0px;
 }
 
 .assignments {
   display: flex;
   flex-direction: column;
   gap: 1px;
+  width: 100%;
 }
 
 .assignment {
   border-radius: 6px;
   background: #eef2f7;
-  text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0px 40px 0px 40px;
 }
 .assignment > p {
     margin: 0px;
+}
+.add-assignment-button {
+    height: 25px;
+    border: none;
+    border-radius: 0px 0px 30px 30px;
 }
 
 

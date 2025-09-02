@@ -54,7 +54,7 @@ export default function School() {
               </section>
             </section>
 
-            <button onClick={() => addAssignment(index)}>
+            <button className="add-assignment-button" onClick={() => addAssignment(index)}>
               add assignment
             </button>
           </section>
