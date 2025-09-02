@@ -20,29 +20,46 @@ export default function School() {
     setClasses([...classes, newClass]);
   };
 
+  const addAssignment = (classIndex) => {
+    // copy classes
+    const updatedClasses = [...classes];
+    // add a placeholder assignment
+    updatedClasses[classIndex].assignments.push({
+      text: "new assignment",
+      due: "TBD"
+    });
+    // update state
+    setClasses(updatedClasses);
+  };
+
   return (
     <section className="school-display">
-        <section className="school-header">
-            <h1>school</h1>
-            <button onClick={addClass}>add class</button>
-        </section>
+      <section className="school-header">
+        <h1>school</h1>
+        <button onClick={addClass}>add class</button>
+      </section>
 
-        <section className="classes">
-            {classes.map((classItem, index) => (
-            <section
-                key={index}
-                className="class"
-            >
-                <h2>{classItem.name}</h2>
+      <section className="classes">
+        {classes.map((classItem, index) => (
+          <section key={index} className="class">
+            <h2>{classItem.name}</h2>
+            <section className="assignments-section">
+              <section className="assignments">
                 {classItem.assignments.map((a, i) => (
-                <div className="assignment"key={i}>
+                  <div className="assignment" key={i}>
                     <p>{a.text}</p>
-                    <h3>due on {a.due}</h3>
-                </div>
+                    <p>due on {a.due}</p>
+                  </div>
                 ))}
+              </section>
             </section>
-            ))}
-        </section>
+
+            <button onClick={() => addAssignment(index)}>
+              add assignment
+            </button>
+          </section>
+        ))}
+      </section>
     </section>
   );
 }

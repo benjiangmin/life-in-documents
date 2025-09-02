@@ -839,26 +839,56 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 5rem;
     color: #FFFFF0;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 .school-header > button {
     height: 60px;
     margin-top: 20px;
 }
 .classes {
-    background-color: blue;
-    width: 100%;
+  flex: 1;                    /* take all remaining height */
+  display: flex;
+  flex-direction: column;     /* stack classes vertically */
+  width: 100%;
 }
+
 .class {
-    display: flex;
-    justify-content: space-between;
+  flex: 1;                    /* equal share of height */
+  display: flex;
+  justify-content: center;    /* center content vertically */
+  align-items: center;        /* center content horizontally */
+  border: 1px solid #ddd;     /* divider between classes */
+  background: white;
 }
+
+.class h2 {
+  margin-bottom: 0.5rem;
+}
+
+.assignments-section {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.assignments {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
 .assignment {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    background-color: red;
-    width: 70%;
+  border-radius: 6px;
+  background: #eef2f7;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.assignment > p {
+    margin: 0px;
 }
 
 
