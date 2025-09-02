@@ -16,7 +16,7 @@ const Documents = {
         
     ],
     planners: [
-        { name: "the daily stuffs", path: "/planners/theDailyStuffs" },
+        { name: "day at a glance", path: "/planners/dayAtAGlance" },
         { name: "week at a glance", path: "/planners/weekAtAGlance" },
         { name: "to do", path: "/planners/toDo" },
     ],

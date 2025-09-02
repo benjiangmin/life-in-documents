@@ -14,7 +14,7 @@ import UnsuspiciousDocument3 from "../src/Documents/UnsuspiciousDocuments/Unsusp
 import UnsuspiciousDocument4 from "../src/Documents/UnsuspiciousDocuments/UnsuspiciousDocument4/UnsuspiciousDocument4"
 
 // Planners
-import TheDailyStuffs from "../src/Documents/Planners/TheDailyStuffs/TheDailyStuffs"
+import DayAtAGlance from "../src/Documents/Planners/DayAtAGlance/DayAtAGlance"
 import WeekAtAGlance from "../src/Documents/Planners/WeekAtAGlance/WeekAtAGlance"
 import ToDo from "../src/Documents/Planners/ToDo/ToDo"
 
@@ -111,7 +111,7 @@ const routes = [
     { path: "/unsuspiciousDocuments/unsuspiciousDocument4", element: UnsuspiciousDocument4, title: "unsuspicious document #4" },
 
     // Planners
-    { path: "/planners/theDailyStuffs", element: TheDailyStuffs, title: "the daily stuffs" },
+    { path: "/planners/dayAtAGlance", element: DayAtAGlance, title: "day at a glance" },
     { path: "/planners/weekAtAGlance", element: WeekAtAGlance, title: "week at a glance" },
     { path: "/planners/toDo", element: ToDo, title: "to do" },
 
