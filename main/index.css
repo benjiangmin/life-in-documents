@@ -824,12 +824,16 @@ input[type=number]::-webkit-inner-spin-button {
     display: flex;
     justify-content: center;
     padding: 0px 40px 40px 40px;
+    height: 91.59vh;
+    min-height: 0; /* allow flex child to shrink */
 }
 .school-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    flex: 1;        /* fill height */
+    min-height: 0;  /* 🔑 */
 }
 .school-header {
     display: flex;
@@ -846,43 +850,48 @@ input[type=number]::-webkit-inner-spin-button {
     margin-top: 20px;
 }
 .classes {
-  flex: 1;                    /* take all remaining height */
+  flex: 1;
   display: flex;
-  flex-direction: column;     /* stack classes vertically */
+  flex-direction: column;
   width: 100%;
   gap: 3px;
+  min-height: 0;  /* 🔑 */
 }
 
 .class {
   flex: 1;
   display: flex;
-  flex-direction: column;   /* stack title + assignments vertically */
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;     /* make children take full width */
+  align-items: stretch;
+  min-height: 0;  /* 🔑 */
 }
 .class > h2 {
     padding-left: 40px;
-    margin: 10px 0px 0px 0px;
+    margin: 5px 0px 0px 0px;
     color: #FFFFF0;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .assignments-section {
-  width: 100%;
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  flex-direction: column; /* stack + stretch */
+  align-items: stretch;
   background-color: white;
-  border-radius: 30px 30px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden; /* contain scroll child */
+  min-height: 0;    /* 🔑 */
 }
 
 .assignments {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1px;
   width: 100%;
+  overflow-y: auto; /* scroll here */
+  min-height: 0;    /* 🔑 */
 }
 
 .assignment {
@@ -897,9 +906,12 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 0px;
 }
 .add-assignment-button {
-    height: 25px;
+    height: 20px;
     border: none;
     border-radius: 0px 0px 30px 30px;
+    font-size: 0.7rem;
+    font-family: "Coming Soon";
+    color: #1f543c;
 }
 
 
