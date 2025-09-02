@@ -815,6 +815,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .the-daily-stuffs-main {
     display: flex;
+    height: 100vh;
 }
 .school-section {
     width: 60%;
@@ -823,8 +824,8 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 30px 30px 0px 0px;
     display: flex;
     justify-content: center;
-    padding: 0px 40px 40px 40px;
-    height: 91.59vh;
+    padding: 0px 40px 20px 40px;
+    height: 96.2%;
     min-height: 0; /* allow flex child to shrink */
 }
 .school-display {
@@ -842,7 +843,7 @@ input[type=number]::-webkit-inner-spin-button {
 .school-header > h1 {
     font-size: 5rem;
     color: #FFFFF0;
-    margin-top: 0px;
+    margin-top: 20px;
     margin-bottom: 0px;
 }
 .school-header > button {
@@ -878,10 +879,10 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column; /* stack + stretch */
   align-items: stretch;
-  background-color: white;
   border-radius: 10px 10px 0px 0px;
   overflow: hidden; /* contain scroll child */
   min-height: 0;    /* 🔑 */
+  background-color: #8ac5ac;
 }
 
 .assignments {
@@ -892,15 +893,17 @@ input[type=number]::-webkit-inner-spin-button {
   width: 100%;
   overflow-y: auto; /* scroll here */
   min-height: 0;    /* 🔑 */
+  padding-top: 5px;
 }
 
 .assignment {
   border-radius: 6px;
-  background: #eef2f7;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 40px 0px 40px;
+  font-family: "Coming Soon";
+  color: #FFFFF0;
 }
 .assignment > p {
     margin: 0px;
@@ -911,7 +914,12 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 0px 0px 30px 30px;
     font-size: 0.7rem;
     font-family: "Coming Soon";
-    color: #1f543c;
+    color: #153b2a;
+    background-color: #8ac5ac;
+}
+.add-assignment-button:hover {
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 
