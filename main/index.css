@@ -1076,6 +1076,9 @@ input[type=number]::-webkit-inner-spin-button {
 .edit-current-class > button:last-child {
     background-color: rgb(216, 116, 116);
 }
+.edit-current-assignment > button:last-child{
+    background-color: rgb(216, 116, 116);
+}
 
 
 

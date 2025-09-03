@@ -249,47 +249,58 @@ export default function SchoolDisplay() {
       )}
 
       {/* Edit Assignment popup */}
-      {showEditAssignmentPopup && (
-        <div className="popup-overlay-school">
-          <div className="popup-school">
-            <h3>edit assignment</h3>
-            <h4>assignment name</h4>
-            <input
-              type="text"
-              value={editAssignmentText}
-              onChange={(e) => setEditAssignmentText(e.target.value)}
-              placeholder="assignment name"
-            />
-            <h4>due date</h4>
-            <input
-              type="date"
-              value={editAssignmentDue}
-              onChange={(e) => setEditAssignmentDue(e.target.value)}
-            />
-            <section className="popup-bottom-half">
-              <section className="status-section">
-                <h4>status</h4>
-                <select
-                  value={editAssignmentColor}
-                  onChange={(e) => setEditAssignmentColor(e.target.value)}
-                  className="status-options"
-                >
-                  <option value="grey">unimportant</option>
-                  <option value="red">not started</option>
-                  <option value="yellow">in progress</option>
-                  <option value="green">complete</option>
-                </select>
+        {showEditAssignmentPopup && (
+          <div className="popup-overlay-school">
+            <div className="popup-school">
+              <h3>edit assignment</h3>
+              <h4>assignment name</h4>
+              <input
+                type="text"
+                value={editAssignmentText}
+                onChange={(e) => setEditAssignmentText(e.target.value)}
+                placeholder="assignment name"
+              />
+              <h4>due date</h4>
+              <input
+                type="date"
+                value={editAssignmentDue}
+                onChange={(e) => setEditAssignmentDue(e.target.value)}
+              />
+              <section className="popup-bottom-half">
+                <section className="status-section">
+                  <h4>status</h4>
+                  <select
+                    value={editAssignmentColor}
+                    onChange={(e) => setEditAssignmentColor(e.target.value)}
+                    className="status-options"
+                  >
+                    <option value="grey">unimportant</option>
+                    <option value="red">not started</option>
+                    <option value="yellow">in progress</option>
+                    <option value="green">complete</option>
+                  </select>
+                </section>
+                <div className="popup-buttons-school edit-current-assignment">
+                  <button onClick={saveEditedAssignment}>save</button>
+                  <button onClick={() => setShowEditAssignmentPopup(false)}>cancel</button>
+                  <button
+                    onClick={() => {
+                      if (currentClassIndex !== null && currentAssignmentIndex !== null) {
+                        const updatedClasses = [...classes];
+                        updatedClasses[currentClassIndex].assignments.splice(currentAssignmentIndex, 1);
+                        setClasses(updatedClasses);
+                        setShowEditAssignmentPopup(false);
+                      }
+                    }}
+                  >
+                    delete
+                  </button>
+                </div>
               </section>
-              <div className="popup-buttons-school">
-                <button onClick={saveEditedAssignment}>save</button>
-                <button onClick={() => setShowEditAssignmentPopup(false)}>
-                  cancel
-                </button>
-              </div>
-            </section>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+
 
       {showEditClassPopup && (
         <div className="popup-overlay-school">
