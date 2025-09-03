@@ -31,21 +31,33 @@ export default function SchoolDisplay() {
   };
 
   // Helper to format due date
-  const formatDue = (dueDate) => {
-    const today = new Date();
-    const [year, month, day] = dueDate.split("-").map(Number);
-    const due = new Date(year, month - 1, day); // local midnight
-    const diffTime = due - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const formatDue = (dueDate) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // strip time
+      const [year, month, day] = dueDate.split("-").map(Number);
+      const due = new Date(year, month - 1, day); // local midnight
 
-    const options = { month: "short", day: "numeric" };
-    const formattedDate = due.toLocaleDateString("en-US", options);
+      const diffTime = due - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    return {
-      dueIn: `due in ${diffDays} day${diffDays !== 1 ? "s" : ""}`,
-      dueDate: formattedDate,
+      const options = { month: "short", day: "numeric" };
+      const formattedDate = due.toLocaleDateString("en-US", options);
+
+      let dueIn;
+      if (diffDays < 0) {
+        dueIn = "overdue";
+      } else if (diffDays === 0) {
+        dueIn = "due today";
+      } else {
+        dueIn = `due in ${diffDays} day${diffDays !== 1 ? "s" : ""}`;
+      }
+
+      return {
+        dueIn,
+        dueDate: formattedDate,
+      };
     };
-  };
+
 
   // Add new assignment
   const addAssignment = (classIndex, text, due) => {
@@ -101,13 +113,13 @@ export default function SchoolDisplay() {
               <section className="assignments">
                 {classItem.assignments.map((a, i) => (
                   <div
-                    className="assignment"
+                    className={`assignment ${a.color === "green" ? "assignment-complete" : ""}`}
                     key={i}
                     onClick={() => {
                       setCurrentClassIndex(index);
                       setCurrentAssignmentIndex(i);
                       setEditAssignmentText(a.text);
-                      setEditAssignmentDue(a.rawDue); // use stored raw date
+                      setEditAssignmentDue(a.rawDue);
                       setEditAssignmentColor(a.color || "grey");
                       setShowEditAssignmentPopup(true);
                     }}
@@ -124,6 +136,7 @@ export default function SchoolDisplay() {
                       {a.dueIn} • {a.dueDate}
                     </span>
                   </div>
+
                 ))}
               </section>
             </section>
@@ -152,7 +165,7 @@ export default function SchoolDisplay() {
               onChange={(e) => setNewClassName(e.target.value)}
               placeholder="e.g computer science"
             />
-            <div className="popup-buttons-school">
+            <div className="popup-buttons-school-for-new-class">
               <button
                 onClick={() => {
                   addClass(newClassName);

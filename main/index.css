@@ -892,7 +892,7 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 10px 10px 0px 0px;
   overflow: hidden; /* contain scroll child */
   min-height: 0;    /* 🔑 */
-  background-color: #aed1c2;
+  background-color: #e0ece7;
 }
 
 .assignments {
@@ -915,14 +915,23 @@ input[type=number]::-webkit-inner-spin-button {
   font-family: "Coming Soon";
   font-size: 0.9rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #153b2a;
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
 .assignment:hover {
-    color: #153b2a;
+    color: #3aa374;
     cursor: pointer;
 }
 .assignment > p {
     margin: 0px;
+}
+.assignment-complete {
+  opacity: 0.5;
+}
+
+.assignment-complete .assignment-text,
+.assignment-complete .assignment-due-right {
+  text-decoration: line-through; /* slash through text + date */
 }
 .assignment-dot {
     width: 10px;
@@ -935,7 +944,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 0.7rem;
     font-family: "Coming Soon";
     color: #153b2a;
-    background-color: #aed1c2;
+    background-color: #e0ece7;
 }
 .add-assignment-button:hover {
     font-size: 0.8rem;
@@ -1018,6 +1027,15 @@ input[type=number]::-webkit-inner-spin-button {
   gap: 10px;
   margin-top: 12px;
 }
+.popup-buttons-school-for-new-class {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+.for-new-class > button {
+    margin-top: 100px;
+}
 
 .popup-buttons-school button {
     padding: 6px 12px;
@@ -1031,6 +1049,20 @@ input[type=number]::-webkit-inner-spin-button {
     margin-top: 32px;
 }
 .popup-buttons-school button:hover {
+    transform: scale(1.1);
+}
+.popup-buttons-school-for-new-class button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: #FFFFF0;
+    color: #153b2a;
+    font-family: "Winky Rough";
+    height: 40px;
+    margin-top: 10px;
+}
+.popup-buttons-school-for-new-class > button:hover {
     transform: scale(1.1);
 }
 
