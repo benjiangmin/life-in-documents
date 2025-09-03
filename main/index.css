@@ -914,7 +914,6 @@ input[type=number]::-webkit-inner-spin-button {
   padding: 0px 40px 0px 40px;
   font-family: "Coming Soon";
   font-size: 0.9rem;
-  font-weight: bold;
   color: #153b2a;
   transition: opacity 0.3s ease, color 0.3s ease;
 }
@@ -1036,6 +1035,13 @@ input[type=number]::-webkit-inner-spin-button {
 .for-new-class > button {
     margin-top: 100px;
 }
+.edit-class {
+    width: fit-content;
+}
+.edit-class:hover {
+    cursor: pointer;
+    color: #153b2a;
+}
 
 .popup-buttons-school button {
     padding: 6px 12px;
@@ -1064,6 +1070,12 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .popup-buttons-school-for-new-class > button:hover {
     transform: scale(1.1);
+}
+.edit-current-class {
+    margin-top: 0px;
+}
+.edit-current-class > button:last-child {
+    background-color: rgb(216, 116, 116);
 }
 
 

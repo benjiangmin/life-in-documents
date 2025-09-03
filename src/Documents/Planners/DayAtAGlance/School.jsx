@@ -24,6 +24,16 @@ export default function SchoolDisplay() {
 
   const dotColors = { green: greenDot, red: redDot, grey: greyDot, yellow: yellowDot};
 
+  const [showEditClassPopup, setShowEditClassPopup] = useState(false);
+  const [editClassName, setEditClassName] = useState("");
+    
+  useEffect(() => {
+    const stored = localStorage.getItem("classes");
+    if (stored) {
+      setClasses(JSON.parse(stored));
+    }
+  }, []);
+  
   // Add new class
   const addClass = (name) => {
     if (!name.trim()) return;
@@ -108,7 +118,17 @@ export default function SchoolDisplay() {
       <section className="classes">
         {classes.map((classItem, index) => (
           <section key={index} className="class">
-            <h2>{classItem.name}</h2>
+            <h2
+              className="edit-class"
+              onClick={() => {
+                setCurrentClassIndex(index);
+                setEditClassName(classItem.name);
+                setShowEditClassPopup(true);
+              }}
+            >
+              {classItem.name}
+            </h2>
+
             <section className="assignments-section">
               <section className="assignments">
                 {classItem.assignments.map((a, i) => (
@@ -264,6 +284,45 @@ export default function SchoolDisplay() {
           </div>
         </div>
       )}
+
+      {showEditClassPopup && (
+        <div className="popup-overlay-school">
+          <div className="popup-school">
+            <h3>edit class</h3>
+            <input
+              type="text"
+              value={editClassName}
+              onChange={(e) => setEditClassName(e.target.value)}
+              placeholder="class name"
+            />
+            <div className="popup-buttons-school edit-current-class">
+              <button
+                onClick={() => {
+                  const updated = [...classes];
+                  updated[currentClassIndex].name = editClassName;
+                  setClasses(updated);
+                  setShowEditClassPopup(false);
+                }}
+              >
+                save
+              </button>
+              <button onClick={() => setShowEditClassPopup(false)}>cancel</button>
+              <button
+                onClick={() => {
+                  const updated = [...classes];
+                  updated.splice(currentClassIndex, 1); // remove class
+                  setClasses(updated);
+                  setShowEditClassPopup(false);
+                }}
+              >
+                delete
+              </button>
+              
+            </div>
+          </div>
+        </div>
+      )}
+
     </section>
   );
 }
