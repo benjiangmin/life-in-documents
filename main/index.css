@@ -1020,7 +1020,6 @@ input[type=number]::-webkit-inner-spin-button {
     color: #6c9874;
 }
 
-/* button row */
 .popup-buttons-school {
   display: flex;
   justify-content: flex-end;
