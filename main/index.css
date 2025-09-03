@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:#FFFFF0;
+    background-color:#3a424a;
     display: flex;
     flex-direction: column;
     font-family: "Winky Rough";
@@ -13,8 +13,9 @@ body {
 
 .header-section {
     height: auto;
-    background-color: #a9edbb;
-    margin-bottom: 20px;
+    background-color: #445166;
+    margin: 0px 100px 20px 100px;
+    border-radius: 0px 0px 30px 30px;
 }
 
 .welcome-text {
@@ -23,7 +24,7 @@ body {
     font-size: 5rem;
 }
 .welcome-text > h1 {
-    color: #FFFFF0;
+    color: #d9e1e3;
     font-family: "Winky Rough";
     margin-bottom: 60px;
     margin-top: 100px;
@@ -39,17 +40,18 @@ body {
 .searchbar > label {
     padding: 0 20px;
     font-family: "Winky Rough";
-    color: #50995b;
+    color: #abc6da;
     margin-bottom: 3px;
 }
 .searchbar > input {
     height: 50px;
     width: 600px;
-    padding: 0 30px;
+    padding: 0px 30px;
     border-radius: 20px;
     border-width: 0;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     font-family: "Coming Soon";
+    background-color: #d9e1e3;
 }
 .display-section {
     background-color: white;
@@ -71,11 +73,11 @@ body {
 .main-display-section > h3 {
     margin-bottom: 2px;
     font-family: "Coming Soon";
-    color: #355e2e;
+    color: #abc6da;
     margin-top: 40px;
 }
 .button-containers {
-    background-color: #a1c6ab;
+    background-color: #445166;
     border-radius: 15px 15px 0 0;
     height: 100vh;
     width: calc(100% - 175px); 
@@ -85,7 +87,7 @@ body {
     gap: 10px ;
 }
 .button-containers > :link {
-    background-color: #eef2ee;
+    background-color: #d9e1e3;
     border-radius: 10px;
     border-width: 0px;
     font-size: 2rem;
@@ -95,18 +97,18 @@ body {
     align-items: center;
 }
 .button-containers > a {
-    color: #355e2e;
+    color: #737190;
     text-decoration: none;
 }
 .button-containers > :link:hover {
-  background-color: #4ba87f; 
+  background-color: #7699bb; 
 }
 .button-containers > :link:active {
-  background-color: #368f66; 
+  background-color: #536b83; 
 }
 
 .maintext-side {
-    background-color: #a9edbb;
+    background-color: #445166;
     width: 50%;
     height: 100vh;
     display: flex;
@@ -115,7 +117,7 @@ body {
     
 }
 .maintext-side > h1 {
-    color: #FFFFF0;
+    color: #d9e1e3;
     font-family: "Winky Rough";
     font-size: 4rem;
     margin-bottom: 1px;
@@ -142,7 +144,7 @@ body {
 }
 .sidebar {
     align-items: center;
-    background-color: #a0e0b1;
+    background-color: #3b4a62;
     display: flex;
     flex-direction: column;
     max-width: 60px;
@@ -156,7 +158,7 @@ body {
 }
 
 .display-side {
-  background-color: #a1c6ab;
+  background-color: #445166;
   width: 100%;
   margin: 50px 0px 50px 50px;       
   border-radius: 50px 0 0 50px;
@@ -186,7 +188,7 @@ body {
 }
 
 .document-buttons > :link {
-    background-color: #eef2ee;
+    background-color: #d9e1e3;
     border-radius: 10px 0px 0px 10px;
     border-width: 0px;
     font-size: 2rem;
@@ -195,13 +197,13 @@ body {
     padding-left: 20px;
 }
 .document-buttons > :link:hover {
-    background-color: #4ba87f; 
+    background-color: #7699bb; 
 }
 .document-buttons > link:active {
     background-color: #368f66;
 }
 .document-buttons > a {
-    color: #355e2e;
+    color: #737190;
     text-decoration: none;
 }
 
