@@ -858,6 +858,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .school-header > button:hover {
     color: #153b2a;
+    cursor: pointer;
 }
 .classes {
   flex: 1;
@@ -912,8 +913,9 @@ input[type=number]::-webkit-inner-spin-button {
   align-items: center;
   padding: 0px 40px 0px 40px;
   font-family: "Coming Soon";
-  font-size: 1rem;
-  color: #FFFFF0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ffffff;
 }
 .assignment:hover {
     color: #153b2a;
@@ -963,7 +965,6 @@ input[type=number]::-webkit-inner-spin-button {
   flex-direction: column;
   align-items: center;
   padding: 20px 40px 20px 40px;
-  gap: 10px;
 }
 
 .popup-school h3 {
@@ -971,8 +972,8 @@ input[type=number]::-webkit-inner-spin-button {
     color: #FFFFF0;
 }
 .popup-school > h4 {
-    color: #FFFFF0;
-    margin-bottom: 0px;
+    color: #6c9874;
+    margin-bottom: 3px;
 }
 
 .popup-school input {
@@ -982,9 +983,32 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 10px;
   padding-left: 20px;
   font-family: "Coming Soon";
+  color: #153b2a;
 }
 .status-options {
-    width: 100%;
+    text-align: center;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    font-family: "Coming Soon";
+    color: #153b2a;
+    appearance: none;
+}
+.popup-bottom-half {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.status-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.status-section > h4 {
+    color: #FFFFF0;
+    margin-bottom: 3px;
+    color: #6c9874;
 }
 
 /* button row */
@@ -996,16 +1020,15 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .popup-buttons-school button {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-.popup-buttons-school button {
-  background: #FFFFF0;
-  color: #153b2a;
-  font-family: "Winky Rough";
+    padding: 6px 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: #FFFFF0;
+    color: #153b2a;
+    font-family: "Winky Rough";
+    height: 40px;
+    margin-top: 32px;
 }
 .popup-buttons-school button:hover {
     transform: scale(1.1);

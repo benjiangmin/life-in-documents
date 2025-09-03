@@ -173,12 +173,14 @@ export default function SchoolDisplay() {
         <div className="popup-overlay-school">
           <div className="popup-school">
             <h3>add new assignment</h3>
+            <h4>assignment name</h4>
             <input
               type="text"
               value={newAssignmentText}
               onChange={(e) => setNewAssignmentText(e.target.value)}
-              placeholder="assignment name"
+              placeholder="e.g textbook chap 5 problems 5-9"
             />
+            <h4>due date</h4>
             <input
               type="date"
               value={newAssignmentDue}
@@ -225,23 +227,27 @@ export default function SchoolDisplay() {
               value={editAssignmentDue}
               onChange={(e) => setEditAssignmentDue(e.target.value)}
             />
-            <h4>status</h4>
-            <select
-              value={editAssignmentColor}
-              onChange={(e) => setEditAssignmentColor(e.target.value)}
-              className="status-options"
-            >
-              <option value="grey">unimportant</option>
-              <option value="green">complete</option>
-              <option value="red">not started</option>
-              <option value="yellow">in progress</option>
-            </select>
-            <div className="popup-buttons-school">
-              <button onClick={saveEditedAssignment}>save</button>
-              <button onClick={() => setShowEditAssignmentPopup(false)}>
-                cancel
-              </button>
-            </div>
+            <section className="popup-bottom-half">
+              <section className="status-section">
+                <h4>status</h4>
+                <select
+                  value={editAssignmentColor}
+                  onChange={(e) => setEditAssignmentColor(e.target.value)}
+                  className="status-options"
+                >
+                  <option value="grey">unimportant</option>
+                  <option value="red">not started</option>
+                  <option value="yellow">in progress</option>
+                  <option value="green">complete</option>
+                </select>
+              </section>
+              <div className="popup-buttons-school">
+                <button onClick={saveEditedAssignment}>save</button>
+                <button onClick={() => setShowEditAssignmentPopup(false)}>
+                  cancel
+                </button>
+              </div>
+            </section>
           </div>
         </div>
       )}
