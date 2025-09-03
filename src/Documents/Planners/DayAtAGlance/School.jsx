@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import greenDot from "../../../../src/images/greenDot.png";
 import redDot from "../../../../src/images/redDot.png";
 import greyDot from "../../../../src/images/greyDot.png";
@@ -27,12 +27,18 @@ export default function SchoolDisplay() {
   const [showEditClassPopup, setShowEditClassPopup] = useState(false);
   const [editClassName, setEditClassName] = useState("");
     
+  // Load from localStorage on first render
   useEffect(() => {
     const stored = localStorage.getItem("classes");
     if (stored) {
       setClasses(JSON.parse(stored));
     }
   }, []);
+
+  // Save to localStorage whenever classes changes
+  useEffect(() => {
+    localStorage.setItem("classes", JSON.stringify(classes));
+  }, [classes]);
   
   // Add new class
   const addClass = (name) => {
