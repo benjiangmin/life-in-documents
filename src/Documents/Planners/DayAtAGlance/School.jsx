@@ -102,7 +102,7 @@ export default function SchoolDisplay() {
   return (
     <section className="school-display">
       <section className="school-header">
-        <button onClick={() => setShowClassPopup(true)}>add class</button>
+        <button onClick={() => setShowClassPopup(true)}>school</button>
       </section>
 
       <section className="classes">
