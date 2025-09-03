@@ -1,16 +1,28 @@
 import React, { useState } from "react";
-import greenDot from "../../../../src/images/greenDot.png"
-import redDot from "../../../../src/images/redDot.png"
-import greyDot from "../../../../src/images/greyDot.png"
+import greenDot from "../../../../src/images/greenDot.png";
+import redDot from "../../../../src/images/redDot.png";
+import greyDot from "../../../../src/images/greyDot.png";
+import yellowDot from "../../../../src/images/yellowDot.png";
 
 export default function SchoolDisplay() {
   const [classes, setClasses] = useState([]);
   const [showClassPopup, setShowClassPopup] = useState(false);
   const [showAssignmentPopup, setShowAssignmentPopup] = useState(false);
+  const [showEditAssignmentPopup, setShowEditAssignmentPopup] = useState(false);
+
   const [newClassName, setNewClassName] = useState("");
   const [newAssignmentText, setNewAssignmentText] = useState("");
   const [newAssignmentDue, setNewAssignmentDue] = useState("");
+
   const [currentClassIndex, setCurrentClassIndex] = useState(null);
+  const [currentAssignmentIndex, setCurrentAssignmentIndex] = useState(null);
+
+  // Edit state
+  const [editAssignmentText, setEditAssignmentText] = useState("");
+  const [editAssignmentDue, setEditAssignmentDue] = useState("");
+  const [editAssignmentColor, setEditAssignmentColor] = useState("grey");
+
+  const dotColors = { green: greenDot, red: redDot, grey: greyDot, yellow: yellowDot};
 
   // Add new class
   const addClass = (name) => {
@@ -21,7 +33,8 @@ export default function SchoolDisplay() {
   // Helper to format due date
   const formatDue = (dueDate) => {
     const today = new Date();
-    const due = new Date(dueDate);
+    const [year, month, day] = dueDate.split("-").map(Number);
+    const due = new Date(year, month - 1, day); // local midnight
     const diffTime = due - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
@@ -44,9 +57,34 @@ export default function SchoolDisplay() {
     updatedClasses[classIndex].assignments.push({
       text,
       dueIn,
-      dueDate,
+      dueDate,   // pretty version
+      rawDue: due, // exact yyyy-mm-dd for editing
+      color: "red",
     });
     setClasses(updatedClasses);
+  };
+
+  // Edit assignment
+  const saveEditedAssignment = () => {
+    if (!editAssignmentText.trim() || !editAssignmentDue) return;
+
+    const { dueIn, dueDate } = formatDue(editAssignmentDue);
+    const updatedClasses = [...classes];
+    updatedClasses[currentClassIndex].assignments[currentAssignmentIndex] = {
+      ...updatedClasses[currentClassIndex].assignments[currentAssignmentIndex],
+      text: editAssignmentText,
+      dueIn,
+      dueDate,
+      rawDue: editAssignmentDue, // keep raw date
+      color: editAssignmentColor,
+    };
+    setClasses(updatedClasses);
+
+    // reset
+    setShowEditAssignmentPopup(false);
+    setEditAssignmentText("");
+    setEditAssignmentDue("");
+    setEditAssignmentColor("grey");
   };
 
   return (
@@ -65,10 +103,21 @@ export default function SchoolDisplay() {
                   <div
                     className="assignment"
                     key={i}
-                    onClick={() => console.log("Clicked assignment:", a.text)}
+                    onClick={() => {
+                      setCurrentClassIndex(index);
+                      setCurrentAssignmentIndex(i);
+                      setEditAssignmentText(a.text);
+                      setEditAssignmentDue(a.rawDue); // use stored raw date
+                      setEditAssignmentColor(a.color || "grey");
+                      setShowEditAssignmentPopup(true);
+                    }}
                   >
                     <div className="assignment-left">
-                      <img src={greyDot} alt="status" className="assignment-dot" />
+                      <img
+                        src={dotColors[a.color || "grey"]}
+                        alt="status"
+                        className="assignment-dot"
+                      />
                       <span className="assignment-text">{a.text}</span>
                     </div>
                     <span className="assignment-due-right">
@@ -151,6 +200,45 @@ export default function SchoolDisplay() {
                 add
               </button>
               <button onClick={() => setShowAssignmentPopup(false)}>
+                cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Assignment popup */}
+      {showEditAssignmentPopup && (
+        <div className="popup-overlay-school">
+          <div className="popup-school">
+            <h3>edit assignment</h3>
+            <h4>assignment name</h4>
+            <input
+              type="text"
+              value={editAssignmentText}
+              onChange={(e) => setEditAssignmentText(e.target.value)}
+              placeholder="assignment name"
+            />
+            <h4>due date</h4>
+            <input
+              type="date"
+              value={editAssignmentDue}
+              onChange={(e) => setEditAssignmentDue(e.target.value)}
+            />
+            <h4>status</h4>
+            <select
+              value={editAssignmentColor}
+              onChange={(e) => setEditAssignmentColor(e.target.value)}
+              className="status-options"
+            >
+              <option value="grey">unimportant</option>
+              <option value="green">complete</option>
+              <option value="red">not started</option>
+              <option value="yellow">in progress</option>
+            </select>
+            <div className="popup-buttons-school">
+              <button onClick={saveEditedAssignment}>save</button>
+              <button onClick={() => setShowEditAssignmentPopup(false)}>
                 cancel
               </button>
             </div>
