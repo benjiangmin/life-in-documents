@@ -826,6 +826,7 @@ input[type=number]::-webkit-inner-spin-button {
     justify-content: center;
     padding: 0px 40px 20px 40px;
     min-height: 0; /* allow flex child to shrink */
+    position: relative;
 }
 .school-display {
     display: flex;
@@ -848,6 +849,15 @@ input[type=number]::-webkit-inner-spin-button {
 .school-header > button {
     height: 60px;
     margin-top: 20px;
+    font-size: 4rem;
+    background: none;
+    border: none;
+    color: #FFFFF0;
+    font-family: "Winky Rough";
+    font-weight: bold;
+}
+.school-header > button:hover {
+    color: #153b2a;
 }
 .classes {
   flex: 1;
@@ -902,6 +912,7 @@ input[type=number]::-webkit-inner-spin-button {
   align-items: center;
   padding: 0px 40px 0px 40px;
   font-family: "Coming Soon";
+  font-size: 0.8rem;
   color: #FFFFF0;
 }
 .assignment > p {
@@ -919,6 +930,69 @@ input[type=number]::-webkit-inner-spin-button {
 .add-assignment-button:hover {
     font-size: 0.8rem;
     font-weight: bold;
+}
+.popup-overlay-school {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  border-radius: 30px 30px 0px 0px;
+}
+.popup-school {
+  background: #a0e0b1;
+  border-radius: 12px;
+  width: 60%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 40px 20px 40px;
+}
+
+.popup-school h3 {
+    font-size: 2rem;
+    color: #FFFFF0;
+}
+
+.popup-school input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  padding-left: 20px;
+  font-family: "Coming Soon";
+}
+
+/* button row */
+.popup-buttons-school {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.popup-buttons-school button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.popup-buttons-school button {
+  background: #FFFFF0;
+  color: #153b2a;
+  font-family: "Winky Rough";
+}
+.popup-buttons-school button:hover {
+    transform: scale(1.1);
 }
 
 

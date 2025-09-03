@@ -1,42 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function School() {
-  const [classes, setClasses] = React.useState([
-    {
-      name: "Computer Science",
-      assignments: [
-        { text: "random assignment", due: "Sep 6" }
-      ]
-    }
-  ]);
+export default function SchoolDisplay() {
+  const [classes, setClasses] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
+  const [newClassName, setNewClassName] = useState("");
 
-  const addClass = () => {
-    const newClass = {
-      name: "New Class",
-      assignments: [
-        { text: "example assignment", due: "Sep 7" }
-      ]
-    };
-    setClasses([...classes, newClass]);
+  const addClass = (name) => {
+    if (!name.trim()) return;
+    setClasses([...classes, { name, assignments: [] }]);
   };
 
   const addAssignment = (classIndex) => {
-    // copy classes
     const updatedClasses = [...classes];
-    // add a placeholder assignment
     updatedClasses[classIndex].assignments.push({
-      text: "new assignment",
-      due: "TBD"
+      text: "New Assignment",
+      due: "TBD",
     });
-    // update state
     setClasses(updatedClasses);
   };
 
   return (
     <section className="school-display">
       <section className="school-header">
-        <h1>school</h1>
-        <button onClick={addClass}>add class</button>
+        <button onClick={() => setShowPopup(true)}>school</button>
       </section>
 
       <section className="classes">
@@ -54,12 +40,41 @@ export default function School() {
               </section>
             </section>
 
-            <button className="add-assignment-button" onClick={() => addAssignment(index)}>
+            <button
+              className="add-assignment-button"
+              onClick={() => addAssignment(index)}
+            >
               add assignment
             </button>
           </section>
         ))}
       </section>
+
+      {showPopup && (
+        <div className="popup-overlay-school">
+          <div className="popup-school">
+            <h3>add new class</h3>
+            <input
+              type="text"
+              value={newClassName}
+              onChange={(e) => setNewClassName(e.target.value)}
+              placeholder="e.g computer science"
+            />
+            <div className="popup-buttons-school">
+              <button
+                onClick={() => {
+                  addClass(newClassName);
+                  setNewClassName("");
+                  setShowPopup(false);
+                }}
+              >
+                add
+              </button>
+              <button onClick={() => setShowPopup(false)}>cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
