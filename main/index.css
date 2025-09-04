@@ -882,6 +882,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: #d9e1e3;
     font-family: "Winky Rough";
     font-weight: bold;
+    margin-bottom: 10px;
 }
 .school-header > button:hover {
     color: #7f99aa;
