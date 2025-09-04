@@ -1051,6 +1051,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .for-new-class > button {
     margin-top: 100px;
+    width: 60px;
 }
 .edit-class {
     width: fit-content;
@@ -1069,6 +1070,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: #263a47;
     font-family: "Winky Rough";
     height: 40px;
+    width: 60px;
     margin-top: 32px;
 }
 .popup-buttons-school button:hover {
@@ -1083,6 +1085,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: #243f5e;
     font-family: "Winky Rough";
     height: 40px;
+    width: 60px;
     margin-top: 10px;
 }
 .popup-buttons-school-for-new-class > button:hover {
