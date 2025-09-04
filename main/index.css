@@ -930,15 +930,9 @@ input[type=number]::-webkit-inner-spin-button {
   align-items: center;
   padding: 0px 40px 0px 40px;
   font-family: "Coming Soon";
-  font-size: clamp(0.8rem, 1.2rem, 1.4rem);
-  color: #153b2a;
+  font-size: 1rem;
+  color: #263761;
   transition: opacity 0.3s ease;
-
-  max-height: 3em;  /* adjust based on desired height */
-  line-height: 1.5em;  /* for readability */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; /* keeps text on one line, remove if multi-line wrapping desired */
 }
 .assignment:hover {
     color: #537ace;
