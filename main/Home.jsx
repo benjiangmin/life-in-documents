@@ -37,7 +37,14 @@ export default function Home() {
 
     return (
         <>
-            <section className="header-section">
+            <section
+                className="header-section"
+                style={{
+                    opacity: visible ? 1 : 0,
+                    transform: visible ? "translateY(0)" : "translateY(-50px)",
+                    transition: "opacity 0.5s ease, transform 0.5s ease",
+                }}
+                >
                 <section className="welcome-text">
                     <h1>welcome back, benjamin</h1>
                 </section>
@@ -45,25 +52,25 @@ export default function Home() {
                 <div className="searchbar">
                     <label>search for a document:</label>
                     <input
-                        type="text"
-                        placeholder="e.g unsuspicious document #8"
-                        value={query}
-                        onChange={handleChange}
+                    type="text"
+                    placeholder="e.g unsuspicious document #8"
+                    value={query}
+                    onChange={handleChange}
                     />
                     {results.length > 0 && (
-                        <div className="search-results">
-                            {results.map((r) => (
-                                <button 
-                                    key={r.path}
-                                    onClick={() => handleClick(r.path)}
-                                >
-                                    {r.path}
-                                </button>
-                            ))}
-                        </div>
+                    <div className="search-results">
+                        {results.map((r) => (
+                        <button
+                            key={r.path}
+                            onClick={() => handleClick(r.path)}
+                        >
+                            {r.path}
+                        </button>
+                        ))}
+                    </div>
                     )}
                 </div>
-            </section>
+                </section>
 
             <section className="main-display-section">
                 <h3>browse through full list of documents below:</h3>

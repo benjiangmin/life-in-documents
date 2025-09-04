@@ -11,7 +11,19 @@ body {
     background-color: #445166;
     margin: 0px 100px 20px 100px;
     border-radius: 0px 0px 30px 30px;
+
+    /* New for transition */
+    transform: translateY(-50px); /* start slightly above */
+    opacity: 0; /* start invisible */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
+
+/* Active state when visible */
+.header-section.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 
 .welcome-text {
     display: flex;
@@ -918,9 +930,15 @@ input[type=number]::-webkit-inner-spin-button {
   align-items: center;
   padding: 0px 40px 0px 40px;
   font-family: "Coming Soon";
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.2rem, 1.4rem);
   color: #153b2a;
   transition: opacity 0.3s ease;
+
+  max-height: 3em;  /* adjust based on desired height */
+  line-height: 1.5em;  /* for readability */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* keeps text on one line, remove if multi-line wrapping desired */
 }
 .assignment:hover {
     color: #537ace;
