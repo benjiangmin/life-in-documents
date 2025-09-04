@@ -108,16 +108,6 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
             </label>
 
             <section className="change-item-buttons">
-              <button
-                onClick={() => {
-                  onDeleteItem(editingId);
-                  setEditingId(null);
-                  setTempItem(null);
-                }}
-                style={{ marginLeft: "10px", backgroundColor: "#a33939", color: "white" }}
-              >
-                delete
-              </button>
               <button onClick={handleSave}>save</button>
               <button
                 onClick={() => {
@@ -126,6 +116,15 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
                 }}
               >
                 cancel
+              </button>
+              <button
+                onClick={() => {
+                  onDeleteItem(editingId);
+                  setEditingId(null);
+                  setTempItem(null);
+                }}
+              >
+                delete
               </button>
             </section>
           </div>

@@ -694,6 +694,9 @@ input[type=number]::-webkit-inner-spin-button {
 .change-item-buttons > button:hover {
     transform: scale(1.1)
 }
+.change-item-buttons > button:last-child {
+    background-color: rgb(198, 98, 82);
+}
 
 .arrow-images {
   background: transparent;
