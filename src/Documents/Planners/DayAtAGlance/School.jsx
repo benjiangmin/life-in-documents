@@ -27,40 +27,6 @@ export default function SchoolDisplay() {
 
   const dotColors = { green: greenDot, red: redDot, grey: greyDot, yellow: yellowDot };
 
-  // Fetch classes and assignments
-  const fetchData = async () => {
-    const { data: classesData, error: classErr } = await supabase.from("classes").select("*");
-    if (classErr) return console.error("Error fetching classes:", classErr.message);
-
-    const { data: assignmentsData, error: assignErr } = await supabase.from("assignments").select("*");
-    if (assignErr) return console.error("Error fetching assignments:", assignErr.message);
-
-    // Merge assignments into their classes
-    const merged = classesData.map((c) => ({
-      ...c,
-      assignments: assignmentsData.filter((a) => a.class_id === c.id),
-    }));
-
-    setClasses(merged);
-  };
-
-  useEffect(() => { fetchData(); }, []);
-
-  useEffect(() => {
-  setVisibleClasses(classes.map(() => false));
-
-  classes.forEach((_, i) => {
-      setTimeout(() => {
-        setVisibleClasses((prev) => {
-          const updated = [...prev];
-          updated[i] = true;
-          return updated;
-        });
-      }, i * 150); // stagger animation
-    });
-  }, [classes]);
-
-
   // Helper: format due date
   const formatDue = (dueDate) => {
     const today = new Date();
@@ -74,12 +40,68 @@ export default function SchoolDisplay() {
     return { dueIn: `due in ${diffDays} day${diffDays !== 1 ? "s" : ""}`, dueDate: formattedDate };
   };
 
+  // Cleanup function: delete overdue + complete assignments
+  const cleanOverdueCompletedAssignments = async (classesData) => {
+    const updatedClasses = [...classesData];
+
+    for (let i = 0; i < updatedClasses.length; i++) {
+      const classItem = updatedClasses[i];
+      const toDelete = classItem.assignments.filter(a => a.color === "green" && a.due_in === "overdue");
+
+      for (let assignment of toDelete) {
+        const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
+        if (error) console.error("Error deleting overdue completed assignment:", error.message);
+
+        const idx = classItem.assignments.findIndex(a => a.id === assignment.id);
+        if (idx !== -1) classItem.assignments.splice(idx, 1);
+      }
+    }
+
+    return updatedClasses;
+  };
+
+  // Fetch classes and assignments
+  const fetchData = async () => {
+    const { data: classesData, error: classErr } = await supabase.from("classes").select("*");
+    if (classErr) return console.error("Error fetching classes:", classErr.message);
+
+    const { data: assignmentsData, error: assignErr } = await supabase.from("assignments").select("*");
+    if (assignErr) return console.error("Error fetching assignments:", assignErr.message);
+
+    let merged = classesData.map(c => ({
+      ...c,
+      assignments: assignmentsData.filter(a => a.class_id === c.id),
+    }));
+
+    merged = await cleanOverdueCompletedAssignments(merged);
+
+    setClasses(merged);
+  };
+
+  useEffect(() => { fetchData(); }, []);
+
+  // Animate classes
+  useEffect(() => {
+    setVisibleClasses(classes.map(() => false));
+
+    classes.forEach((_, i) => {
+      setTimeout(() => {
+        setVisibleClasses(prev => {
+          const updated = [...prev];
+          updated[i] = true;
+          return updated;
+        });
+      }, i * 150);
+    });
+  }, [classes.length]); // Only trigger on the length, not assignment changes
+
   // Add new class
   const addClass = async (name) => {
     if (!name.trim()) return;
     const { data, error } = await supabase.from("classes").insert([{ name }]).select().single();
     if (error) return console.error("Error adding class:", error.message);
-    setClasses([...classes, { ...data, assignments: [] }]);
+
+    setClasses(prev => [...prev, { ...data, assignments: [] }]);
   };
 
   // Add new assignment
@@ -93,12 +115,16 @@ export default function SchoolDisplay() {
       .insert([{ class_id: classId, text, raw_due: due, due_date: dueDate, due_in: dueIn, color: "red" }])
       .select()
       .single();
-
     if (error) return console.error("Error adding assignment:", error.message);
 
-    const updated = classes.map(c => ({ ...c, assignments: [...c.assignments] }));
-    updated[classIndex].assignments.push(data);
-    setClasses(updated);
+    setClasses(prev => {
+      const updated = [...prev];
+      updated[classIndex].assignments.push(data);
+      return updated;
+    });
+
+    // Cleanup after adding
+    await cleanupClassAssignments(classIndex);
   };
 
   // Edit assignment
@@ -113,12 +139,16 @@ export default function SchoolDisplay() {
       .eq("id", assignment.id)
       .select()
       .single();
-
     if (error) return console.error("Error updating assignment:", error.message);
 
-    const updated = classes.map(c => ({ ...c, assignments: [...c.assignments] }));
-    updated[currentClassIndex].assignments[currentAssignmentIndex] = data;
-    setClasses(updated);
+    setClasses(prev => {
+      const updated = [...prev];
+      updated[currentClassIndex].assignments[currentAssignmentIndex] = data;
+      return updated;
+    });
+
+    // Cleanup after editing
+    await cleanupClassAssignments(currentClassIndex);
 
     setShowEditAssignmentPopup(false);
     setEditAssignmentText("");
@@ -132,10 +162,31 @@ export default function SchoolDisplay() {
     const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
     if (error) return console.error("Error deleting assignment:", error.message);
 
-    const updated = classes.map(c => ({ ...c, assignments: [...c.assignments] }));
-    updated[currentClassIndex].assignments.splice(currentAssignmentIndex, 1);
-    setClasses(updated);
+    setClasses(prev => {
+      const updated = [...prev];
+      updated[currentClassIndex].assignments.splice(currentAssignmentIndex, 1);
+      return updated;
+    });
+
     setShowEditAssignmentPopup(false);
+  };
+
+  // Cleanup helper for a single class
+  const cleanupClassAssignments = async (classIndex) => {
+    const classItem = classes[classIndex];
+    const toDelete = classItem.assignments.filter(a => a.color === "green" && a.due_in === "overdue");
+    if (!toDelete.length) return;
+
+    setClasses(prev => {
+      const updated = [...prev];
+      updated[classIndex].assignments = updated[classIndex].assignments.filter(a => !toDelete.includes(a));
+      return updated;
+    });
+
+    for (let assignment of toDelete) {
+      const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
+      if (error) console.error("Error deleting overdue completed assignment:", error.message);
+    }
   };
 
   // Save class edit
@@ -144,9 +195,11 @@ export default function SchoolDisplay() {
     const { data, error } = await supabase.from("classes").update({ name: editClassName }).eq("id", classObj.id).select().single();
     if (error) return console.error("Error updating class:", error.message);
 
-    const updated = classes.map(c => ({ ...c }));
-    updated[currentClassIndex].name = data.name;
-    setClasses(updated);
+    setClasses(prev => {
+      const updated = [...prev];
+      updated[currentClassIndex].name = data.name;
+      return updated;
+    });
     setShowEditClassPopup(false);
   };
 
@@ -156,9 +209,11 @@ export default function SchoolDisplay() {
     const { error } = await supabase.from("classes").delete().eq("id", classObj.id);
     if (error) return console.error("Error deleting class:", error.message);
 
-    const updated = classes.map(c => ({ ...c }));
-    updated.splice(currentClassIndex, 1);
-    setClasses(updated);
+    setClasses(prev => {
+      const updated = [...prev];
+      updated.splice(currentClassIndex, 1);
+      return updated;
+    });
     setShowEditClassPopup(false);
   };
 
@@ -231,8 +286,7 @@ export default function SchoolDisplay() {
         ))}
       </section>
 
-
-      {/* Popups (Class, Assignment, Edit) */}
+      {/* Popups for Class, Assignment, Edit Assignment, Edit Class */}
       {showClassPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
