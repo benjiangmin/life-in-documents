@@ -547,16 +547,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color:  #445f7e;
-    padding: 0px 30px 20px 30px;
+    padding: 0px 40px 10px 40px;
     border-radius: 20px;
-    width: 100%;
+    width: 300px;
     margin: 0px 25px 0px 25px;
+    height: 300px;
 }
 .other-task-idk-what-to-name-this > h2 {
     color: #d2d8e2;
-    font-size: 2.5rem;
-    margin-bottom: 0px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-top: 20px
 }
 .other-task-idk-what-to-name-this > input {
     height: 40px;
@@ -570,6 +573,7 @@ body {
     color: #03223f;
 }
 .add-task-buttons {
+    margin-top: 10px;
     display: flex;
     gap: 20px;
 }
