@@ -18,7 +18,6 @@ body {
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
-/* Active state when visible */
 .header-section.visible {
     transform: translateY(0);
     opacity: 1;
@@ -77,8 +76,7 @@ body {
     align-items: center;
 }
 .main-display-section > h3 {
-    margin-bottom: 2px;
-    font-family: "Coming Soon";
+    margin-bottom: 4px;
     color: #abc6da;
     margin-top: 40px;
 }
