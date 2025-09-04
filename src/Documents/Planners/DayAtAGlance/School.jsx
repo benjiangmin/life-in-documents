@@ -11,6 +11,7 @@ export default function SchoolDisplay() {
   const [showAssignmentPopup, setShowAssignmentPopup] = useState(false);
   const [showEditAssignmentPopup, setShowEditAssignmentPopup] = useState(false);
   const [showEditClassPopup, setShowEditClassPopup] = useState(false);
+  const [visibleClasses, setVisibleClasses] = useState([]);
 
   const [newClassName, setNewClassName] = useState("");
   const [newAssignmentText, setNewAssignmentText] = useState("");
@@ -44,6 +45,21 @@ export default function SchoolDisplay() {
   };
 
   useEffect(() => { fetchData(); }, []);
+
+  useEffect(() => {
+  setVisibleClasses(classes.map(() => false));
+
+  classes.forEach((_, i) => {
+      setTimeout(() => {
+        setVisibleClasses((prev) => {
+          const updated = [...prev];
+          updated[i] = true;
+          return updated;
+        });
+      }, i * 150); // stagger animation
+    });
+  }, [classes]);
+
 
   // Helper: format due date
   const formatDue = (dueDate) => {
@@ -154,7 +170,10 @@ export default function SchoolDisplay() {
 
       <section className="classes">
         {classes.map((classItem, index) => (
-          <section key={classItem.id} className="class">
+          <section
+            key={classItem.id}
+            className={`class ${visibleClasses[index] ? "visible" : ""}`}
+          >
             <h2
               className="edit-class"
               onClick={() => {
@@ -184,10 +203,16 @@ export default function SchoolDisplay() {
                       }}
                     >
                       <div className="assignment-left">
-                        <img src={dotColors[a.color || "grey"]} alt="status" className="assignment-dot" />
+                        <img
+                          src={dotColors[a.color || "grey"]}
+                          alt="status"
+                          className="assignment-dot"
+                        />
                         <span className="assignment-text">{a.text}</span>
                       </div>
-                      <span className="assignment-due-right">{a.due_in} • {a.due_date}</span>
+                      <span className="assignment-due-right">
+                        {a.due_in} • {a.due_date}
+                      </span>
                     </div>
                   ))}
               </section>
@@ -205,6 +230,7 @@ export default function SchoolDisplay() {
           </section>
         ))}
       </section>
+
 
       {/* Popups (Class, Assignment, Edit) */}
       {showClassPopup && (
