@@ -867,22 +867,16 @@ input[type=number]::-webkit-inner-spin-button {
     display: flex;
     justify-content: center;
 }
-.school-header > h1 {
-    font-size: 5rem;
-    color: #d9e1e3;
-    margin-top: 20px;
-    margin-bottom: 0px;
-}
 .school-header > button {
-    height: 60px;
-    margin-top: 20px;
+    height: 40px;
+    margin-top: 0px;
     font-size: 4rem;
     background: none;
     border: none;
     color: #d9e1e3;
     font-family: "Winky Rough";
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 .school-header > button:hover {
     color: #7f99aa;
@@ -909,7 +903,7 @@ input[type=number]::-webkit-inner-spin-button {
     padding-left: 40px;
     margin: 5px 0px 0px 0px;
     color: #d9e1e3;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .assignments-section {

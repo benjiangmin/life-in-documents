@@ -12,14 +12,13 @@ export default function SchoolDisplay() {
   const [showEditAssignmentPopup, setShowEditAssignmentPopup] = useState(false);
   const [showEditClassPopup, setShowEditClassPopup] = useState(false);
 
-  // new inputs
   const [newClassName, setNewClassName] = useState("");
   const [newAssignmentText, setNewAssignmentText] = useState("");
   const [newAssignmentDue, setNewAssignmentDue] = useState("");
 
-  // editing state
   const [currentClassIndex, setCurrentClassIndex] = useState(null);
   const [currentAssignmentIndex, setCurrentAssignmentIndex] = useState(null);
+
   const [editAssignmentText, setEditAssignmentText] = useState("");
   const [editAssignmentDue, setEditAssignmentDue] = useState("");
   const [editAssignmentColor, setEditAssignmentColor] = useState("grey");
@@ -27,19 +26,13 @@ export default function SchoolDisplay() {
 
   const dotColors = { green: greenDot, red: redDot, grey: greyDot, yellow: yellowDot };
 
-  // Fetch classes + assignments
+  // Fetch classes and assignments
   const fetchData = async () => {
     const { data: classesData, error: classErr } = await supabase.from("classes").select("*");
-    if (classErr) {
-      console.error("Error fetching classes:", classErr.message);
-      return;
-    }
+    if (classErr) return console.error("Error fetching classes:", classErr.message);
 
     const { data: assignmentsData, error: assignErr } = await supabase.from("assignments").select("*");
-    if (assignErr) {
-      console.error("Error fetching assignments:", assignErr.message);
-      return;
-    }
+    if (assignErr) return console.error("Error fetching assignments:", assignErr.message);
 
     // Merge assignments into their classes
     const merged = classesData.map((c) => ({
@@ -50,9 +43,7 @@ export default function SchoolDisplay() {
     setClasses(merged);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(() => { fetchData(); }, []);
 
   // Helper: format due date
   const formatDue = (dueDate) => {
@@ -61,9 +52,7 @@ export default function SchoolDisplay() {
     const [year, month, day] = dueDate.split("-").map(Number);
     const due = new Date(year, month - 1, day);
     const diffDays = Math.ceil((due - today) / (1000 * 60 * 60 * 24));
-
     const formattedDate = due.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-
     if (diffDays < 0) return { dueIn: "overdue", dueDate: formattedDate };
     if (diffDays === 0) return { dueIn: "due today", dueDate: formattedDate };
     return { dueIn: `due in ${diffDays} day${diffDays !== 1 ? "s" : ""}`, dueDate: formattedDate };
@@ -73,10 +62,7 @@ export default function SchoolDisplay() {
   const addClass = async (name) => {
     if (!name.trim()) return;
     const { data, error } = await supabase.from("classes").insert([{ name }]).select().single();
-    if (error) {
-      console.error("Error adding class:", error.message);
-      return;
-    }
+    if (error) return console.error("Error adding class:", error.message);
     setClasses([...classes, { ...data, assignments: [] }]);
   };
 
@@ -84,20 +70,17 @@ export default function SchoolDisplay() {
   const addAssignment = async (classIndex, text, due) => {
     if (!text.trim() || !due) return;
     const { dueIn, dueDate } = formatDue(due);
-
     const classId = classes[classIndex].id;
+
     const { data, error } = await supabase
       .from("assignments")
       .insert([{ class_id: classId, text, raw_due: due, due_date: dueDate, due_in: dueIn, color: "red" }])
       .select()
       .single();
 
-    if (error) {
-      console.error("Error adding assignment:", error.message);
-      return;
-    }
+    if (error) return console.error("Error adding assignment:", error.message);
 
-    const updated = [...classes];
+    const updated = classes.map(c => ({ ...c, assignments: [...c.assignments] }));
     updated[classIndex].assignments.push(data);
     setClasses(updated);
   };
@@ -105,29 +88,19 @@ export default function SchoolDisplay() {
   // Edit assignment
   const saveEditedAssignment = async () => {
     if (!editAssignmentText.trim() || !editAssignmentDue) return;
-
     const { dueIn, dueDate } = formatDue(editAssignmentDue);
     const assignment = classes[currentClassIndex].assignments[currentAssignmentIndex];
 
     const { data, error } = await supabase
       .from("assignments")
-      .update({
-        text: editAssignmentText,
-        raw_due: editAssignmentDue,
-        due_date: dueDate,
-        due_in: dueIn,
-        color: editAssignmentColor,
-      })
+      .update({ text: editAssignmentText, raw_due: editAssignmentDue, due_date: dueDate, due_in: dueIn, color: editAssignmentColor })
       .eq("id", assignment.id)
       .select()
       .single();
 
-    if (error) {
-      console.error("Error updating assignment:", error.message);
-      return;
-    }
+    if (error) return console.error("Error updating assignment:", error.message);
 
-    const updated = [...classes];
+    const updated = classes.map(c => ({ ...c, assignments: [...c.assignments] }));
     updated[currentClassIndex].assignments[currentAssignmentIndex] = data;
     setClasses(updated);
 
@@ -141,11 +114,9 @@ export default function SchoolDisplay() {
   const deleteAssignment = async () => {
     const assignment = classes[currentClassIndex].assignments[currentAssignmentIndex];
     const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
-    if (error) {
-      console.error("Error deleting assignment:", error.message);
-      return;
-    }
-    const updated = [...classes];
+    if (error) return console.error("Error deleting assignment:", error.message);
+
+    const updated = classes.map(c => ({ ...c, assignments: [...c.assignments] }));
     updated[currentClassIndex].assignments.splice(currentAssignmentIndex, 1);
     setClasses(updated);
     setShowEditAssignmentPopup(false);
@@ -155,11 +126,9 @@ export default function SchoolDisplay() {
   const saveClassEdit = async () => {
     const classObj = classes[currentClassIndex];
     const { data, error } = await supabase.from("classes").update({ name: editClassName }).eq("id", classObj.id).select().single();
-    if (error) {
-      console.error("Error updating class:", error.message);
-      return;
-    }
-    const updated = [...classes];
+    if (error) return console.error("Error updating class:", error.message);
+
+    const updated = classes.map(c => ({ ...c }));
     updated[currentClassIndex].name = data.name;
     setClasses(updated);
     setShowEditClassPopup(false);
@@ -169,11 +138,9 @@ export default function SchoolDisplay() {
   const deleteClass = async () => {
     const classObj = classes[currentClassIndex];
     const { error } = await supabase.from("classes").delete().eq("id", classObj.id);
-    if (error) {
-      console.error("Error deleting class:", error.message);
-      return;
-    }
-    const updated = [...classes];
+    if (error) return console.error("Error deleting class:", error.message);
+
+    const updated = classes.map(c => ({ ...c }));
     updated.splice(currentClassIndex, 1);
     setClasses(updated);
     setShowEditClassPopup(false);
@@ -220,9 +187,7 @@ export default function SchoolDisplay() {
                         <img src={dotColors[a.color || "grey"]} alt="status" className="assignment-dot" />
                         <span className="assignment-text">{a.text}</span>
                       </div>
-                      <span className="assignment-due-right">
-                        {a.due_in} • {a.due_date}
-                      </span>
+                      <span className="assignment-due-right">{a.due_in} • {a.due_date}</span>
                     </div>
                   ))}
               </section>
@@ -241,29 +206,20 @@ export default function SchoolDisplay() {
         ))}
       </section>
 
-      {/* Class popup */}
+      {/* Popups (Class, Assignment, Edit) */}
       {showClassPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
             <h3>add new class</h3>
             <input type="text" value={newClassName} onChange={(e) => setNewClassName(e.target.value)} placeholder="e.g computer science" />
             <div className="popup-buttons-school-for-new-class">
-              <button
-                onClick={() => {
-                  addClass(newClassName);
-                  setNewClassName("");
-                  setShowClassPopup(false);
-                }}
-              >
-                add
-              </button>
+              <button onClick={() => { addClass(newClassName); setNewClassName(""); setShowClassPopup(false); }}>add</button>
               <button onClick={() => setShowClassPopup(false)}>cancel</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Assignment popup */}
       {showAssignmentPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
@@ -273,23 +229,13 @@ export default function SchoolDisplay() {
             <h4>due date</h4>
             <input type="date" value={newAssignmentDue} onChange={(e) => setNewAssignmentDue(e.target.value)} />
             <div className="popup-buttons-school">
-              <button
-                onClick={() => {
-                  addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue);
-                  setNewAssignmentText("");
-                  setNewAssignmentDue("");
-                  setShowAssignmentPopup(false);
-                }}
-              >
-                add
-              </button>
+              <button onClick={() => { addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue); setNewAssignmentText(""); setNewAssignmentDue(""); setShowAssignmentPopup(false); }}>add</button>
               <button onClick={() => setShowAssignmentPopup(false)}>cancel</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Edit Assignment popup */}
       {showEditAssignmentPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
@@ -318,7 +264,6 @@ export default function SchoolDisplay() {
         </div>
       )}
 
-      {/* Edit Class popup */}
       {showEditClassPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
