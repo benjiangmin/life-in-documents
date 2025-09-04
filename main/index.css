@@ -549,11 +549,10 @@ body {
     align-items: center;
     justify-content: center;
     background-color:  #445f7e;
-    padding: 0px 40px 10px 40px;
     border-radius: 20px;
-    width: 300px;
-    margin: 0px 25px 0px 25px;
-    height: 300px;
+    width: 400px;
+    height: 250px;
+    padding: 0px 25px 0px 25px;
 }
 .other-task-idk-what-to-name-this > h2 {
     color: #d2d8e2;
@@ -1099,7 +1098,7 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: column;
     align-items: center;
 }
-.status-section > h4 {
+.status-section > h4{
     margin-bottom: 3px;
     color: #a8b7bb;
 }
@@ -1222,6 +1221,64 @@ input[type=number]::-webkit-inner-spin-button {
 .add-task-button:hover {
     font-size: 1rem;
     cursor: pointer;
+}
+.dot-options > img {
+    width: 5px;
+}
+.other-popup-for-editing-tasks {
+    display: flex;
+    align-items: center;
+}
+.edit-task-buttons {
+    display: flex;
+    gap: 10px;
+}
+.edit-task-buttons > button {
+    height: 40px;
+    width: 60px;
+    border: none;
+    border-radius: 15px;
+    background-color: #d2d8e2;
+    font-family: "Winky Rough";
+    color: #03223f;
+    margin-top: 33px;
+}
+.edit-task-buttons > button:hover {
+    transform: scale(1.1);
+}
+.edit-task-buttons > button:last-child {
+    background-color: rgb(216, 116, 116);
+}
+.for-other-tasks > select {
+    text-align: center;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    font-family: "Coming Soon";
+    color: #2d405c;
+    appearance: none;
+    background-color: #d9e1e3;
+}
+.for-other-tasks > select:hover {
+    transform: scale(1.1);
+}
+.for-other-tasks > h4 {
+    margin-top: 10px;
+}
+.task {
+    color: #263761;
+    font-family: "Coming Soon";
+      transition: opacity 0.3s ease;
+
+}
+.task:hover {
+    cursor: pointer;
+    color: #537ace;
+}
+.task-completed {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 
