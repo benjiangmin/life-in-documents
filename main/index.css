@@ -1,7 +1,3 @@
-.page-break {
-    background-color: red;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +6,6 @@ body {
     flex-direction: column;
     font-family: "Winky Rough";
 }
-
 .header-section {
     height: auto;
     background-color: #445166;
@@ -39,7 +34,6 @@ body {
 }
 .searchbar > label {
     padding: 0 20px;
-    font-family: "Winky Rough";
     color: #abc6da;
     margin-bottom: 3px;
 }
@@ -127,6 +121,7 @@ body {
     margin-top: 0px;
     font-family: "Coming Soon";
     margin-bottom: 100px;
+    color: #abc6da;
 }
 .home-icon {
     height: 60px;
@@ -209,7 +204,6 @@ body {
 
 .money-main {
     display: flex;
-    background-color: #FFFFF0;
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -226,7 +220,7 @@ body {
     height: 100vh;
 }
 .box-1 {
-    background-color: rgb(108, 150, 126);
+    background-color: rgb(50, 82, 100);
     height: 40%;
     border-radius: 0px 0px 30px 30px;
     margin: 0px 15px 15px 30px;
@@ -259,7 +253,8 @@ body {
     font-size: 4rem;
     margin-bottom: 0px;
     margin-top: 0px;
-    color: #FFFFF0;
+    color: #d9e1e3;
+;
 }
 .item-name-input {
     border-radius: 20px 5px 5px 20px;
@@ -267,6 +262,7 @@ body {
     width: 50%;
     padding: 0px 20px;
     font-family: "Coming Soon";
+    background-color: #d9e1e3;
 }
 .select-type-form {
     border-radius: 5px;
@@ -274,6 +270,7 @@ body {
     width: 30%;
     font-family: "Coming Soon";
     padding: 0px 10px;
+    background-color: #d9e1e3;
 
 }
 .price-input-form {
@@ -282,11 +279,14 @@ body {
     width: 10%;
     font-family: "Coming Soon";
     padding: 0 10px;
+    background-color: #d9e1e3;
 }
 .price-input-form::-webkit-outer-spin-button,
 .price-input-form::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+      background-color: #d9e1e3;
+
 }
 
 .add-item-button {
@@ -294,10 +294,11 @@ body {
     border-width: 0px;
     width: 10%;
     font-family: "Coming Soon";
+    background-color: #d9e1e3;
 }
 
 .box-2 {
-    background-color: rgb(123, 155, 111);
+    background-color: rgb(76, 90, 104);
     height: 60%;
     border-radius: 30px 30px 0px 0px;
     margin: 15px 15px 0px 30px;
@@ -313,7 +314,7 @@ body {
   opacity: 1;
 }
 .box-3 {
-    background-color: rgb(77, 157, 113);
+    background-color: rgb(76, 84, 110);
     height: 30%;
     border-radius: 30px 0px 0px 30px;
     margin: 30px 0px 15px 15px;
@@ -329,7 +330,7 @@ body {
   opacity: 1;
 }
 .box-4 {
-    background-color: rgb(165, 191, 148);
+    background-color: rgb(53, 90, 112);
     height: 70vh;
     border-radius: 30px 0px 0px 30px;
     margin: 15px 0px 30px 15px;
@@ -365,12 +366,12 @@ body {
     font-size: 4rem;
     margin-bottom: 0px;
     margin-top: 0px;
-    color: #FFFFF0;
+    color: #d9e1e3;
     position: absolute;
     left: 75px;
 }
 .item-button {
-    background-color: #FFFFF0;
+    background-color: #d9e1e3;
     border-radius: 10px 0px 0px 10px;
     border-width: 0px;
     font-size: 1rem;
@@ -378,13 +379,13 @@ body {
     display: flex;
     padding-left: 10px;
     justify-content: space-between;
-    color: #355e2e;
+    color: #4e5879;
 }
 .item-buttons > :hover {
-    background-color: #4ba87f; 
+    background-color: #57849e; 
 }
 .item-buttons > :active {
-    background-color: #368f66;
+    background-color: #4680af;
 }
 .item-name {
     text-align: left;
@@ -398,7 +399,7 @@ body {
 .currently-viewing-text {
     font-family: "Coming Soon";
     font-size: 1.5rem;
-    color: #eef2ee;
+    color: #d9e1e3;
     margin: 70px 0px 0px 0px;
 }
 .display-date {
@@ -429,7 +430,7 @@ body {
     font-size: 4rem;
     margin-bottom: 35px;
     margin-top: 0px;
-    color: #FFFFF0;
+    color: #d9e1e3;
 
 }
 .budget-detailed-display {
@@ -451,7 +452,7 @@ body {
     align-items: center;
     position: absolute;
     left: 70px;
-    color: #eef2ee;
+    color: #d9e1e3;
     font-family: "Coming Soon";
 }
 .budget-budget-display > h2, h3 {
@@ -463,7 +464,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    color: #eef2ee;
+    color: #d9e1e3;
     font-family: "Coming Soon";
 }
 .spent-display > h2, h3 {
@@ -476,7 +477,7 @@ body {
     align-items: center;
     position: absolute;
     right: 70px;
-    color: #eef2ee;
+    color: #d9e1e3;
     font-family: "Coming Soon";
 }
 .left-display > h2, h3 {
@@ -501,13 +502,13 @@ body {
     width: 100px;
     margin: 0px;
     font-size: 1rem;
-    color: #ddddc6;
+    color: #d9e1e3;
 }
 .item-details-display > h2 {
     text-align: right;
     margin: 0px;
     font-family: "Coming Soon";
-    color:#1f543c;
+    color:#d9e1e3;
 }
 .item-details {
     position: absolute;
@@ -532,7 +533,7 @@ body {
 }
 
 .popup {
-  background: #a0e0b1;
+  background: #3e555f;
   padding: 20px;
   border-radius: 10px;
   z-index: 10000;     
@@ -543,14 +544,14 @@ body {
 }
 .popup > h3 {
     font-size: 1.8rem;
-    color:#FFFFF0;
+    color:#d9e1e3;
 }
 .clickable-budget {
     text-decoration: none;
 }
 .clickable-budget:hover {
     font-weight: bold;
-    color: #355e2e;
+    color: #57849e;
 }
 .popup-buttons-container {
     display: flex;
@@ -562,7 +563,7 @@ body {
     border-width: 0px;
     width: 60px;
     font-family: "Winky Rough";
-    color: #1f543c;
+    color: #345e80;
 }
 .popup-button:hover {
     transform: scale(1.1);
@@ -587,7 +588,7 @@ input[type=number]::-webkit-inner-spin-button {
     border-width: 0px;
     padding-left: 10px;
     font-family: "Coming Soon";
-    color: #1f543c;
+    color: #03223f;
     text-align: left;
 }
 .date {
@@ -598,7 +599,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .change-item-popup {
-  background: #a0e0b1;
+  background: #3e555f;
   padding: 20px;
   border-radius: 10px;
   z-index: 10000;     
@@ -606,10 +607,11 @@ input[type=number]::-webkit-inner-spin-button {
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  color: #d9e1e3;
 }
 .change-item-popup > h3 {
     font-size: 1.8rem;
-    color:#FFFFF0;
+    color:#d9e1e3;
 }
 .item-labels {
     display: flex;
@@ -629,7 +631,7 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 20px;
     border-width: 0px;
     font-family: "Winky Rough";
-    color: #1f543c;
+    color: #194c58;
 }
 .change-item-buttons > button:hover {
     transform: scale(1.1)
@@ -650,10 +652,10 @@ input[type=number]::-webkit-inner-spin-button {
 .month-text {
     margin-top: 0px;
     font-size: 4rem;
-    color:#FFFFF0;
+    color:#d9e1e3;
 }
 .month-text:hover {
-    color: #1f543c;
+    color: #57849e;
 }
 .left {
     left: 100px;
@@ -677,7 +679,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .popup-box-date {
-  background: #a0e0b1;
+  background: #3e555f;
   border-radius: 15px;
   width: 70%;
   height: 70%;
@@ -703,7 +705,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .popup-year {
-  color: #FFFFF0;
+  color: #d9e1e3;
   margin: 0;
 }
 
@@ -733,34 +735,35 @@ input[type=number]::-webkit-inner-spin-button {
   padding: 8px;
   border: none;
   border-radius: 8px;
-  background: #FFFFF0;
+  background: #d9e1e3;
   cursor: pointer;
   font-family: "Coming Soon";
   font-weight: bold;
-  color: #1f543c;
+  color: #11334e;
   height: 30px;
 }
 .month-button:hover {
-  background-color: #4ba87f;
+  background-color: #57849e;
 }
 
 .month-button.active {
-  background: #679162;
+  background-color: #7fb9db;
   font-weight: bold;
   color: #FFFFF0;
 }
 .month-button.active:hover {
-  background-color: #4ba87f;
+  background-color: #7fb9db;
+  background: #628491;
 }
 
 .close-button {
-  background: #eef2ee;
+  background: #d9e1e3;
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 20px;
   border-width: 0px;
   font-family: "Winky Rough";
-  color: #1f543c;
+  color: #2f356e;
 }
 .close-button:hover {
   transform: scale(1.1);
@@ -792,14 +795,14 @@ input[type=number]::-webkit-inner-spin-button {
   width: 100%;
   display: flex;
   align-items: flex-end;
-  background: #eee;
+  background: #d9e1e3;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .bar {
   width: 100%;
-  background-color: #80cfa9;
+  background-color: #6292a5;
   transition: height 0.3s ease;
 }
 
@@ -821,7 +824,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .school-section {
     width: 60%;
-    background-color: rgb(86, 168, 143);
+    background-color: rgb(71, 83, 97);
     margin: 30px 15px 0px 30px;
     border-radius: 30px 30px 0px 0px;
     display: flex;
@@ -844,7 +847,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .school-header > h1 {
     font-size: 5rem;
-    color: #FFFFF0;
+    color: #d9e1e3;
     margin-top: 20px;
     margin-bottom: 0px;
 }
@@ -854,12 +857,12 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     background: none;
     border: none;
-    color: #FFFFF0;
+    color: #d9e1e3;
     font-family: "Winky Rough";
     font-weight: bold;
 }
 .school-header > button:hover {
-    color: #153b2a;
+    color: #7f99aa;
     cursor: pointer;
 }
 .classes {
@@ -882,7 +885,7 @@ input[type=number]::-webkit-inner-spin-button {
 .class > h2 {
     padding-left: 40px;
     margin: 5px 0px 0px 0px;
-    color: #FFFFF0;
+    color: #d9e1e3;
     font-size: 1rem;
 }
 
@@ -894,7 +897,7 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 10px 10px 0px 0px;
   overflow: hidden; /* contain scroll child */
   min-height: 0;    /* 🔑 */
-  background-color: #e0ece7;
+  background-color: #d9e1e3;
 }
 
 .assignments {
@@ -917,10 +920,10 @@ input[type=number]::-webkit-inner-spin-button {
   font-family: "Coming Soon";
   font-size: 0.9rem;
   color: #153b2a;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .assignment:hover {
-    color: #3aa374;
+    color: #537ace;
     cursor: pointer;
 }
 .assignment > p {
@@ -938,14 +941,14 @@ input[type=number]::-webkit-inner-spin-button {
     width: 10px;
     margin-right: 5px;
 }
-.add-assignment-button {
+.add-assignment-button {                                    
     height: 20px;
     border: none;
     border-radius: 0px 0px 30px 30px;
     font-size: 0.7rem;
     font-family: "Coming Soon";
-    color: #153b2a;
-    background-color: #e0ece7;
+    color: #1f455e;
+    background-color: #d9e1e3;
 }
 .add-assignment-button:hover {
     font-size: 0.8rem;
@@ -965,7 +968,7 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 30px 30px 0px 0px;
 }
 .popup-school {
-  background: #a0e0b1;
+  background: #445f7e;
   border-radius: 12px;
   width: 60%;
   max-width: 400px;
@@ -979,10 +982,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 .popup-school h3 {
     font-size: 2rem;
-    color: #FFFFF0;
+    color: #d9e1e3;
 }
 .popup-school > h4 {
-    color: #6c9874;
+    color: #a8b7bb;
     margin-bottom: 3px;
 }
 
@@ -993,7 +996,8 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 10px;
   padding-left: 20px;
   font-family: "Coming Soon";
-  color: #153b2a;
+  color: #343d4b;
+  background-color: #d9e1e3;
 }
 .status-options {
     text-align: center;
@@ -1002,8 +1006,9 @@ input[type=number]::-webkit-inner-spin-button {
     border: none;
     border-radius: 10px;
     font-family: "Coming Soon";
-    color: #153b2a;
+    color: #2d405c;
     appearance: none;
+    background-color: #d9e1e3;
 }
 .popup-bottom-half {
     display: flex;
@@ -1016,9 +1021,8 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
 }
 .status-section > h4 {
-    color: #FFFFF0;
     margin-bottom: 3px;
-    color: #6c9874;
+    color: #a8b7bb;
 }
 
 .popup-buttons-school {
@@ -1041,7 +1045,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .edit-class:hover {
     cursor: pointer;
-    color: #153b2a;
+    color: #7f99aa;
 }
 
 .popup-buttons-school button {
@@ -1049,8 +1053,8 @@ input[type=number]::-webkit-inner-spin-button {
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    background: #FFFFF0;
-    color: #153b2a;
+    background: #d9e1e3;
+    color: #263a47;
     font-family: "Winky Rough";
     height: 40px;
     margin-top: 32px;
@@ -1063,8 +1067,8 @@ input[type=number]::-webkit-inner-spin-button {
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    background: #FFFFF0;
-    color: #153b2a;
+    background: #d9e1e3;
+    color: #243f5e;
     font-family: "Winky Rough";
     height: 40px;
     margin-top: 10px;
@@ -1087,7 +1091,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .other-section {
     width: 40%;
-    background-color: rgb(94, 148, 112);
+    background-color: rgb(64, 69, 85);
     margin: 30px 0px 30px 15px;
     border-radius: 30px 0px 0px 30px;
 }
