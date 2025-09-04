@@ -558,7 +558,7 @@ body {
 .other-task-idk-what-to-name-this > h2 {
     color: #d2d8e2;
     font-size: 3rem;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     margin-top: 20px
 }
 .other-task-idk-what-to-name-this > input {
@@ -1086,6 +1086,9 @@ input[type=number]::-webkit-inner-spin-button {
     appearance: none;
     background-color: #d9e1e3;
 }
+.status-options:hover {
+    transform: scale(1.1);
+}
 .popup-bottom-half {
     display: flex;
     gap: 50px;
@@ -1202,6 +1205,8 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 10px 10px 0px 0px;
     width: 100%;
     height: 100%;
+    padding: 20px 30px 20px 30px;
+    box-sizing: border-box;
 }
 .add-task-button {
     width: 100%;
