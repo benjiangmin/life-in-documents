@@ -25,11 +25,11 @@ export default function Other() {
 
       if (error) console.error("Error fetching tasks:", error);
       else {
-        // Initialize tasks with fade-in
-        const tasksWithFade = data.map((t) => ({ ...t, show: false }));
+        // initialize hidden for fade-in
+        const tasksWithFade = data.map((t) => ({ ...t, show: false, fadingOut: false }));
         setTasks(tasksWithFade);
 
-        // Trigger fade-in after mount
+        // trigger fade-in
         setTimeout(() => {
           setTasks((prev) => prev.map((t) => ({ ...t, show: true })));
         }, 50);
@@ -38,14 +38,14 @@ export default function Other() {
     loadTasks();
   }, []);
 
-    const cleanupOldCompleted = async () => {
+  const cleanupOldCompleted = async () => {
     const today = new Date().toISOString().split("T")[0]; // e.g. "2025-09-05"
 
     const { error } = await supabase
-        .from("tasks")
-        .delete()
-        .lt("created_at", today)  // created before today
-        .eq("status", "completed");
+      .from("tasks")
+      .delete()
+      .lt("created_at", today)
+      .eq("status", "completed");
 
     if (error) console.error("Error cleaning up old completed tasks:", error);
   };
@@ -61,10 +61,10 @@ export default function Other() {
 
     if (error) console.error("Error adding task:", error);
     else {
-      // Add hidden initially
-      setTasks((prev) => [...prev, { ...data, show: false }]);
+      // add hidden initially
+      setTasks((prev) => [...prev, { ...data, show: false, fadingOut: false }]);
 
-      // Fade in
+      // fade-in
       setTimeout(() => {
         setTasks((prev) =>
           prev.map((t) => (t.id === data.id ? { ...t, show: true } : t))
@@ -72,13 +72,9 @@ export default function Other() {
       }, 50);
     }
 
-        setNewTask("");
-        setShowPopup(false);
-    };
-
-    const deleteTask = (index) => {
-        setTasks(tasks.filter((_, i) => i !== index));
-    };
+    setNewTask("");
+    setShowPopup(false);
+  };
 
   const openEdit = (index) => {
     setEditingIndex(index);
@@ -87,6 +83,8 @@ export default function Other() {
   };
 
   const saveEdit = async () => {
+    if (editingIndex === null) return;
+
     const { data, error } = await supabase
       .from("tasks")
       .update({ text: editingText, status: editingStatus })
@@ -95,7 +93,14 @@ export default function Other() {
       .single();
 
     if (error) console.error("Error updating task:", error);
-    else setTasks((prev) => prev.map((t, i) => (i === editingIndex ? data : t)));
+    else {
+      // preserve show/fade flags
+      setTasks((prev) =>
+        prev.map((t, i) =>
+          i === editingIndex ? { ...data, show: true, fadingOut: false } : t
+        )
+      );
+    }
 
     setEditingIndex(null);
     setEditingText("");
@@ -108,35 +113,36 @@ export default function Other() {
     setEditingStatus("not started");
   };
 
-    const deleteFromEdit = async () => {
+  const deleteFromEdit = async () => {
+    if (editingIndex === null) return;
+
     const taskId = tasks[editingIndex].id;
 
-    // Close the popup immediately
-    setEditingIndex(null);
-
-    // Trigger fade-out
+    // trigger fade-out
     setTasks((prev) =>
-        prev.map((t, i) => (i === editingIndex ? { ...t, show: false, fadingOut: true } : t))
+      prev.map((t, i) =>
+        i === editingIndex ? { ...t, show: false, fadingOut: true } : t
+      )
     );
 
-    // Remove task after CSS transition
+    // remove after fade
     setTimeout(async () => {
-        const { error } = await supabase.from("tasks").delete().eq("id", taskId);
-        if (error) console.error("Error deleting task:", error);
-        else setTasks((prev) => prev.filter((t) => t.id !== taskId));
-    }, 300); // match CSS fade duration
-    };
+      const { error } = await supabase.from("tasks").delete().eq("id", taskId);
+      if (error) console.error("Error deleting task:", error);
+      else setTasks((prev) => prev.filter((t) => t.id !== taskId));
+    }, 300);
+
+    setEditingIndex(null);
+    setEditingText("");
+    setEditingStatus("not started");
+  };
 
   const getDot = (status) => {
     switch (status) {
-      case "completed":
-        return greenDot;
-      case "in progress":
-        return yellowDot;
-      case "unimportant":
-        return greyDot;
-      default:
-        return redDot;
+      case "completed": return greenDot;
+      case "in progress": return yellowDot;
+      case "unimportant": return greyDot;
+      default: return redDot;
     }
   };
 
@@ -148,7 +154,7 @@ export default function Other() {
         {tasks.map((task, index) => (
           <div
             key={task.id}
-            className={`task ${task.show ? "show" : "fading-in"} ${task.fadingOut ? "fade-out" : ""}`}
+            className={`task ${task.show ? "show" : ""} ${task.fadingOut ? "fade-out" : ""}`}
             onClick={() => openEdit(index)}
           >
             <img src={getDot(task.status)} alt="status" className="assignment-dot" />
@@ -182,39 +188,39 @@ export default function Other() {
         </div>
       )}
 
-            {/* Edit task popup */}
-            {editingIndex !== null && (
-                <div className="popup-overlay other-task">
-                    <div className="other-task-idk-what-to-name-this">
-                        <h2>edit task</h2>
-                        <input
-                            type="text"
-                            value={editingText}
-                            onChange={(e) => setEditingText(e.target.value)}
-                        />
-                        <section className="popup-bottom-half other-popup-for-editing-tasks">
-                            <section className="status-section for-other-tasks">
-                                <h4>status</h4>
-                                <select
-                                    value={editingStatus}
-                                    onChange={(e) => setEditingStatus(e.target.value)}
-                                >
-                                    <option value="unimportant">unimportant</option>
-                                    <option value="not started">not started</option>
-                                    <option value="in progress">in progress</option>
-                                    <option value="completed">complete</option>
-                                </select>
-                            </section>
+      {/* Edit Task Popup */}
+      {editingIndex !== null && (
+        <div className="popup-overlay other-task">
+          <div className="other-task-idk-what-to-name-this">
+            <h2>edit task</h2>
+            <input
+              type="text"
+              value={editingText}
+              onChange={(e) => setEditingText(e.target.value)}
+            />
+            <section className="popup-bottom-half other-popup-for-editing-tasks">
+              <section className="status-section for-other-tasks">
+                <h4>status</h4>
+                <select
+                  value={editingStatus}
+                  onChange={(e) => setEditingStatus(e.target.value)}
+                >
+                  <option value="unimportant">unimportant</option>
+                  <option value="not started">not started</option>
+                  <option value="in progress">in progress</option>
+                  <option value="completed">completed</option>
+                </select>
+              </section>
 
-                            <div className="edit-task-buttons">
-                                <button onClick={saveEdit}>save</button>
-                                <button onClick={cancelEdit}>cancel</button>
-                                <button onClick={deleteFromEdit}>delete</button>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            )}
-        </section>
-    );
+              <div className="edit-task-buttons">
+                <button onClick={saveEdit}>save</button>
+                <button onClick={cancelEdit}>cancel</button>
+                <button onClick={deleteFromEdit}>delete</button>
+              </div>
+            </section>
+          </div>
+        </div>
+      )}
+    </section>
+  );
 }

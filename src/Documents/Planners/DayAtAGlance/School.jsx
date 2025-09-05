@@ -71,7 +71,7 @@ export default function SchoolDisplay() {
       ...c,
       assignments: assignmentsData
         .filter(a => a.class_id === c.id)
-        .map(a => ({ ...a, show: true })) // make existing assignments visible
+        .map(a => ({ ...a, show: false, fadingOut: false })) // hidden initially
     }));
 
     merged = await cleanOverdueCompletedAssignments(merged);
@@ -88,6 +88,19 @@ export default function SchoolDisplay() {
         });
       }, i * 150);
     });
+
+    // Fade-in assignments
+    merged.forEach((cls, classIdx) => {
+      cls.assignments.forEach((a, aIdx) => {
+        setTimeout(() => {
+          setClasses(prev => {
+            const updated = [...prev];
+            updated[classIdx].assignments[aIdx].show = true;
+            return updated;
+          });
+        }, 50 + aIdx * 50);
+      });
+    });
   };
 
   useEffect(() => { fetchData(); }, []);
@@ -99,7 +112,7 @@ export default function SchoolDisplay() {
     if (error) return console.error("Error adding class:", error.message);
 
     setClasses(prev => [...prev, { ...data, assignments: [] }]);
-    setVisibleClasses(prev => [...prev, true]); // immediately visible
+    setVisibleClasses(prev => [...prev, true]);
   };
 
   // Add assignment with fade-in
@@ -113,24 +126,21 @@ export default function SchoolDisplay() {
       .insert([{ class_id: classId, text, raw_due: due, due_date: dueDate, due_in: dueIn, color: "red" }])
       .select()
       .single();
-
     if (error) return console.error("Error adding assignment:", error.message);
 
+    // Add hidden initially
     setClasses(prev => {
       const updated = [...prev];
-      updated[classIndex].assignments = [
-        ...updated[classIndex].assignments,
-        { ...data, show: false } // start hidden
-      ];
+      updated[classIndex].assignments.push({ ...data, show: false, fadingOut: false });
       return updated;
     });
 
+    // Fade in
     setTimeout(() => {
       setClasses(prev => {
         const updated = [...prev];
-        updated[classIndex].assignments = updated[classIndex].assignments.map(a =>
-          a.id === data.id ? { ...a, show: true } : a
-        );
+        const idx = updated[classIndex].assignments.findIndex(a => a.id === data.id);
+        updated[classIndex].assignments[idx].show = true;
         return updated;
       });
     }, 50);
@@ -151,13 +161,13 @@ export default function SchoolDisplay() {
       .eq("id", assignment.id)
       .select()
       .single();
-
     if (error) return console.error("Error updating assignment:", error.message);
 
+    // Preserve show/fade flags
     setClasses(prev => {
       const updated = [...prev];
       const idx = updated[currentClassIndex].assignments.findIndex(a => a.id === assignment.id);
-      updated[currentClassIndex].assignments[idx] = data;
+      updated[currentClassIndex].assignments[idx] = { ...data, show: true, fadingOut: false };
       return updated;
     });
 
@@ -176,7 +186,7 @@ export default function SchoolDisplay() {
     setClasses(prev => {
       const updated = [...prev];
       updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.map(a =>
-        a.id === currentAssignmentId ? { ...a, fadingOut: true } : a
+        a.id === currentAssignmentId ? { ...a, fadingOut: true, show: false } : a
       );
       return updated;
     });
@@ -228,10 +238,7 @@ export default function SchoolDisplay() {
 
       <section className="classes">
         {classes.map((cls, index) => (
-          <section
-            key={cls.id}
-            className={`class ${visibleClasses[index] ? "visible" : ""}`}
-          >
+          <section key={cls.id} className={`class ${visibleClasses[index] ? "visible" : ""}`}>
             <h2
               className="edit-class"
               onClick={() => {
@@ -264,11 +271,9 @@ export default function SchoolDisplay() {
                         <img src={dotColors[a.color || "grey"]} alt="status" className="assignment-dot" />
                         <span className="assignment-text">{a.text}</span>
                       </div>
-                      <span className="assignment-due-right">
-                        {a.due_in} • {a.due_date}
-                      </span>
+                      <span className="assignment-due-right">{a.due_in} • {a.due_date}</span>
                     </div>
-                ))}
+                  ))}
               </section>
             </section>
 
