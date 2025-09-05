@@ -38,13 +38,14 @@ export default function Other() {
     loadTasks();
   }, []);
 
-  const cleanupOldCompleted = async () => {
-    const today = new Date().toISOString().split("T")[0];
+    const cleanupOldCompleted = async () => {
+    const today = new Date().toISOString().split("T")[0]; // e.g. "2025-09-05"
+
     const { error } = await supabase
-      .from("tasks")
-      .delete()
-      .lt("created_at", today)
-      .eq("status", "completed");
+        .from("tasks")
+        .delete()
+        .lt("created_at", today)  // created before today
+        .eq("status", "completed");
 
     if (error) console.error("Error cleaning up old completed tasks:", error);
   };
@@ -71,9 +72,13 @@ export default function Other() {
       }, 50);
     }
 
-    setNewTask("");
-    setShowPopup(false);
-  };
+        setNewTask("");
+        setShowPopup(false);
+    };
+
+    const deleteTask = (index) => {
+        setTasks(tasks.filter((_, i) => i !== index));
+    };
 
   const openEdit = (index) => {
     setEditingIndex(index);
@@ -177,38 +182,39 @@ export default function Other() {
         </div>
       )}
 
-      {/* Edit Task Popup */}
-      {editingIndex !== null && (
-        <div className="popup-overlay other-task">
-          <div className="other-task-idk-what-to-name-this">
-            <h2>edit task</h2>
-            <input
-              type="text"
-              value={editingText}
-              onChange={(e) => setEditingText(e.target.value)}
-            />
-            <section className="popup-bottom-half other-popup-for-editing-tasks">
-              <section className="status-section for-other-tasks">
-                <h4>status</h4>
-                <select
-                  value={editingStatus}
-                  onChange={(e) => setEditingStatus(e.target.value)}
-                >
-                  <option value="unimportant">unimportant</option>
-                  <option value="not started">not started</option>
-                  <option value="in progress">in progress</option>
-                  <option value="completed">complete</option>
-                </select>
-              </section>
-              <div className="edit-task-buttons">
-                <button onClick={saveEdit}>save</button>
-                <button onClick={cancelEdit}>cancel</button>
-                <button onClick={deleteFromEdit}>delete</button>
-              </div>
-            </section>
-          </div>
-        </div>
-      )}
-    </section>
-  );
+            {/* Edit task popup */}
+            {editingIndex !== null && (
+                <div className="popup-overlay other-task">
+                    <div className="other-task-idk-what-to-name-this">
+                        <h2>edit task</h2>
+                        <input
+                            type="text"
+                            value={editingText}
+                            onChange={(e) => setEditingText(e.target.value)}
+                        />
+                        <section className="popup-bottom-half other-popup-for-editing-tasks">
+                            <section className="status-section for-other-tasks">
+                                <h4>status</h4>
+                                <select
+                                    value={editingStatus}
+                                    onChange={(e) => setEditingStatus(e.target.value)}
+                                >
+                                    <option value="unimportant">unimportant</option>
+                                    <option value="not started">not started</option>
+                                    <option value="in progress">in progress</option>
+                                    <option value="completed">complete</option>
+                                </select>
+                            </section>
+
+                            <div className="edit-task-buttons">
+                                <button onClick={saveEdit}>save</button>
+                                <button onClick={cancelEdit}>cancel</button>
+                                <button onClick={deleteFromEdit}>delete</button>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            )}
+        </section>
+    );
 }

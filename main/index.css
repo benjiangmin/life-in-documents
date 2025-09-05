@@ -305,6 +305,9 @@ body {
     font-family: "Coming Soon";
     background-color: #d9e1e3;
 }
+.add-item-button:hover {
+    transform: scale(1.05);
+}
 
 .box-2 {
     background-color: rgb(76, 90, 104);
@@ -552,7 +555,7 @@ body {
     border-radius: 20px;
     width: 400px;
     height: 250px;
-    padding: 0px 25px 0px 25px;
+    padding: 0px 35px 0px 35px;
 }
 .other-task-idk-what-to-name-this > h2 {
     color: #d2d8e2;
