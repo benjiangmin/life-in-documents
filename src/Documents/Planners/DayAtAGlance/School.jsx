@@ -7,11 +7,11 @@ import yellowDot from "../../../../src/images/yellowDot.png";
 
 export default function SchoolDisplay() {
   const [classes, setClasses] = useState([]);
+  const [visibleClasses, setVisibleClasses] = useState([]);
   const [showClassPopup, setShowClassPopup] = useState(false);
   const [showAssignmentPopup, setShowAssignmentPopup] = useState(false);
   const [showEditAssignmentPopup, setShowEditAssignmentPopup] = useState(false);
   const [showEditClassPopup, setShowEditClassPopup] = useState(false);
-  const [visibleClasses, setVisibleClasses] = useState([]);
 
   const [newClassName, setNewClassName] = useState("");
   const [newAssignmentText, setNewAssignmentText] = useState("");
@@ -69,20 +69,17 @@ export default function SchoolDisplay() {
 
     let merged = classesData.map(c => ({
       ...c,
-      assignments: assignmentsData.filter(a => a.class_id === c.id),
+      assignments: assignmentsData
+        .filter(a => a.class_id === c.id)
+        .map(a => ({ ...a, show: true })) // make existing assignments visible
     }));
 
     merged = await cleanOverdueCompletedAssignments(merged);
     setClasses(merged);
-  };
 
-  useEffect(() => { fetchData(); }, []);
-
-  // Animate classes
-  useEffect(() => {
-    setVisibleClasses(classes.map(() => false));
-
-    classes.forEach((_, i) => {
+    // Trigger staggered class fade-in
+    setVisibleClasses(merged.map(() => false));
+    merged.forEach((_, i) => {
       setTimeout(() => {
         setVisibleClasses(prev => {
           const updated = [...prev];
@@ -91,7 +88,9 @@ export default function SchoolDisplay() {
         });
       }, i * 150);
     });
-  }, [classes.length]);
+  };
+
+  useEffect(() => { fetchData(); }, []);
 
   // Add class
   const addClass = async (name) => {
@@ -100,9 +99,10 @@ export default function SchoolDisplay() {
     if (error) return console.error("Error adding class:", error.message);
 
     setClasses(prev => [...prev, { ...data, assignments: [] }]);
+    setVisibleClasses(prev => [...prev, true]); // immediately visible
   };
 
-  // Add assignment
+  // Add assignment with fade-in
   const addAssignment = async (classIndex, text, due) => {
     if (!text.trim() || !due) return;
     const { dueIn, dueDate } = formatDue(due);
@@ -113,13 +113,27 @@ export default function SchoolDisplay() {
       .insert([{ class_id: classId, text, raw_due: due, due_date: dueDate, due_in: dueIn, color: "red" }])
       .select()
       .single();
+
     if (error) return console.error("Error adding assignment:", error.message);
 
     setClasses(prev => {
       const updated = [...prev];
-      updated[classIndex].assignments = [...updated[classIndex].assignments, data];
+      updated[classIndex].assignments = [
+        ...updated[classIndex].assignments,
+        { ...data, show: false } // start hidden
+      ];
       return updated;
     });
+
+    setTimeout(() => {
+      setClasses(prev => {
+        const updated = [...prev];
+        updated[classIndex].assignments = updated[classIndex].assignments.map(a =>
+          a.id === data.id ? { ...a, show: true } : a
+        );
+        return updated;
+      });
+    }, 50);
   };
 
   // Save edited assignment
@@ -137,6 +151,7 @@ export default function SchoolDisplay() {
       .eq("id", assignment.id)
       .select()
       .single();
+
     if (error) return console.error("Error updating assignment:", error.message);
 
     setClasses(prev => {
@@ -153,19 +168,29 @@ export default function SchoolDisplay() {
     setCurrentAssignmentId(null);
   };
 
-  // Delete assignment
+  // Delete assignment with fade-out
   const deleteAssignment = async () => {
     const assignment = classes[currentClassIndex].assignments.find(a => a.id === currentAssignmentId);
     if (!assignment) return;
 
-    const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
-    if (error) return console.error("Error deleting assignment:", error.message);
-
     setClasses(prev => {
       const updated = [...prev];
-      updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.filter(a => a.id !== currentAssignmentId);
+      updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.map(a =>
+        a.id === currentAssignmentId ? { ...a, fadingOut: true } : a
+      );
       return updated;
     });
+
+    setTimeout(async () => {
+      const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
+      if (error) console.error("Error deleting assignment:", error.message);
+
+      setClasses(prev => {
+        const updated = [...prev];
+        updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.filter(a => a.id !== currentAssignmentId);
+        return updated;
+      });
+    }, 300);
 
     setShowEditAssignmentPopup(false);
     setCurrentAssignmentId(null);
@@ -224,8 +249,8 @@ export default function SchoolDisplay() {
                   .sort((a, b) => new Date(a.raw_due) - new Date(b.raw_due))
                   .map((a) => (
                     <div
-                      className={`assignment ${a.color === "green" ? "assignment-complete" : ""}`}
                       key={a.id}
+                      className={`assignment ${a.color === "green" ? "assignment-complete" : ""} ${a.show ? "show" : ""} ${a.fadingOut ? "fade-out" : ""}`}
                       onClick={() => {
                         setCurrentClassIndex(index);
                         setCurrentAssignmentId(a.id);
@@ -236,18 +261,14 @@ export default function SchoolDisplay() {
                       }}
                     >
                       <div className="assignment-left">
-                        <img
-                          src={dotColors[a.color || "grey"]}
-                          alt="status"
-                          className="assignment-dot"
-                        />
+                        <img src={dotColors[a.color || "grey"]} alt="status" className="assignment-dot" />
                         <span className="assignment-text">{a.text}</span>
                       </div>
                       <span className="assignment-due-right">
                         {a.due_in} • {a.due_date}
                       </span>
                     </div>
-                  ))}
+                ))}
               </section>
             </section>
 
