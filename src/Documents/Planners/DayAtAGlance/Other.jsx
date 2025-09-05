@@ -35,12 +35,13 @@ export default function Other() {
     }, []);
 
     const cleanupOldCompleted = async () => {
-    const today = new Date().toISOString().split("T")[0]; // e.g. "2025-09-05"
+    const now = new Date();
+    const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
     const { error } = await supabase
         .from("tasks")
         .delete()
-        .lt("created_at", today)  // created before today
+        .lt("created_at", startOfToday.toISOString()) // delete anything before today
         .eq("status", "completed");
 
     if (error) {
@@ -64,10 +65,6 @@ export default function Other() {
 
         setNewTask("");
         setShowPopup(false);
-    };
-
-    const deleteTask = (index) => {
-        setTasks(tasks.filter((_, i) => i !== index));
     };
 
     const openEdit = (index) => {
@@ -193,7 +190,7 @@ export default function Other() {
                                     <option value="unimportant">unimportant</option>
                                     <option value="not started">not started</option>
                                     <option value="in progress">in progress</option>
-                                    <option value="completed">complete</option>
+                                    <option value="completed">completed</option>
                                 </select>
                             </section>
 
