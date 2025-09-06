@@ -14,6 +14,7 @@ export default function Other() {
   const [editingText, setEditingText] = useState("");
   const [editingStatus, setEditingStatus] = useState("not started");
 
+  // Load tasks and cleanup old completed ones
   useEffect(() => {
     const loadTasks = async () => {
       await cleanupOldCompleted();
@@ -21,15 +22,15 @@ export default function Other() {
       const { data, error } = await supabase
         .from("tasks")
         .select("*")
-        .order("created_at", { ascending: true });
+        .order("id", { ascending: true });
 
       if (error) console.error("Error fetching tasks:", error);
       else {
-        // initialize hidden for fade-in
-        const tasksWithFade = data.map((t) => ({ ...t, show: false, fadingOut: false }));
+        // Initialize tasks invisible
+        const tasksWithFade = data.map((t) => ({ ...t, show: false }));
         setTasks(tasksWithFade);
 
-        // trigger fade-in
+        // Trigger fade-in
         setTimeout(() => {
           setTasks((prev) => prev.map((t) => ({ ...t, show: true })));
         }, 50);
@@ -38,33 +39,34 @@ export default function Other() {
     loadTasks();
   }, []);
 
+  // Delete tasks only if completed_at is before today
   const cleanupOldCompleted = async () => {
-    const today = new Date().toISOString().split("T")[0]; // e.g. "2025-09-05"
+    const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
     const { error } = await supabase
       .from("tasks")
       .delete()
-      .lt("created_at", today)
-      .eq("status", "completed");
+      .lt("completed_at", today) // completed before today
+      .not("completed_at", "is", null);
 
     if (error) console.error("Error cleaning up old completed tasks:", error);
   };
 
+  // Add task
   const addTask = async () => {
     if (!newTask.trim()) return;
 
     const { data, error } = await supabase
       .from("tasks")
-      .insert([{ text: newTask, status: "not started" }])
+      .insert([{ text: newTask, status: "not started", completed_at: null }])
       .select()
       .single();
 
     if (error) console.error("Error adding task:", error);
     else {
-      // add hidden initially
-      setTasks((prev) => [...prev, { ...data, show: false, fadingOut: false }]);
+      setTasks((prev) => [...prev, { ...data, show: false }]);
 
-      // fade-in
+      // Fade in
       setTimeout(() => {
         setTasks((prev) =>
           prev.map((t) => (t.id === data.id ? { ...t, show: true } : t))
@@ -82,22 +84,29 @@ export default function Other() {
     setEditingStatus(tasks[index].status);
   };
 
+  // Save edit with completed_at management
   const saveEdit = async () => {
-    if (editingIndex === null) return;
+    let updateFields = { text: editingText, status: editingStatus };
+
+    if (editingStatus === "completed") {
+      updateFields.completed_at = new Date().toISOString();
+    } else {
+      updateFields.completed_at = null;
+    }
 
     const { data, error } = await supabase
       .from("tasks")
-      .update({ text: editingText, status: editingStatus })
+      .update(updateFields)
       .eq("id", tasks[editingIndex].id)
       .select()
       .single();
 
-    if (error) console.error("Error updating task:", error);
-    else {
-      // preserve show/fade flags
+    if (error) {
+      console.error("Error updating task:", error);
+    } else {
       setTasks((prev) =>
         prev.map((t, i) =>
-          i === editingIndex ? { ...data, show: true, fadingOut: false } : t
+          i === editingIndex ? { ...t, ...data, show: true } : t
         )
       );
     }
@@ -114,35 +123,36 @@ export default function Other() {
   };
 
   const deleteFromEdit = async () => {
-    if (editingIndex === null) return;
-
     const taskId = tasks[editingIndex].id;
 
-    // trigger fade-out
+    // Close the popup immediately
+    setEditingIndex(null);
+
+    // Trigger fade-out
     setTasks((prev) =>
       prev.map((t, i) =>
         i === editingIndex ? { ...t, show: false, fadingOut: true } : t
       )
     );
 
-    // remove after fade
+    // Remove task after CSS transition
     setTimeout(async () => {
       const { error } = await supabase.from("tasks").delete().eq("id", taskId);
       if (error) console.error("Error deleting task:", error);
       else setTasks((prev) => prev.filter((t) => t.id !== taskId));
-    }, 300);
-
-    setEditingIndex(null);
-    setEditingText("");
-    setEditingStatus("not started");
+    }, 300); // match CSS fade duration
   };
 
   const getDot = (status) => {
     switch (status) {
-      case "completed": return greenDot;
-      case "in progress": return yellowDot;
-      case "unimportant": return greyDot;
-      default: return redDot;
+      case "completed":
+        return greenDot;
+      case "in progress":
+        return yellowDot;
+      case "unimportant":
+        return greyDot;
+      default:
+        return redDot;
     }
   };
 
@@ -154,10 +164,16 @@ export default function Other() {
         {tasks.map((task, index) => (
           <div
             key={task.id}
-            className={`task ${task.show ? "show" : ""} ${task.fadingOut ? "fade-out" : ""}`}
+            className={`task ${task.show ? "show" : "fading-in"} ${
+              task.fadingOut ? "fade-out" : ""
+            }`}
             onClick={() => openEdit(index)}
           >
-            <img src={getDot(task.status)} alt="status" className="assignment-dot" />
+            <img
+              src={getDot(task.status)}
+              alt="status"
+              className="assignment-dot"
+            />
             <span className={task.status === "completed" ? "task-completed" : ""}>
               {task.text}
             </span>
