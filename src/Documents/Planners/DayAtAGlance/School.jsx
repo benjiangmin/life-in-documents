@@ -40,6 +40,17 @@ export default function SchoolDisplay() {
     return { dueIn: `due in ${diffDays} day${diffDays !== 1 ? "s" : ""}`, dueDate: formattedDate };
   };
 
+  // Recalculate assignments due info dynamically
+  const updateAssignmentsDueInfo = (classesData) => {
+    return classesData.map(cls => ({
+      ...cls,
+      assignments: cls.assignments.map(a => {
+        const { dueIn, dueDate } = formatDue(a.raw_due);
+        return { ...a, due_in: dueIn, due_date: dueDate };
+      }),
+    }));
+  };
+
   // Cleanup overdue completed assignments
   const cleanOverdueCompletedAssignments = async (classesData) => {
     const updatedClasses = [...classesData];
@@ -71,13 +82,15 @@ export default function SchoolDisplay() {
       ...c,
       assignments: assignmentsData
         .filter(a => a.class_id === c.id)
-        .map(a => ({ ...a, show: false, fadingOut: false })) // hidden initially
+        .map(a => ({ ...a, show: false, fadingOut: false }))
     }));
 
     merged = await cleanOverdueCompletedAssignments(merged);
+    merged = updateAssignmentsDueInfo(merged); // recalc due_in/due_date
+
     setClasses(merged);
 
-    // Trigger staggered class fade-in
+    // Staggered class fade-in
     setVisibleClasses(merged.map(() => false));
     merged.forEach((_, i) => {
       setTimeout(() => {
@@ -115,7 +128,7 @@ export default function SchoolDisplay() {
     setVisibleClasses(prev => [...prev, true]);
   };
 
-  // Add assignment with fade-in
+  // Add assignment
   const addAssignment = async (classIndex, text, due) => {
     if (!text.trim() || !due) return;
     const { dueIn, dueDate } = formatDue(due);
@@ -128,14 +141,12 @@ export default function SchoolDisplay() {
       .single();
     if (error) return console.error("Error adding assignment:", error.message);
 
-    // Add hidden initially
     setClasses(prev => {
       const updated = [...prev];
       updated[classIndex].assignments.push({ ...data, show: false, fadingOut: false });
       return updated;
     });
 
-    // Fade in
     setTimeout(() => {
       setClasses(prev => {
         const updated = [...prev];
@@ -163,7 +174,6 @@ export default function SchoolDisplay() {
       .single();
     if (error) return console.error("Error updating assignment:", error.message);
 
-    // Preserve show/fade flags
     setClasses(prev => {
       const updated = [...prev];
       const idx = updated[currentClassIndex].assignments.findIndex(a => a.id === assignment.id);
@@ -178,7 +188,7 @@ export default function SchoolDisplay() {
     setCurrentAssignmentId(null);
   };
 
-  // Delete assignment with fade-out
+  // Delete assignment
   const deleteAssignment = async () => {
     const assignment = classes[currentClassIndex].assignments.find(a => a.id === currentAssignmentId);
     if (!assignment) return;
