@@ -46,7 +46,7 @@ export default function Home() {
                 }}
                 >
                 <section className="welcome-text">
-                    <h1>welcome back, banjamink</h1>
+                    <h1>welcome back, benjamin</h1>
                 </section>
 
                 <div className="searchbar">
