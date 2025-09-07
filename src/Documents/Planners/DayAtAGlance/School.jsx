@@ -90,6 +90,8 @@ export default function SchoolDisplay() {
 
     setClasses(merged);
 
+    const startupDelay = 600; // 0.6 seconds
+
     // Staggered class fade-in
     setVisibleClasses(merged.map(() => false));
     merged.forEach((_, i) => {
@@ -99,7 +101,7 @@ export default function SchoolDisplay() {
           updated[i] = true;
           return updated;
         });
-      }, i * 150);
+      }, startupDelay + i * 150);
     });
 
     // Fade-in assignments
@@ -111,7 +113,7 @@ export default function SchoolDisplay() {
             updated[classIdx].assignments[aIdx].show = true;
             return updated;
           });
-        }, 50 + aIdx * 50);
+        }, startupDelay + 50 + aIdx * 50);
       });
     });
   };
