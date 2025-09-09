@@ -85,8 +85,8 @@ export default function SchoolDisplay() {
         .map(a => ({ ...a, show: false, fadingOut: false }))
     }));
 
-    merged = await cleanOverdueCompletedAssignments(merged);
-    merged = updateAssignmentsDueInfo(merged); // recalc due_in/due_date
+  merged = updateAssignmentsDueInfo(merged);
+  merged = await cleanOverdueCompletedAssignments(merged);
 
     setClasses(merged);
 
