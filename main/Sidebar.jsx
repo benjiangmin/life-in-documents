@@ -1,6 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import homeImage from "../src/images/home.png"
 import backImage from "../src/images/backButton.webp"
+import plusSign from "../src/images/plusSign.png"
 
 export default function Sidebar({ onOpenBacklog }) {
     const navigate = useNavigate();
@@ -20,8 +21,8 @@ export default function Sidebar({ onOpenBacklog }) {
             </button>
 
             {onOpenBacklog && (
-                <button className="backlog-button" onClick={onOpenBacklog}>
-                    Backlog
+                <button className="plus-button" onClick={onOpenBacklog}>
+                    <img className="plus-icon" src={plusSign} />
                 </button>
             )}
         </section>
