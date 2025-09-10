@@ -1,7 +1,11 @@
 import OpenAI from "openai";
+import dotenv from "dotenv";
+
+// Load .env file
+dotenv.config();
 
 const openai = new OpenAI({
-  apiKey: "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"
+  apiKey: process.env.OPENAI_API_KEY, // <- use your .env variable
 });
 
 export async function getClassEmbeddings(classes) {
