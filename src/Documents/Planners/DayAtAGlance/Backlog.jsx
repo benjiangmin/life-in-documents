@@ -31,43 +31,36 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
   // ----------------------------
   // Fetch assignments from Canvas API
   // ----------------------------
-  const fetchAssignments = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch("http://localhost:4000/api/canvas/assignments");
-      const data = await response.json();
+const fetchAssignments = async () => {
+  setLoading(true);
+  try {
+    const response = await fetch("http://localhost:4000/api/canvas/assignments");
+    const data = await response.json();
 
-      // Map assignments with AI-matched classes
-      const editableAssignments = await Promise.all(
-        data.map(async (a) => {
-          // Convert Canvas UTC date to local YYYY-MM-DD
-          let dateOnly = "";
-          if (a.due) {
-            const dueDate = new Date(a.due);
-            const year = dueDate.getFullYear();
-            const month = String(dueDate.getMonth() + 1).padStart(2, "0");
-            const day = String(dueDate.getDate()).padStart(2, "0");
-            dateOnly = `${year}-${month}-${day}`;
-          }
+    const editableAssignments = await Promise.all(
+      data.map(async (a) => {
+        // Use UTC date from Canvas directly (first 10 chars: YYYY-MM-DD)
+        const dateOnly = a.due ? a.due.slice(0, 10) : "";
 
-          const bestMatch = await getBestMatchingClass(a.course_name, classes);
+        const bestMatch = await getBestMatchingClass(a.course_name, classes);
 
-          return {
-            ...a,
-            editableCourse: bestMatch,
-            editableName: a.assignment_name,
-            editableDue: dateOnly,
-          };
-        })
-      );
+        return {
+          ...a,
+          editableCourse: bestMatch,
+          editableName: a.assignment_name,
+          editableDue: dateOnly,
+        };
+      })
+    );
 
-      setAssignments(editableAssignments);
-    } catch (error) {
-      console.error("Error fetching assignments:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    setAssignments(editableAssignments);
+  } catch (error) {
+    console.error("Error fetching assignments:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
 
   useEffect(() => {
