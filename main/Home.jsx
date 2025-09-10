@@ -73,7 +73,6 @@ export default function Home() {
                 </section>
 
             <section className="main-display-section">
-                <h3>browse through full list of documents below:</h3>
                 <section className="button-containers">
                     {Pages.map((page, index) => (
                         <Link
