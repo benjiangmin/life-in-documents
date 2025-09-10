@@ -2,15 +2,20 @@ import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
 import OpenAI from "openai";
+import dotenv from "dotenv";
+import fs from "fs/promises";
+
+dotenv.config();
 
 const app = express();
 const PORT = 4000;
+const REMOVED_FILE = "./removedBacklog.json";
 
 // ----------------------------
 // OpenAI client
 // ----------------------------
 const openai = new OpenAI({
-  apiKey: "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"
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 // ----------------------------
@@ -20,11 +25,36 @@ app.use(cors());
 app.use(express.json()); // parse JSON bodies
 
 // ----------------------------
+// Helper functions for removed backlog
+// ----------------------------
+async function readRemovedIds() {
+  try {
+    const raw = await fs.readFile(REMOVED_FILE, "utf8");
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr.map(String) : [];
+  } catch (err) {
+    if (err.code === "ENOENT") return [];
+    console.error("Error reading removed backlog file:", err);
+    return [];
+  }
+}
+
+async function addRemovedId(id) {
+  const strId = String(id);
+  const arr = await readRemovedIds();
+  if (!arr.includes(strId)) {
+    arr.push(strId);
+    await fs.writeFile(REMOVED_FILE, JSON.stringify(arr, null, 2), "utf8");
+  }
+}
+
+// ----------------------------
 // Canvas assignments endpoint
 // ----------------------------
 app.get("/api/canvas/assignments", async (req, res) => {
   try {
-    const token = "8396~G3myTPBum986vzuRAkWDaJhuPxTftYrLEhYUzDtahARneMLYaffZ2kWYPNCx3E27";
+    const token = process.env.CANVAS_API_TOKEN;
+    const removedIds = await readRemovedIds();
 
     // Fetch all active courses
     const coursesRes = await fetch(
@@ -41,7 +71,6 @@ app.get("/api/canvas/assignments", async (req, res) => {
     const upcomingAssignments = [];
     const now = new Date();
 
-    // Loop through courses
     for (const course of courses) {
       if (!course?.id || !course?.name) continue;
 
@@ -57,10 +86,13 @@ app.get("/api/canvas/assignments", async (req, res) => {
       if (!Array.isArray(assignments)) continue;
 
       for (const assignment of assignments) {
+        if (!assignment?.id) continue;
         if (assignment?.due_at && new Date(assignment.due_at) > now) {
+          if (removedIds.includes(String(assignment.id))) continue; // skip removed
           upcomingAssignments.push({
             course_id: courseId,
             course_name: courseName,
+            assignment_id: assignment.id,        // include unique id
             assignment_name: assignment.name,
             due: assignment.due_at,
           });
@@ -109,6 +141,22 @@ app.post("/api/match-class", async (req, res) => {
     res.json({ bestMatch });
   } catch (err) {
     console.error("Error in AI class matching:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ----------------------------
+// Remove assignment from backlog
+// ----------------------------
+app.post("/api/backlog/remove", async (req, res) => {
+  try {
+    const { assignment_id } = req.body;
+    if (!assignment_id) return res.status(400).json({ error: "Missing assignment_id" });
+
+    await addRemovedId(assignment_id);
+    res.json({ ok: true });
+  } catch (err) {
+    console.error("Error in /api/backlog/remove:", err);
     res.status(500).json({ error: err.message });
   }
 });

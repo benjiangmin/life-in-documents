@@ -37,7 +37,7 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
       const response = await fetch("http://localhost:4000/api/canvas/assignments");
       const data = await response.json();
 
-      // Map assignments with AI-matched classes
+      // Filter out removed backlog assignments (server handles this)
       const editableAssignments = await Promise.all(
         data.map(async (a) => {
           const dateOnly = a.due.split("T")[0];
@@ -45,6 +45,7 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
 
           return {
             ...a,
+            assignment_id: String(a.assignment_id), // keep consistent with server
             editableCourse: bestMatch,
             editableName: a.assignment_name,
             editableDue: dateOnly,
@@ -74,9 +75,9 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
   };
 
   // ----------------------------
-  // Add assignment using dropdown as definitive source
+  // Add assignment and remove from backlog
   // ----------------------------
-  const handleAddAssignment = (index) => {
+  const handleAddAssignment = async (index) => {
     const item = assignments[index];
     const selectedClassName = item.editableCourse;
 
@@ -91,7 +92,23 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
       return;
     }
 
+    // Step 1: Add assignment to app
     addAssignment(classIndex, item.editableName, item.editableDue);
+
+    // Step 2: Remove from backlog on server
+    try {
+      await fetch("http://localhost:4000/api/backlog/remove", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ assignment_id: item.assignment_id }),
+      });
+      console.log(`Removed ${item.editableName} from backlog`);
+    } catch (err) {
+      console.error("Failed to remove assignment from backlog:", err);
+    }
+
+    // Step 3: Update local backlog state
+    setAssignments((prev) => prev.filter((_, i) => i !== index));
   };
 
   // ----------------------------
@@ -99,26 +116,27 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
   // ----------------------------
   return (
     <div className="backlog-modal show">
-      <button className="close-button" onClick={onClose}>
-        Close
-      </button>
-      <h2>Backlog</h2>
-
-      <button onClick={fetchAssignments} disabled={loading}>
-        {loading ? "Refreshing..." : "Refresh Assignments"}
-      </button>
+      <section className="backlog-buttons">
+        <button onClick={onClose}>
+          close
+        </button>
+        <button onClick={fetchAssignments} disabled={loading}>
+          {loading ? "refreshing..." : "refresh"}
+        </button>
+      </section>
+      <h2 className="backlog-h2">new assignments:</h2>
 
       {loading ? (
-        <p>Loading assignments...</p>
+        <p>loading assignments...</p>
       ) : assignments.length === 0 ? (
-        <p>No upcoming assignments.</p>
+        <p>no upcoming assignments.</p>
       ) : (
-        <ul>
+        <section className="backlogged-assignments-container">
           {assignments.map((item, index) => (
-            <li key={index} className="assignment-card">
+            <li key={item.assignment_id} className="assignment-card">
               <label>
-                Class:{" "}
                 <select
+                  className="select-backlog-class"
                   value={item.editableCourse}
                   onChange={(e) => handleChange(index, "editableCourse", e.target.value)}
                 >
@@ -131,8 +149,8 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
               </label>
 
               <label>
-                Name:{" "}
                 <input
+                  className="input-backlog-class"
                   type="text"
                   value={item.editableName}
                   onChange={(e) => handleChange(index, "editableName", e.target.value)}
@@ -140,20 +158,20 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
               </label>
 
               <label>
-                Due:{" "}
                 <input
+                  className="date-backlog-class"
                   type="date"
                   value={item.editableDue}
                   onChange={(e) => handleChange(index, "editableDue", e.target.value)}
                 />
               </label>
 
-              <button className="add-assignment-button" onClick={() => handleAddAssignment(index)}>
+              <button className="button-backlog-class" onClick={() => handleAddAssignment(index)}>
                 +
               </button>
             </li>
           ))}
-        </ul>
+        </section>
       )}
     </div>
   );
