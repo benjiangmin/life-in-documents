@@ -76,7 +76,7 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
   // ----------------------------
   // Add assignment using dropdown as definitive source
   // ----------------------------
-  const handleAddAssignment = (index) => {
+  const handleAddAssignment = async (index) => {
     const item = assignments[index];
     const selectedClassName = item.editableCourse;
 
@@ -91,8 +91,25 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
       return;
     }
 
+    // Step 1: Add assignment to your app
     addAssignment(classIndex, item.editableName, item.editableDue);
+
+    // Step 2: Tell the server this assignment is removed
+    try {
+      await fetch("http://localhost:4000/api/backlog/remove", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ assignment_id: item.assignment_id }),
+      });
+      console.log(`Removed ${item.assignment_name} from backlog`);
+    } catch (err) {
+      console.error("Failed to remove assignment from backlog:", err);
+    }
+
+    // Step 3: Remove from local UI immediately
+    setAssignments((prev) => prev.filter((_, i) => i !== index));
   };
+
 
   // ----------------------------
   // Render
