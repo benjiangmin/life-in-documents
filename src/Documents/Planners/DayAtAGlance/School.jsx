@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../DayAtAGlance/supabaseClient.js"; 
+import { supabase } from "../DayAtAGlance/supabaseClient.js";
 import greenDot from "../../../../src/images/greenDot.png";
 import redDot from "../../../../src/images/redDot.png";
 import greyDot from "../../../../src/images/greyDot.png";
 import yellowDot from "../../../../src/images/yellowDot.png";
 
-export default function SchoolDisplay() {
-  const [classes, setClasses] = useState([]);
+export default function School({ classes, setClasses, addAssignment }) {
   const [visibleClasses, setVisibleClasses] = useState([]);
   const [showClassPopup, setShowClassPopup] = useState(false);
   const [showAssignmentPopup, setShowAssignmentPopup] = useState(false);
-  const [showEditAssignmentPopup, setShowEditAssignmentPopup] = useState(false);
   const [showEditClassPopup, setShowEditClassPopup] = useState(false);
+  const [showEditAssignmentPopup, setShowEditAssignmentPopup] = useState(false);
 
   const [newClassName, setNewClassName] = useState("");
   const [newAssignmentText, setNewAssignmentText] = useState("");
@@ -20,14 +19,16 @@ export default function SchoolDisplay() {
   const [currentClassIndex, setCurrentClassIndex] = useState(null);
   const [currentAssignmentId, setCurrentAssignmentId] = useState(null);
 
+  const [editClassName, setEditClassName] = useState("");
   const [editAssignmentText, setEditAssignmentText] = useState("");
   const [editAssignmentDue, setEditAssignmentDue] = useState("");
   const [editAssignmentColor, setEditAssignmentColor] = useState("grey");
-  const [editClassName, setEditClassName] = useState("");
 
   const dotColors = { green: greenDot, red: redDot, grey: greyDot, yellow: yellowDot };
 
-  // Format due date
+  // -------------------------
+  // Utility: Format due dates
+  // -------------------------
   const formatDue = (dueDate) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -35,150 +36,139 @@ export default function SchoolDisplay() {
     const due = new Date(year, month - 1, day);
     const diffDays = Math.ceil((due - today) / (1000 * 60 * 60 * 24));
     const formattedDate = due.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
     if (diffDays < 0) return { dueIn: "overdue", dueDate: formattedDate };
     if (diffDays === 0) return { dueIn: "due today", dueDate: formattedDate };
     return { dueIn: `due in ${diffDays} day${diffDays !== 1 ? "s" : ""}`, dueDate: formattedDate };
   };
 
-  // Recalculate assignments due info dynamically
-  const updateAssignmentsDueInfo = (classesData) => {
-    return classesData.map(cls => ({
-      ...cls,
-      assignments: cls.assignments.map(a => {
-        const { dueIn, dueDate } = formatDue(a.raw_due);
-        return { ...a, due_in: dueIn, due_date: dueDate };
-      }),
-    }));
-  };
+  // -------------------------
+  // Fetch classes + assignments
+  // -------------------------
+  const fetchData = async () => {
+    try {
+      const { data: classesData, error: classErr } = await supabase.from("classes").select("*");
+      if (classErr) throw classErr;
 
-  // Cleanup overdue completed assignments
-  const cleanOverdueCompletedAssignments = async (classesData) => {
-    const updatedClasses = [...classesData];
+      const { data: assignmentsData, error: assignErr } = await supabase.from("assignments").select("*");
+      if (assignErr) throw assignErr;
 
-    for (let i = 0; i < updatedClasses.length; i++) {
-      const classItem = updatedClasses[i];
-      const toDelete = classItem.assignments.filter(a => a.color === "green" && a.due_in === "overdue");
+      let merged = classesData.map((c) => ({
+        ...c,
+        assignments: assignmentsData
+          .filter((a) => a.class_id === c.id)
+          .map((a) => ({ ...a, show: false, fadingOut: false }))
+      }));
 
-      for (let assignment of toDelete) {
-        const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
-        if (error) console.error("Error deleting overdue completed assignment:", error.message);
+      // Compute due info dynamically
+      merged = merged.map((cls) => ({
+        ...cls,
+        assignments: cls.assignments.map((a) => {
+          const { dueIn, dueDate } = formatDue(a.raw_due);
+          return { ...a, due_in: dueIn, due_date: dueDate };
+        })
+      }));
+
+      // Delete overdue completed assignments
+      for (let i = 0; i < merged.length; i++) {
+        const cls = merged[i];
+        const toDelete = cls.assignments.filter((a) => a.color === "green" && a.due_in === "overdue");
+        for (let a of toDelete) {
+          const { error } = await supabase.from("assignments").delete().eq("id", a.id);
+          if (error) console.error("Error deleting overdue completed assignment:", error.message);
+        }
+        merged[i].assignments = cls.assignments.filter((a) => !(a.color === "green" && a.due_in === "overdue"));
       }
 
-      updatedClasses[i].assignments = classItem.assignments.filter(a => !(a.color === "green" && a.due_in === "overdue"));
-    }
+      setClasses(merged);
 
-    return updatedClasses;
-  };
-
-  // Fetch classes + assignments
-  const fetchData = async () => {
-    const { data: classesData, error: classErr } = await supabase.from("classes").select("*");
-    if (classErr) return console.error("Error fetching classes:", classErr.message);
-
-    const { data: assignmentsData, error: assignErr } = await supabase.from("assignments").select("*");
-    if (assignErr) return console.error("Error fetching assignments:", assignErr.message);
-
-    let merged = classesData.map(c => ({
-      ...c,
-      assignments: assignmentsData
-        .filter(a => a.class_id === c.id)
-        .map(a => ({ ...a, show: false, fadingOut: false }))
-    }));
-
-  merged = updateAssignmentsDueInfo(merged);
-  merged = await cleanOverdueCompletedAssignments(merged);
-
-    setClasses(merged);
-
-    const startupDelay = 600; // 0.6 seconds
-
-    // Staggered class fade-in
-    setVisibleClasses(merged.map(() => false));
-    merged.forEach((_, i) => {
-      setTimeout(() => {
-        setVisibleClasses(prev => {
-          const updated = [...prev];
-          updated[i] = true;
-          return updated;
-        });
-      }, startupDelay + i * 150);
-    });
-
-    // Fade-in assignments
-    merged.forEach((cls, classIdx) => {
-      cls.assignments.forEach((a, aIdx) => {
+      // Staggered fade-in
+      setVisibleClasses(merged.map(() => false));
+      merged.forEach((_, i) => {
         setTimeout(() => {
-          setClasses(prev => {
+          setVisibleClasses((prev) => {
             const updated = [...prev];
-            updated[classIdx].assignments[aIdx].show = true;
+            updated[i] = true;
             return updated;
           });
-        }, startupDelay + 50 + aIdx * 50);
+        }, 600 + i * 150);
       });
-    });
+
+      // Fade-in assignments
+      merged.forEach((cls, clsIdx) => {
+        cls.assignments.forEach((a, aIdx) => {
+          setTimeout(() => {
+            setClasses((prev) => {
+              const updated = [...prev];
+              updated[clsIdx].assignments[aIdx].show = true;
+              return updated;
+            });
+          }, 650 + aIdx * 50);
+        });
+      });
+
+    } catch (err) {
+      console.error("Error fetching school data:", err.message);
+    }
   };
 
   useEffect(() => { fetchData(); }, []);
 
-  // Add class
+  // -------------------------
+  // Class Operations
+  // -------------------------
   const addClass = async (name) => {
     if (!name.trim()) return;
     const { data, error } = await supabase.from("classes").insert([{ name }]).select().single();
     if (error) return console.error("Error adding class:", error.message);
 
-    setClasses(prev => [...prev, { ...data, assignments: [] }]);
-    setVisibleClasses(prev => [...prev, true]);
+    setClasses((prev) => [...prev, { ...data, assignments: [] }]);
+    setVisibleClasses((prev) => [...prev, true]);
   };
 
-  // Add assignment
-  const addAssignment = async (classIndex, text, due) => {
-    if (!text.trim() || !due) return;
-    const { dueIn, dueDate } = formatDue(due);
-    const classId = classes[classIndex].id;
+  const saveClassEdit = async () => {
+    const cls = classes[currentClassIndex];
+    const { data, error } = await supabase.from("classes").update({ name: editClassName }).eq("id", cls.id).select().single();
+    if (error) return console.error("Error updating class:", error.message);
 
-    const { data, error } = await supabase
-      .from("assignments")
-      .insert([{ class_id: classId, text, raw_due: due, due_date: dueDate, due_in: dueIn, color: "red" }])
-      .select()
-      .single();
-    if (error) return console.error("Error adding assignment:", error.message);
-
-    setClasses(prev => {
+    setClasses((prev) => {
       const updated = [...prev];
-      updated[classIndex].assignments.push({ ...data, show: false, fadingOut: false });
+      updated[currentClassIndex].name = data.name;
       return updated;
     });
 
-    setTimeout(() => {
-      setClasses(prev => {
-        const updated = [...prev];
-        const idx = updated[classIndex].assignments.findIndex(a => a.id === data.id);
-        updated[classIndex].assignments[idx].show = true;
-        return updated;
-      });
-    }, 50);
+    setShowEditClassPopup(false);
   };
 
-  // Save edited assignment
+  const deleteClass = async () => {
+    const cls = classes[currentClassIndex];
+    const { error } = await supabase.from("classes").delete().eq("id", cls.id);
+    if (error) return console.error("Error deleting class:", error.message);
+
+    setClasses((prev) => prev.filter((_, i) => i !== currentClassIndex));
+    setShowEditClassPopup(false);
+  };
+
+  // -------------------------
+  // Assignment Operations
+  // -------------------------
   const saveEditedAssignment = async () => {
     if (!editAssignmentText.trim() || !editAssignmentDue) return;
-
-    const assignment = classes[currentClassIndex].assignments.find(a => a.id === currentAssignmentId);
+    const assignment = classes[currentClassIndex].assignments.find((a) => a.id === currentAssignmentId);
     if (!assignment) return;
 
     const { dueIn, dueDate } = formatDue(editAssignmentDue);
-
     const { data, error } = await supabase
       .from("assignments")
-      .update({ text: editAssignmentText, raw_due: editAssignmentDue, due_date: dueDate, due_in: dueIn, color: editAssignmentColor })
+      .update({ text: editAssignmentText, raw_due: editAssignmentDue, due_in: dueIn, due_date: dueDate, color: editAssignmentColor })
       .eq("id", assignment.id)
       .select()
       .single();
     if (error) return console.error("Error updating assignment:", error.message);
 
-    setClasses(prev => {
+    setClasses((prev) => {
       const updated = [...prev];
-      const idx = updated[currentClassIndex].assignments.findIndex(a => a.id === assignment.id);
+      const idx = updated[currentClassIndex].assignments.findIndex((a) => a.id === assignment.id);
       updated[currentClassIndex].assignments[idx] = { ...data, show: true, fadingOut: false };
       return updated;
     });
@@ -190,14 +180,13 @@ export default function SchoolDisplay() {
     setCurrentAssignmentId(null);
   };
 
-  // Delete assignment
   const deleteAssignment = async () => {
-    const assignment = classes[currentClassIndex].assignments.find(a => a.id === currentAssignmentId);
+    const assignment = classes[currentClassIndex].assignments.find((a) => a.id === currentAssignmentId);
     if (!assignment) return;
 
-    setClasses(prev => {
+    setClasses((prev) => {
       const updated = [...prev];
-      updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.map(a =>
+      updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.map((a) =>
         a.id === currentAssignmentId ? { ...a, fadingOut: true, show: false } : a
       );
       return updated;
@@ -207,9 +196,9 @@ export default function SchoolDisplay() {
       const { error } = await supabase.from("assignments").delete().eq("id", assignment.id);
       if (error) console.error("Error deleting assignment:", error.message);
 
-      setClasses(prev => {
+      setClasses((prev) => {
         const updated = [...prev];
-        updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.filter(a => a.id !== currentAssignmentId);
+        updated[currentClassIndex].assignments = updated[currentClassIndex].assignments.filter((a) => a.id !== currentAssignmentId);
         return updated;
       });
     }, 300);
@@ -218,47 +207,21 @@ export default function SchoolDisplay() {
     setCurrentAssignmentId(null);
   };
 
-  // Save class edit
-  const saveClassEdit = async () => {
-    const classObj = classes[currentClassIndex];
-    const { data, error } = await supabase.from("classes").update({ name: editClassName }).eq("id", classObj.id).select().single();
-    if (error) return console.error("Error updating class:", error.message);
-
-    setClasses(prev => {
-      const updated = [...prev];
-      updated[currentClassIndex].name = data.name;
-      return updated;
-    });
-    setShowEditClassPopup(false);
-  };
-
-  // Delete class
-  const deleteClass = async () => {
-    const classObj = classes[currentClassIndex];
-    const { error } = await supabase.from("classes").delete().eq("id", classObj.id);
-    if (error) return console.error("Error deleting class:", error.message);
-
-    setClasses(prev => prev.filter((_, i) => i !== currentClassIndex));
-    setShowEditClassPopup(false);
-  };
-
+  // -------------------------
+  // Render
+  // -------------------------
   return (
     <section className="school-display">
+      {/* Header */}
       <section className="school-header">
         <button onClick={() => setShowClassPopup(true)}>school</button>
       </section>
 
+      {/* Classes */}
       <section className="classes">
         {classes.map((cls, index) => (
           <section key={cls.id} className={`class ${visibleClasses[index] ? "visible" : ""}`}>
-            <h2
-              className="edit-class"
-              onClick={() => {
-                setCurrentClassIndex(index);
-                setEditClassName(cls.name);
-                setShowEditClassPopup(true);
-              }}
-            >
+            <h2 className="edit-class" onClick={() => { setCurrentClassIndex(index); setEditClassName(cls.name); setShowEditClassPopup(true); }}>
               {cls.name}
             </h2>
 
@@ -289,20 +252,16 @@ export default function SchoolDisplay() {
               </section>
             </section>
 
-            <button
-              className="add-assignment-button"
-              onClick={() => {
-                setCurrentClassIndex(index);
-                setShowAssignmentPopup(true);
-              }}
-            >
+            <button className="add-assignment-button" onClick={() => { setCurrentClassIndex(index); setShowAssignmentPopup(true); }}>
               add assignment
             </button>
           </section>
         ))}
       </section>
 
-      {/* Popups */}
+      {/* ---------------- Popups ---------------- */}
+
+      {/* New Class */}
       {showClassPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
@@ -316,6 +275,7 @@ export default function SchoolDisplay() {
         </div>
       )}
 
+      {/* New Assignment */}
       {showAssignmentPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
@@ -325,13 +285,23 @@ export default function SchoolDisplay() {
             <h4>due date</h4>
             <input type="date" value={newAssignmentDue} onChange={(e) => setNewAssignmentDue(e.target.value)} />
             <div className="popup-buttons-school">
-              <button onClick={() => { addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue); setNewAssignmentText(""); setNewAssignmentDue(""); setShowAssignmentPopup(false); }}>add</button>
+              <button
+                onClick={() => {
+                  addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue);
+                  setNewAssignmentText("");
+                  setNewAssignmentDue("");
+                  setShowAssignmentPopup(false);
+                }}
+              >
+                add
+              </button>
               <button onClick={() => setShowAssignmentPopup(false)}>cancel</button>
             </div>
           </div>
         </div>
       )}
 
+      {/* Edit Assignment */}
       {showEditAssignmentPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
@@ -360,6 +330,7 @@ export default function SchoolDisplay() {
         </div>
       )}
 
+      {/* Edit Class */}
       {showEditClassPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
@@ -376,3 +347,4 @@ export default function SchoolDisplay() {
     </section>
   );
 }
+

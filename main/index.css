@@ -1307,5 +1307,32 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
+.backlog-modal {
+    position: fixed;           /* stays on top of other content */
+    top: 0;
+    left: 80px;                /* adjust based on your sidebar width */
+    width: 1000px;              /* width of the backlog panel */
+    height: 100vh;             /* full height */
+    background-color: #fff;    /* or whatever background you want */
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;             /* make sure it’s above School/Other */
+    transform: translateX(-100%); /* start hidden to the left */
+    transition: transform 0.3s ease;
+}
 
+/* When showing the backlog */
+.backlog-modal.show {
+    transform: translateX(0);   /* slide into view */
+}
 
+/* Close button styling */
+.close-button {
+    display: block;
+    margin-bottom: 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
