@@ -40,7 +40,16 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
       // Map assignments with AI-matched classes
       const editableAssignments = await Promise.all(
         data.map(async (a) => {
-          const dateOnly = a.due.split("T")[0];
+          // Convert Canvas UTC date to local YYYY-MM-DD
+          let dateOnly = "";
+          if (a.due) {
+            const dueDate = new Date(a.due);
+            const year = dueDate.getFullYear();
+            const month = String(dueDate.getMonth() + 1).padStart(2, "0");
+            const day = String(dueDate.getDate()).padStart(2, "0");
+            dateOnly = `${year}-${month}-${day}`;
+          }
+
           const bestMatch = await getBestMatchingClass(a.course_name, classes);
 
           return {
@@ -59,6 +68,7 @@ export default function Backlog({ onClose, classes = [], addAssignment }) {
       setLoading(false);
     }
   };
+
 
   useEffect(() => {
     fetchAssignments();
