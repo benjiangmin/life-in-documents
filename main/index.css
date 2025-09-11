@@ -229,6 +229,7 @@ body {
     display: flex;
     max-width: 100%;
     overflow-x: hidden;
+    background-color: rgb(88, 83, 78);
 }
 .column-1 {
     display: flex;
@@ -243,7 +244,7 @@ body {
     height: 100vh;
 }
 .box-1 {
-    background-color: rgb(50, 82, 100);
+    background-color: #2b2a29;
     height: 40%;
     border-radius: 0px 0px 30px 30px;
     margin: 0px 15px 15px 30px;
@@ -276,7 +277,7 @@ body {
     font-size: 4rem;
     margin-bottom: 0px;
     margin-top: 0px;
-    color: #d9e1e3;
+    color: #e0c4a1;
 ;
 }
 .item-name-input {
@@ -285,7 +286,7 @@ body {
     width: 50%;
     padding: 0px 20px;
     font-family: "Coming Soon";
-    background-color: #d9e1e3;
+    background-color: #e0d3c8;
 }
 .select-type-form {
     border-radius: 5px;
@@ -293,7 +294,7 @@ body {
     width: 30%;
     font-family: "Coming Soon";
     padding: 0px 10px;
-    background-color: #d9e1e3;
+    background-color: #e0d3c8;
 
 }
 .price-input-form {
@@ -302,13 +303,13 @@ body {
     width: 10%;
     font-family: "Coming Soon";
     padding: 0 10px;
-    background-color: #d9e1e3;
+    background-color: #e0d3c8;
 }
 .price-input-form::-webkit-outer-spin-button,
 .price-input-form::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-      background-color: #d9e1e3;
+    background-color: #e0d3c8;
 
 }
 
@@ -317,14 +318,14 @@ body {
     border-width: 0px;
     width: 10%;
     font-family: "Coming Soon";
-    background-color: #d9e1e3;
+    background-color: #e0d3c8;
 }
 .add-item-button:hover {
     transform: scale(1.05);
 }
 
 .box-2 {
-    background-color: rgb(76, 90, 104);
+    background-color: #333231;
     height: 60%;
     border-radius: 30px 30px 0px 0px;
     margin: 15px 15px 0px 30px;
@@ -340,7 +341,7 @@ body {
   opacity: 1;
 }
 .box-3 {
-    background-color: rgb(76, 84, 110);
+    background-color: #c0ab96;
     height: 30%;
     border-radius: 30px 0px 0px 30px;
     margin: 30px 0px 15px 15px;
@@ -356,7 +357,7 @@ body {
   opacity: 1;
 }
 .box-4 {
-    background-color: rgb(73, 96, 108);
+    background-color: #b8a695;
     height: 70vh;
     border-radius: 30px 0px 0px 30px;
     margin: 15px 0px 30px 15px;
@@ -392,12 +393,12 @@ body {
     font-size: 4rem;
     margin-bottom: 0px;
     margin-top: 0px;
-    color: #d9e1e3;
+    color: #e0c4a1;
     position: absolute;
     left: 75px;
 }
 .item-button {
-    background-color: #d9e1e3;
+    background-color: #aa9d93;
     border-radius: 10px 0px 0px 10px;
     border-width: 0px;
     font-size: 1rem;
@@ -425,7 +426,7 @@ body {
 .currently-viewing-text {
     font-family: "Coming Soon";
     font-size: 1.5rem;
-    color: #d9e1e3;
+    color: #e0d3c8;
     margin: 70px 0px 0px 0px;
 }
 .display-date {
@@ -456,7 +457,7 @@ body {
     font-size: 4rem;
     margin-bottom: 35px;
     margin-top: 0px;
-    color: #d9e1e3;
+    color: #e0c4a1;
 
 }
 .budget-detailed-display {
@@ -478,7 +479,7 @@ body {
     align-items: center;
     position: absolute;
     left: 70px;
-    color: #d9e1e3;
+    color: #e0d3c8;
     font-family: "Coming Soon";
 }
 .budget-budget-display > h2, h3 {
@@ -490,7 +491,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    color: #d9e1e3;
+    color: #e0d3c8;
     font-family: "Coming Soon";
 }
 .spent-display > h2, h3 {
@@ -503,7 +504,7 @@ body {
     align-items: center;
     position: absolute;
     right: 70px;
-    color: #d9e1e3;
+    color: #e0d3c8;
     font-family: "Coming Soon";
 }
 .left-display > h2, h3 {
@@ -528,13 +529,13 @@ body {
     width: 100px;
     margin: 0px;
     font-size: 1rem;
-    color: #d9e1e3;
+    color: #e0d3c8;
 }
 .item-details-display > h2 {
     text-align: right;
     margin: 0px;
     font-family: "Coming Soon";
-    color:#d9e1e3;
+    color: #e0d3c8;
 }
 .item-details {
     position: absolute;
@@ -872,14 +873,14 @@ input[type=number]::-webkit-inner-spin-button {
   width: 100%;
   display: flex;
   align-items: flex-end;
-  background: #d9e1e3;
+  background: #e0d3c8;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .bar {
   width: 100%;
-  background-color: #6292a5;
+  background-color: #524b46;
   transition: height 0.3s ease;
 }
 
@@ -890,10 +891,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .bar-value {
-  color: #eef2ee;
-  font-family: "Coming Soon";
-  font-size: clamp(0.7rem, 1vw, 1rem);
-  margin-top: 0px;
+    color: #e0d3c8;
+    font-family: "Coming Soon";
+    font-size: clamp(0.7rem, 1vw, 1rem);
+    margin-top: 0px;
 }
 .the-daily-stuffs-main {
     display: flex;
