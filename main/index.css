@@ -1230,6 +1230,8 @@ input[type=number]::-webkit-inner-spin-button {
 .edit-assignment-popup {
     background-color: rgb(151, 131, 118);
     border-radius: 10px;
+    animation: popIn 0.25s ease-out forwards;
+
 }
 .for-assignment > button {
     height: 90px;
@@ -1254,7 +1256,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .edit-assignments-row > h4 {
     font-size: 1.3rem;
-    margin: 10px;
+    color: #e9cbad;
+    margin: 5px;
 }
 .rows {
     display: flex;
@@ -1271,19 +1274,72 @@ input[type=number]::-webkit-inner-spin-button {
 .edit-assignments-row > input {
     width: 300px;
     height: 30px;
-    background-color: #cfb7ac;
+    background-color: #b49f8e;
     border: none;
     border-radius: 10px;
     padding-left: 20px;
+    font-family: "Coming Soon";
+    color: #31302e;
 }
 .edit-assignments-row > select {
-    width: 300px;
+    width: 322px;
     height: 30px;
-    background-color: #cfb7ac;
+    background-color: #b49f8e;
     border: none;
     border-radius: 10px;
     padding-left: 20px;
+    font-family: "Coming Soon";
+    color: #31302e;
 }
+.edit-assignments-row > select:hover {
+    cursor: pointer;
+}
+
+.add-assignment-popup {
+    background-color: rgb(156, 136, 123);
+    border-radius: 10px;
+    animation: popIn 0.25s ease-out forwards;
+    padding-bottom: 20px;
+}
+.uh {
+    margin-bottom: 20px;
+}
+.uh > button:last-child {
+    color: #cfb5a0;
+}
+.uh > button:last-child:hover {
+    color: #b19a88;
+}
+.new-assignment-details-block {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.new-assignment-details-block > h4 {
+    font-size: 1.5rem;
+    margin: 0px;
+    color: #d6c5ba;
+}
+.new-assignment-details-block > input {
+    width: 400px;
+    height: 40px;
+    background-color: #b19a8b;
+    border-radius: 10px;
+    border: none;
+    padding-left: 20px;
+    font-family: "Coming Soon";
+    color: #eee4df;
+    font-size: 1rem;
+}
+.new-assignment-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 0px 20px;
+    gap: 5px;
+}
+
+
+
 
 
 
