@@ -1,21 +1,25 @@
 body {
     margin: 0;
     padding: 0;
-    background-color:#3a424a;
+    background-color:#17181a;
     display: flex;
     flex-direction: column;
     font-family: "Winky Rough";
 }
+.layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
 .header-section {
-    height: auto;
-    background-color: #445166;
-    margin: 0px 100px 20px 100px;
+    background-color: #32353a;
     border-radius: 0px 0px 30px 30px;
 
     /* New for transition */
-    transform: translateY(-50px); /* start slightly above */
     opacity: 0; /* start invisible */
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    width: 60%;
+    margin: 0px 30px 30px 30px;
 }
 
 .header-section.visible {
@@ -27,10 +31,10 @@ body {
 .welcome-text {
     display: flex;
     justify-content: center;
-    font-size: 5rem;
+    font-size: 4rem;
 }
 .welcome-text > h1 {
-    color: #d9e1e3;
+    color: #17181a;
     font-family: "Winky Rough";
     margin-bottom: 60px;
     margin-top: 100px;
@@ -45,7 +49,7 @@ body {
 }
 .searchbar > label {
     padding: 0 20px;
-    color: #abc6da;
+    color: #17181a;
     margin-bottom: 3px;
     font-size: 1.2rem;
     font-family: "Winky Rough";
@@ -59,49 +63,46 @@ body {
     border-width: 0;
     margin-bottom: 25px;
     font-family: "Coming Soon";
-    background-color: #d9e1e3;
+    background-color: #44454a;
 }
-.display-section {
-    background-color: white;
+.mainpage-right-column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .main-display-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.main-display-section > h3 {
-    margin-bottom: 4px;
-    color: #abc6da;
-    margin-top: 40px;
-    font-size: 2rem;
+    width: 40%;
 }
 .button-containers {
-    background-color: #445166;
-    border-radius: 15px 15px 0 0;
-    height: 100vh;
-    width: calc(100% - 175px); 
-    padding: 50px 50px;
+    background-color: #32353a;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px ;
+    gap: 20px;
+    grid-auto-rows: min-content;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    padding-top: 20px;
 }
 .button-containers > :link {
-    background-color: #d9e1e3;
+    background-color: #44454a;
     border-radius: 10px;
     border-width: 0px;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-family: "Winky Rough";
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 50px;
+    margin: 0px 20px 0px 20px;
 }
 .button-containers > a {
-    color: #737190;
+    color: #17181a;
     text-decoration: none;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
 }
 .button-containers > :link:hover {
   background-color: #7699bb; 

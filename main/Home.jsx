@@ -36,13 +36,13 @@ export default function Home() {
     }
 
     return (
-        <>
+        <section className="layout">
             <section
                 className="header-section"
                 style={{
                     opacity: visible ? 1 : 0,
-                    transform: visible ? "translateY(0)" : "translateY(-50px)",
-                    transition: "opacity 0.5s ease, transform 0.5s ease",
+                    transform: visible ? "translateY(0)" : "translateY(-500px)",
+                    transition: "opacity 0.5s ease, transform 2s ease",
                 }}
                 >
                 <section className="welcome-text">
@@ -70,7 +70,7 @@ export default function Home() {
                     </div>
                     )}
                 </div>
-                </section>
+            </section>
 
             <section className="main-display-section">
                 <section className="button-containers">
@@ -89,6 +89,6 @@ export default function Home() {
                     ))}
                 </section>
             </section>
-        </>
+        </section>
     )
 }
