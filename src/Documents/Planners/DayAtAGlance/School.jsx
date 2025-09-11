@@ -278,13 +278,9 @@ export default function School({ classes, setClasses, addAssignment }) {
       {/* New Assignment */}
       {showAssignmentPopup && (
         <div className="popup-overlay-school">
-          <div className="popup-school">
-            <h3>add new assignment</h3>
-            <h4>assignment name</h4>
-            <input type="text" value={newAssignmentText} onChange={(e) => setNewAssignmentText(e.target.value)} placeholder="e.g textbook chap 5 problems 5-9" />
-            <h4>due date</h4>
-            <input type="date" value={newAssignmentDue} onChange={(e) => setNewAssignmentDue(e.target.value)} />
-            <div className="popup-buttons-school">
+          <div className="add-assignment-popup">
+            <section className="top-row-for-editing-class for-assignment uh">
+              <h3>add new assignment</h3>
               <button
                 onClick={() => {
                   addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue);
@@ -296,6 +292,21 @@ export default function School({ classes, setClasses, addAssignment }) {
                 add
               </button>
               <button onClick={() => setShowAssignmentPopup(false)}>cancel</button>
+            </section>
+              
+              <section className="new-assignment-container">
+                <section className="new-assignment-details-block">
+                  <h4>assignment name</h4>
+                  <input type="text" value={newAssignmentText} onChange={(e) => setNewAssignmentText(e.target.value)} placeholder="e.g textbook chap 5 problems 5-9" />
+                </section>
+                  
+                <section className="new-assignment-details-block">
+                  <h4>due date</h4>
+                  <input type="date" value={newAssignmentDue} onChange={(e) => setNewAssignmentDue(e.target.value)} />
+                </section>
+              </section>
+
+            <div className="popup-buttons-school">
             </div>
           </div>
         </div>
@@ -313,17 +324,17 @@ export default function School({ classes, setClasses, addAssignment }) {
             </section>
             <section className="rows">
               <section className="edit-assignments-row">
-                <h4>assignment name</h4>
+                <h4>assignment name:</h4>
                 <input type="text" value={editAssignmentText} onChange={(e) => setEditAssignmentText(e.target.value)} placeholder="assignment name" />
               </section>
               
               <section className="edit-assignments-row">
-                <h4>due date</h4>
-                <input type="date" value={editAssignmentDue} onChange={(e) => setEditAssignmentDue(e.target.value)} />
+                <h4>due date:</h4>
+                <input className="edit-due-date" type="date" value={editAssignmentDue} onChange={(e) => setEditAssignmentDue(e.target.value)} />
               </section>
               
               <section className="edit-assignments-row">
-                <h4>status</h4>
+                <h4>status:</h4>
                 <select value={editAssignmentColor} onChange={(e) => setEditAssignmentColor(e.target.value)} className="status-options">
                   <option value="grey">unimportant</option>
                   <option value="red">not started</option>
