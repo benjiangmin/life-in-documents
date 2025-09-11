@@ -265,12 +265,12 @@ export default function School({ classes, setClasses, addAssignment }) {
       {showClassPopup && (
         <div className="popup-overlay-school">
           <div className="popup-school">
-            <h3>add new class</h3>
-            <input type="text" value={newClassName} onChange={(e) => setNewClassName(e.target.value)} placeholder="e.g computer science" />
-            <div className="popup-buttons-school-for-new-class">
+            <section className="top-row-for-new-class">
+              <h3 className="add-new-class-text">add new class</h3>
               <button onClick={() => { addClass(newClassName); setNewClassName(""); setShowClassPopup(false); }}>add</button>
               <button onClick={() => setShowClassPopup(false)}>cancel</button>
-            </div>
+            </section>
+            <input type="text" value={newClassName} onChange={(e) => setNewClassName(e.target.value)} placeholder="e.g computer science" />
           </div>
         </div>
       )}
@@ -304,14 +304,25 @@ export default function School({ classes, setClasses, addAssignment }) {
       {/* Edit Assignment */}
       {showEditAssignmentPopup && (
         <div className="popup-overlay-school">
-          <div className="popup-school">
-            <h3>edit assignment</h3>
-            <h4>assignment name</h4>
-            <input type="text" value={editAssignmentText} onChange={(e) => setEditAssignmentText(e.target.value)} placeholder="assignment name" />
-            <h4>due date</h4>
-            <input type="date" value={editAssignmentDue} onChange={(e) => setEditAssignmentDue(e.target.value)} />
-            <section className="popup-bottom-half">
-              <section className="status-section">
+          <div className="edit-assignment-popup">
+            <section className="top-row-for-editing-class for-assignment">
+              <h3>edit assignment</h3>
+              <button onClick={saveEditedAssignment}>save</button>
+              <button onClick={() => setShowEditAssignmentPopup(false)}>cancel</button>
+              <button onClick={deleteAssignment}>delete</button>
+            </section>
+            <section className="rows">
+              <section className="edit-assignments-row">
+                <h4>assignment name</h4>
+                <input type="text" value={editAssignmentText} onChange={(e) => setEditAssignmentText(e.target.value)} placeholder="assignment name" />
+              </section>
+              
+              <section className="edit-assignments-row">
+                <h4>due date</h4>
+                <input type="date" value={editAssignmentDue} onChange={(e) => setEditAssignmentDue(e.target.value)} />
+              </section>
+              
+              <section className="edit-assignments-row">
                 <h4>status</h4>
                 <select value={editAssignmentColor} onChange={(e) => setEditAssignmentColor(e.target.value)} className="status-options">
                   <option value="grey">unimportant</option>
@@ -320,11 +331,6 @@ export default function School({ classes, setClasses, addAssignment }) {
                   <option value="green">complete</option>
                 </select>
               </section>
-              <div className="popup-buttons-school edit-current-assignment">
-                <button onClick={saveEditedAssignment}>save</button>
-                <button onClick={() => setShowEditAssignmentPopup(false)}>cancel</button>
-                <button onClick={deleteAssignment}>delete</button>
-              </div>
             </section>
           </div>
         </div>
@@ -333,15 +339,17 @@ export default function School({ classes, setClasses, addAssignment }) {
       {/* Edit Class */}
       {showEditClassPopup && (
         <div className="popup-overlay-school">
-          <div className="popup-school">
-            <h3>edit class</h3>
-            <input type="text" value={editClassName} onChange={(e) => setEditClassName(e.target.value)} placeholder="class name" />
-            <div className="popup-buttons-school edit-current-class">
-              <button onClick={saveClassEdit}>save</button>
-              <button onClick={() => setShowEditClassPopup(false)}>cancel</button>
-              <button onClick={deleteClass}>delete</button>
+          <section className="edit-class-popup">
+            <div className="top-row-for-editing-class">
+              <h3>edit class</h3>
+              <div className="buttons-for-editing-class">
+                <button onClick={saveClassEdit}>save</button>
+                <button onClick={() => setShowEditClassPopup(false)}>cancel</button>
+                <button onClick={deleteClass}>delete</button>
+              </div>
             </div>
-          </div>
+            <input type="text" value={editClassName} onChange={(e) => setEditClassName(e.target.value)} placeholder="class name" />
+          </section>
         </div>
       )}
     </section>

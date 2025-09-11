@@ -115,10 +115,10 @@ body {
     padding: 0px;
 }
 .button-containers > :link:hover {
-  background-color: #af9570; 
+  background-color: #9c8f7e; 
 }
 .button-containers > :link:active {
-  background-color: #897458; 
+  background-color: #756b5f; 
 }
 
 .maintext-side {
@@ -933,27 +933,31 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: #524b46;
   transition: height 0.3s ease;
 }
-
 .bar-label {
   color: #FFFFF0;
   font-size: clamp(0.7rem, 1vw, 1rem);  
   margin-top: 0.5em;
 }
-
 .bar-value {
     color: #e0d3c8;
     font-family: "Coming Soon";
     font-size: clamp(0.7rem, 1vw, 1rem);
     margin-top: 0px;
 }
+
+
+
+
+
 .the-daily-stuffs-main {
     display: flex;
     height: 100vh;
     overflow: hidden;
+    background-color: #54504c;
 }
 .school-section {
     width: 60%;
-    background-color: rgb(71, 83, 97);
+    background-color: #2b2a29;
     margin: 30px 15px 0px 30px;
     border-radius: 30px 30px 0px 0px;
     display: flex;
@@ -991,13 +995,13 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     background: none;
     border: none;
-    color: #d9e1e3;
+    color: #c5ae93;
     font-family: "Winky Rough";
     font-weight: bold;
     margin-bottom: 40px;
 }
 .school-header > button:hover {
-    color: #7f99aa;
+    color: #f4eadf;
     cursor: pointer;
 }
 .classes {
@@ -1027,19 +1031,19 @@ input[type=number]::-webkit-inner-spin-button {
 .class > h2 {
     padding-left: 40px;
     margin: 5px 0px 0px 0px;
-    color: #d9e1e3;
+    color: #7a6e60;
     font-size: 0.9rem;
 }
 
 .assignments-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column; /* stack + stretch */
-  align-items: stretch;
-  border-radius: 10px 10px 0px 0px;
-  overflow: hidden; /* contain scroll child */
-  min-height: 0;    /* 🔑 */
-  background-color: #d2d8e2;
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* stack + stretch */
+    align-items: stretch;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden; /* contain scroll child */
+    min-height: 0;    /* 🔑 */
+    background-color: #4a4744;
 }
 
 .assignments {
@@ -1054,16 +1058,16 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .assignment {
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 40px;
-  font-family: "Coming Soon";
-  font-size: 1rem;
-  color: #263761;
-  transition: opacity 0.3s ease;
-  opacity: 0; /* hidden by default */
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    font-family: "Coming Soon";
+    font-size: 1rem;
+    color: #cfc2b6;    
+    transition: opacity 0.3s ease;
+    opacity: 0; /* hidden by default */
 }
 .assignment.show {
   opacity: 1; /* fade-in */
@@ -1073,7 +1077,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .assignment:hover {
-    color: #537ace;
+    color: #9e938e;
     cursor: pointer;
 }
 .assignment > p {
@@ -1097,8 +1101,8 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 0px 0px 30px 30px;
     font-size: 0.7rem;
     font-family: "Coming Soon";
-    color: #1f455e;
-    background-color: #d2d8e2;
+    color: #c5ae93;
+    background-color: #4a4744;
 }
 .add-assignment-button:hover {
     font-size: 0.8rem;
@@ -1119,136 +1123,176 @@ input[type=number]::-webkit-inner-spin-button {
   border-radius: 30px 30px 0px 0px;
 }
 .popup-school {
-  background: #445f7e;
-  border-radius: 12px;
-  width: 60%;
-  max-width: 400px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 40px 20px 40px;
-}
-
-.popup-school h3 {
-    font-size: 2rem;
-    color: #d9e1e3;
-}
-.popup-school > h4 {
-    color: #a8b7bb;
-    margin-bottom: 3px;
-}
-
-.popup-school input {
-  width: 100%;
-  height: 40px;
-  border: none;
-  border-radius: 10px;
-  padding-left: 20px;
-  font-family: "Coming Soon";
-  color: #343d4b;
-  background-color: #d9e1e3;
-}
-.status-options {
-    text-align: center;
-    height: 40px;
-    width: 100px;
-    border: none;
     border-radius: 10px;
-    font-family: "Coming Soon";
-    color: #2d405c;
-    appearance: none;
-    background-color: #d9e1e3;
-}
-.status-options:hover {
-    transform: scale(1.1);
-}
-.popup-bottom-half {
-    display: flex;
-    gap: 50px;
-    align-items: center;
-}
-.status-section {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: popIn 0.25s ease-out forwards;
 }
-.status-section > h4{
-    margin-bottom: 3px;
-    color: #a8b7bb;
+.top-row-for-new-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(83, 75, 65);
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+}
+.add-new-class-text {
+    padding: 0px 70px 0px 30px;
+    font-size: 3rem;
+    color: #e5ceb9;
+}
+.top-row-for-new-class > button {
+    height: 80px;
+    width: 80px;
+    background-color: rgb(83, 75, 65);
+    border: none;
+    font-family: "Winky Rough";
+    font-size: 1rem;
+    color: #e7d4ca;
+}
+.top-row-for-new-class > button:hover {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #beaea6;
 }
 
-.popup-buttons-school {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 12px;
-}
-.popup-buttons-school-for-new-class {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 12px;
-}
-.for-new-class > button {
-    margin-top: 100px;
-    width: 60px;
+.popup-school input {
+    height: 60px;
+    width: 550px;
+    border: none;
+    border-radius: 0px 0px 10px 10px;
+    padding-left: 20px;
+    font-family: "Coming Soon";
+    font-size: 1rem;
+    color: #534b47;
+    background-color: #eddac8;
 }
 .edit-class {
     width: fit-content;
 }
 .edit-class:hover {
     cursor: pointer;
-    color: #7f99aa;
+    color: #efe6dc;
+}
+.edit-class-popup {
+    background-color: rgb(222, 195, 181);
+    border-radius: 10px;
+    animation: popIn 0.25s ease-out forwards;
+}
+.edit-class-popup > input {
+    width: 550px;
+    height: 60px;
+    font-size: 1rem;
+    font-family: "Coming Soon";
+    border: none;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #d8c4b6;
+    padding-left: 20px;
+    color: #443e3a;
+}
+.top-row-for-editing-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(62, 56, 50);
+    border-radius: 10px 10px 0px 0px;
+}
+.top-row-for-editing-class > h3 {
+    font-size: 3rem;
+    color: #ebceb6;
+    padding: 10px 70px 10px 30px;
+}
+.buttons-for-editing-class > button{
+    height: 70px;
+    width: 70px;
+    background-color: rgb(62, 56, 50);
+    font-size: 1.1rem;
+    border: none;
+    font-family: "Winky Rough";
+    color: #ceb5a0;
+}
+.buttons-for-editing-class > button:last-child {
+    border-radius: 0px 10px 0px 0px;
+    color: rgb(176, 92, 71);
+}
+.buttons-for-editing-class > button:last-child:hover {
+    color: rgb(133, 68, 52);
+}
+.buttons-for-editing-class > button:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #a99482;
 }
 
-.popup-buttons-school button {
-    padding: 6px 12px;
+.edit-assignment-popup {
+    background-color: rgb(151, 131, 118);
+    border-radius: 10px;
+}
+.for-assignment > button {
+    height: 90px;
+    width: 90px;
+    background-color: rgb(62, 56, 50);
     border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    background: #d9e1e3;
-    color: #263a47;
+    font-size: 1.1rem;
     font-family: "Winky Rough";
-    height: 40px;
-    width: 60px;
-    margin-top: 32px;
+    color: #cfb5a0;
 }
-.popup-buttons-school button:hover {
-    transform: scale(1.1);
+.for-assignment > button:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #b19a88;
 }
-.popup-buttons-school-for-new-class button {
-    padding: 6px 12px;
+.for-assignment > button:last-child {
+    border-radius: 0px 10px 0px 0px;
+    color: #ad5d50e2;
+}
+.for-assignment > button:last-child:hover {
+    color: #874940e2;
+}
+.edit-assignments-row > h4 {
+    font-size: 1.3rem;
+    margin: 10px;
+}
+.rows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px 0px 10px 0px;
+}
+.edit-assignments-row {
+    margin: 0px 30px 0px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.edit-assignments-row > input {
+    width: 300px;
+    height: 30px;
+    background-color: #cfb7ac;
     border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    background: #d9e1e3;
-    color: #243f5e;
-    font-family: "Winky Rough";
-    height: 40px;
-    width: 60px;
-    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 20px;
 }
-.popup-buttons-school-for-new-class > button:hover {
-    transform: scale(1.1);
+.edit-assignments-row > select {
+    width: 300px;
+    height: 30px;
+    background-color: #cfb7ac;
+    border: none;
+    border-radius: 10px;
+    padding-left: 20px;
 }
-.edit-current-class {
-    margin-top: 0px;
-}
-.edit-current-class > button:last-child {
-    background-color: rgb(216, 116, 116);
-}
-.edit-current-assignment > button:last-child{
-    background-color: rgb(216, 116, 116);
-}
+
+
 
 
 
 
 .other-section {
     width: 40%;
-    background-color: rgb(82, 87, 105);
+    background-color: #b0a396;
     margin: 30px 0px 30px 15px;
     border-radius: 30px 0px 0px 30px;
 
@@ -1276,7 +1320,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: #d2d8e2;
 }
 .other-todo-container {
-    background-color: #d2d8e2;
+    background-color: #d9cdc2;
     border-radius: 10px 10px 0px 0px;
     width: 100%;
     height: 100%;
@@ -1291,7 +1335,7 @@ input[type=number]::-webkit-inner-spin-button {
     height: 40px;
     border-radius: 0px 0px 20px 20px;
     font-family: "Coming Soon";
-    background-color: #d2d8e2;
+    background-color: #d9cdc2;
     color: #1f455e;
 }
 .add-task-button:hover {
