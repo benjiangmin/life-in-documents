@@ -41,7 +41,7 @@ export default function Home() {
                 className="header-section"
                 style={{
                     opacity: visible ? 1 : 0,
-                    transform: visible ? "translateY(0)" : "translateY(-500px)",
+                    transform: visible ? "translateX(0)" : "translateX(-500px)",
                     transition: "opacity 0.5s ease, transform 2s ease",
                 }}
                 >
