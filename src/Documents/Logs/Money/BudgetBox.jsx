@@ -47,7 +47,7 @@ export default function BudgetBox({ items, budget, onUpdateBudget }) {
 
         <section className="left-display">
           <h3>left:</h3>
-          <h2 style={{ color: left < 0 ? "#a86060ff" : "#6292a5" }}>
+          <h2 style={{ color: left < 0 ? "#a86060ff" : "#eaae83ff" }}>
             ${left.toFixed(2)}
           </h2>
         </section>

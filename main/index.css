@@ -277,7 +277,7 @@ body {
     font-size: 4rem;
     margin-bottom: 0px;
     margin-top: 0px;
-    color: #e0c4a1;
+    color: #c4ac8f;
 ;
 }
 .item-name-input {
@@ -393,12 +393,12 @@ body {
     font-size: 4rem;
     margin-bottom: 0px;
     margin-top: 0px;
-    color: #e0c4a1;
+    color: #f0e7dd;
     position: absolute;
     left: 75px;
 }
 .item-button {
-    background-color: #aa9d93;
+    background-color: #79726c;
     border-radius: 10px 0px 0px 10px;
     border-width: 0px;
     font-size: 1rem;
@@ -406,13 +406,14 @@ body {
     display: flex;
     padding-left: 10px;
     justify-content: space-between;
-    color: #4e5879;
+    color: #f0e3d4;
 }
 .item-buttons > :hover {
-    background-color: #57849e; 
+    background-color: #a99278; 
+    cursor: pointer;
 }
 .item-buttons > :active {
-    background-color: #4680af;
+    background-color: #85725e; 
 }
 .item-name {
     text-align: left;
@@ -426,7 +427,7 @@ body {
 .currently-viewing-text {
     font-family: "Coming Soon";
     font-size: 1.5rem;
-    color: #e0d3c8;
+    color: #ebd8ca;
     margin: 70px 0px 0px 0px;
 }
 .display-date {
@@ -457,7 +458,7 @@ body {
     font-size: 4rem;
     margin-bottom: 35px;
     margin-top: 0px;
-    color: #e0c4a1;
+    color: #c4ac8f;
 
 }
 .budget-detailed-display {
@@ -626,7 +627,7 @@ body {
 }
 .clickable-budget:hover {
     font-weight: bold;
-    color: #57849e;
+    color: #746351; 
 }
 .popup-buttons-container {
     display: flex;
@@ -730,10 +731,10 @@ input[type=number]::-webkit-inner-spin-button {
 .month-text {
     margin-top: 0px;
     font-size: 4rem;
-    color:#d9e1e3;
+    color: #f0e7dd;
 }
 .month-text:hover {
-    color: #57849e;
+    color: #746351; 
 }
 .left {
     left: 100px;
