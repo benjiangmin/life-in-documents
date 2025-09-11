@@ -64,7 +64,7 @@ export default function DateBox({ currentMonth, onChangeMonth }) {
                   <img src={RightArrow} />
                 </button>
                 <button
-                  className="close-button" 
+                  className="close-for-selecting-months" 
                   onClick={() => setShowPopup(false)}
                 >
                   close

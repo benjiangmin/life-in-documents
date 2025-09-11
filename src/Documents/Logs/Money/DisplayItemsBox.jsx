@@ -58,8 +58,27 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
       {editingId !== null && tempItem && (
         <div className="popup-overlay overlay-for-box-4">
           <div className="change-item-popup">
-            <h3>edit item</h3>
-
+            <section className="change-item-buttons">
+              <h3>edit item</h3>
+              <button onClick={handleSave}>save</button>
+              <button
+                onClick={() => {
+                  setEditingId(null);
+                  setTempItem(null);
+                }}
+              >
+                cancel
+              </button>
+              <button
+                onClick={() => {
+                  onDeleteItem(editingId);
+                  setEditingId(null);
+                  setTempItem(null);
+                }}
+              >
+                delete
+              </button>
+            </section>
             <label className="item-labels">
               item name:
               <input
@@ -107,26 +126,7 @@ export default function DisplayItemsBox({ items, onUpdateItem, onDeleteItem }) {
               />
             </label>
 
-            <section className="change-item-buttons">
-              <button onClick={handleSave}>save</button>
-              <button
-                onClick={() => {
-                  setEditingId(null);
-                  setTempItem(null);
-                }}
-              >
-                cancel
-              </button>
-              <button
-                onClick={() => {
-                  onDeleteItem(editingId);
-                  setEditingId(null);
-                  setTempItem(null);
-                }}
-              >
-                delete
-              </button>
-            </section>
+
           </div>
         </div>
       )}

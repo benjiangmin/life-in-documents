@@ -108,7 +108,7 @@ body {
     margin: 0px 30px 0px 30px;
 }
 .button-containers > a {
-    color: #e0c4a1;
+    color:#dac9b4;    
     text-decoration: none;
     text-align: center;
     margin: 0px;
@@ -609,18 +609,37 @@ body {
 }
 
 .popup {
-  background: #3e555f;
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 10000;     
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+    background: #977c6b;
+    border-radius: 10px;
+    z-index: 10000;     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: popIn 0.25s ease-out forwards;
+}
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 .popup > h3 {
-    font-size: 1.8rem;
-    color:#d9e1e3;
+    line-height: 70px;
+    height: 70px;
+    font-size: 3.1rem;
+    text-align: center;
+    color:#f0e3d4;
+    width: 100%;
+    background-color: rgb(119, 99, 82);
+    margin: 0px 20px 0px 20px;
+    border-radius: 10px 10px 0px 0px;
+
 }
 .clickable-budget {
     text-decoration: none;
@@ -629,27 +648,36 @@ body {
     font-weight: bold;
     color: #746351; 
 }
-.popup-buttons-container {
+.change-budget-row {
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    width: 100%;
 }
 .popup-button {
-    height: 30px;
-    border-radius: 20px;
-    border-width: 0px;
-    width: 60px;
+    width: 70px;
     font-family: "Winky Rough";
-    color: #345e80;
+    font-size: 1.2rem;
+    color:#837360;
+    background-color: rgb(211, 191, 177);
+    border: none;
 }
 .popup-button:hover {
-    transform: scale(1.1);
+    font-size: 1.3rem;
+    color: #605648;
+    cursor: pointer;
 }
 .input-button {
-    height: 40px;
     font-family: "Coming Soon";
-    border-radius: 5px;
     border-width: 0px;
     padding-left: 20px;
+    height: 60px;
+    background-color: rgb(211, 191, 177);
+    border-radius: 0px 0px 0px 10px;
+    font-size: 1.5rem;
+    color:#837360;
+}
+.cancel-for-budget {
+    border-radius: 0px 0px 10px 0px;
 }
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
@@ -664,7 +692,8 @@ input[type=number]::-webkit-inner-spin-button {
     border-width: 0px;
     padding-left: 10px;
     font-family: "Coming Soon";
-    color: #03223f;
+    color: #57514b;
+    background-color: #ebd5b9;
     text-align: left;
 }
 .date {
@@ -675,45 +704,61 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .change-item-popup {
-  background: #3e555f;
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 10000;     
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  color: #d9e1e3;
-}
-.change-item-popup > h3 {
-    font-size: 1.8rem;
-    color:#d9e1e3;
+    background: #cdbaa3;
+    border-radius: 10px;
+    z-index: 10000;     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: #d9e1e3;
+    padding-bottom: 20px;
+    animation: popIn 0.25s ease-out forwards;
 }
 .item-labels {
     display: flex;
     justify-content: space-between;
     width: 500px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0px 20px;
+    color: rgb(170, 151, 134);
 }
 .change-item-buttons {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    align-items: center;
     width: 100%;
-    gap: 30px;
+    background-color: rgb(49, 46, 46);
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom: 20px;
+}
+.change-item-buttons > h3 {
+    font-size: 3rem;
+    color: #e0d3c8;
+    margin: 0px 50px 0px 20px;
+    padding: 0px;
 }
 .change-item-buttons > button {
-    height: 30px;
-    width: 60px;
     border-radius: 20px;
     border-width: 0px;
+    height: 100px;
+    width: 80px;
     font-family: "Winky Rough";
-    color: #194c58;
+    background-color: rgb(49, 46, 46);
+    font-size: 1.2rem;
+    color: #deceb7;
 }
 .change-item-buttons > button:hover {
-    transform: scale(1.1)
+    font-size: 1.3rem;
+    color: #9c9080;
+    cursor: pointer;
 }
 .change-item-buttons > button:last-child {
-    background-color: rgb(198, 98, 82);
+    color: #ac6151;
+}
+.change-item-buttons > button:last-child:hover {
+    color: #cf7662;
 }
 
 .arrow-images {
@@ -727,6 +772,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .arrow-images:hover {
     transform: scale(1.4);
+    cursor: pointer;
 }
 .month-text {
     margin-top: 0px;
@@ -758,33 +804,33 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .popup-box-date {
-  background: #3e555f;
-  border-radius: 15px;
-  width: 70%;
-  height: 70%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: #c7b4a1;
+    border-radius: 15px;
+    display: flex;
+    animation: popIn 0.25s ease-out forwards;
 }
 
 .popup-content-date {
   display: flex;
   flex-direction: row;
-  width: 90%;
-  height: 90%;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
+  border-radius: 10px;
 }
 .year-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  justify-content: center;
+  background-color: #3b3733;
+  border-radius: 10px 0px 0px 10px;
+  padding-top: 20px;
 }
 
 .popup-year {
-  color: #d9e1e3;
+  color:#ecdece;
+  font-size: 2rem;
   margin: 0;
 }
 
@@ -794,6 +840,7 @@ input[type=number]::-webkit-inner-spin-button {
   cursor: pointer;
   width: 40px;
   height: 24px;
+  margin-top: 6px;
 }
 .year-arrow:hover {
   transform: scale(1.1);
@@ -808,44 +855,46 @@ input[type=number]::-webkit-inner-spin-button {
   gap: 8px;
   margin: 0 0 0 30px;
   flex-grow: 1;
+  padding-right: 30px;
 }
 
 .month-button {
-  padding: 8px;
   border: none;
   border-radius: 8px;
-  background: #d9e1e3;
+  background: #e5d7c7;
   cursor: pointer;
-  font-family: "Coming Soon";
+  font-family: "Winky Rough";
   font-weight: bold;
-  color: #11334e;
+  color:#8a8278;
   height: 30px;
 }
 .month-button:hover {
-  background-color: #57849e;
+  background-color: #aa9178;
 }
 
 .month-button.active {
-  background-color: #7fb9db;
+  background-color: #6b6255;
   font-weight: bold;
   color: #FFFFF0;
 }
 .month-button.active:hover {
-  background-color: #7fb9db;
-  background: #628491;
+  background-color: #dfb396;
 }
-
-.close-button {
-  background: #d9e1e3;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 20px;
-  border-width: 0px;
+.close-for-selecting-months {
+  background-color: #3b3733;
+  margin-top: 10px;
+  border: none;
+  width: 100px;
+  height: 70px;
+  border-radius: 0px 0px 0px 10px;
+  color:#8a8278;
   font-family: "Winky Rough";
-  color: #2f356e;
+  font-size: 1.2rem;
 }
-.close-button:hover {
-  transform: scale(1.1);
+.close-for-selecting-months:hover {
+    font-size: 1.3rem;
+    color:#d0c4b5;
+    cursor: pointer;
 }
 
 :root {

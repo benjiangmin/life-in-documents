@@ -79,28 +79,28 @@ export default function BudgetBox({ items, budget, onUpdateBudget }) {
         <div className="popup-overlay">
           <div className="popup">
             <h3>edit budget</h3>
-            <input
-              className="input-button"
-              type="number"
-              value={newBudget}
-              onChange={(e) => setNewBudget(Number(e.target.value))}
-            />
-            <section className="popup-buttons-container">
-              <button
-                className="popup-button"
-                onClick={() => {
-                  onUpdateBudget(newBudget);
-                  setIsEditing(false);
-                }}
-              >
-                enter
-              </button>
-              <button
-                className="popup-button"
-                onClick={() => setIsEditing(false)}
-              >
-                cancel
-              </button>
+            <section className="change-budget-row">
+              <input
+                className="input-button"
+                type="number"
+                value={newBudget}
+                onChange={(e) => setNewBudget(Number(e.target.value))}
+                />
+                <button
+                  className="popup-button"
+                  onClick={() => {
+                    onUpdateBudget(newBudget);
+                    setIsEditing(false);
+                  }}
+                  >
+                  enter
+                </button>
+                <button
+                  className="popup-button cancel-for-budget"
+                  onClick={() => setIsEditing(false)}
+                  >
+                  cancel
+                </button>
             </section>
           </div>
         </div>
