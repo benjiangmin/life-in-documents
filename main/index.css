@@ -569,6 +569,7 @@ body {
     justify-content: center;
     background-color:  #8d7a6b;
     border-radius: 10px;
+    animation: popIn 0.25s ease-out forwards;
 }
 
 .other-task-idk-what-to-name-this > input {
@@ -1227,9 +1228,9 @@ input[type=number]::-webkit-inner-spin-button {
     color: #874940e2;
 }
 .edit-assignments-row > h4 {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     color: #e9cbad;
-    margin: 5px;
+    margin: 3px;
 }
 .rows {
     display: flex;
@@ -1409,21 +1410,48 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .edit-task-name-row {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 90px;
 }
 .edit-task-name-row > h2 {
     font-size: 2rem;
     margin: 0px;
     color: #c4ac8f;
 }
+.edit-task-name-row > input {
+    width: 250px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 20px;
+    font-family: "Coming Soon";
+    background-color: #c4b2a4;
+    font-size: 0.9rem;
+}
 .edit-task-status-row {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .edit-task-status-row > h4 {
     font-size: 2rem;
     margin: 0px;
     color: #c4ac8f;
 }
-
+.edit-task-status-row > select {
+    width: 271px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    padding-left: 15px;
+    font-family: "Coming Soon";
+    background-color: #c4b2a4;
+    font-size: 0.9rem;
+}
+.edit-task-status-row > select:hover {
+    cursor: pointer;
+}
 
 
 
