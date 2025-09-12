@@ -567,45 +567,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color:  #445f7e;
-    border-radius: 20px;
-    width: 400px;
-    height: 250px;
-    padding: 0px 35px 0px 35px;
+    background-color:  #8d7a6b;
+    border-radius: 10px;
 }
-.other-task-idk-what-to-name-this > h2 {
-    color: #d2d8e2;
-    font-size: 3rem;
-    margin-bottom: 0px;
-    margin-top: 20px
-}
+
 .other-task-idk-what-to-name-this > input {
     height: 40px;
-    background-color: #d2d8e2;
+    background-color: #c5b4a5;
     border: none;
     border-radius: 10px;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    width: 100%;
     font-family: "Coming Soon";
-    color: #03223f;
-}
-.add-task-buttons {
-    margin-top: 10px;
-    display: flex;
-    gap: 20px;
-}
-.add-task-buttons > button {
-    width: 60px;
-    height: 40px;
-    border-radius: 15px;
-    border: none;
-    background-color: #d2d8e2;
-    color: #03223f;
-    font-family: "Winky Rough";
-}
-.add-task-buttons > button:hover {
-    transform: scale(1.1);
+    color: #3b3835;
 }
 
 .popup {
@@ -1373,7 +1345,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 4rem;
     margin-top: 5px;
     margin-bottom: 18px;
-    color: #d2d8e2;
+    color: #4e443a;
 }
 .other-todo-container {
     background-color: #d9cdc2;
@@ -1382,6 +1354,11 @@ input[type=number]::-webkit-inner-spin-button {
     height: 100%;
     padding: 20px 30px 20px 30px;
     box-sizing: border-box;
+}
+.um > h2 {
+    font-size: 3rem;
+    color: #e0cdbf;
+    margin: 0px 70px 0px 20px;
 }
 .add-task-button {
     width: 100%;
@@ -1392,7 +1369,7 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 0px 0px 20px 20px;
     font-family: "Coming Soon";
     background-color: #d9cdc2;
-    color: #1f455e;
+    color: #4e443a;
 }
 .add-task-button:hover {
     font-size: 1rem;
@@ -1403,70 +1380,48 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .other-popup-for-editing-tasks {
     display: flex;
-    align-items: center;
 }
 .edit-task-buttons {
     display: flex;
-    gap: 10px;
-}
-.edit-task-buttons > button {
-    height: 40px;
-    width: 60px;
-    border: none;
-    border-radius: 15px;
-    background-color: #d2d8e2;
-    font-family: "Winky Rough";
-    color: #03223f;
-    margin-top: 33px;
-}
-.edit-task-buttons > button:hover {
-    transform: scale(1.1);
-}
-.edit-task-buttons > button:last-child {
-    background-color: rgb(216, 116, 116);
-}
-.for-other-tasks > select {
-    text-align: center;
-    height: 40px;
-    width: 100px;
-    border: none;
-    border-radius: 10px;
-    font-family: "Coming Soon";
-    color: #2d405c;
-    appearance: none;
-    background-color: #d9e1e3;
-}
-.for-other-tasks > select:hover {
-    transform: scale(1.1);
-}
-.for-other-tasks > h4 {
-    margin-top: 10px;
 }
 .task {
-    color: #263761;
+    color: #4b4138;
     font-family: "Coming Soon";
     transition: opacity 0.3s ease;
     opacity: 1; /* fully visible by default */
 }
-/* When deleting / fading out */
 .task.fade-out {
     opacity: 0;
 }
-/* Initial state for newly added tasks */
 .task.fading-in {
     opacity: 0; /* start invisible */
 }
-/* Apply after a short delay via JS to trigger fade-in */
 .task.show {
     opacity: 1; /* fade to visible */
 }
 .task:hover {
     cursor: pointer;
-    color: #537ace;
+    color: #b69d82;
 }
 .task-completed {
   text-decoration: line-through;
   opacity: 0.5;
+}
+.edit-task-name-row {
+    display: flex;
+}
+.edit-task-name-row > h2 {
+    font-size: 2rem;
+    margin: 0px;
+    color: #c4ac8f;
+}
+.edit-task-status-row {
+    display: flex;
+}
+.edit-task-status-row > h4 {
+    font-size: 2rem;
+    margin: 0px;
+    color: #c4ac8f;
 }
 
 

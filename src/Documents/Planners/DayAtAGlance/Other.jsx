@@ -208,32 +208,37 @@ export default function Other() {
       {editingIndex !== null && (
         <div className="popup-overlay other-task">
           <div className="other-task-idk-what-to-name-this">
-            <h2>edit task</h2>
-            <input
-              type="text"
-              value={editingText}
-              onChange={(e) => setEditingText(e.target.value)}
-            />
-            <section className="popup-bottom-half other-popup-for-editing-tasks">
-              <section className="status-section for-other-tasks">
+            <section className="top-row-for-editing-class for-assignment um">
+              <h2>edit task</h2>              
+              <button onClick={saveEdit}>save</button>
+              <button onClick={cancelEdit}>cancel</button>
+              <button onClick={deleteFromEdit}>delete</button>
+            </section>
+
+            <section className="rows">
+              <section className="edit-task-name-row">
+                <h2>task name</h2>
+                <input
+                  type="text"
+                  value={editingText}
+                  onChange={(e) => setEditingText(e.target.value)}
+                  />
+              </section>
+
+              <section className="edit-task-status-row">
                 <h4>status</h4>
                 <select
                   value={editingStatus}
                   onChange={(e) => setEditingStatus(e.target.value)}
-                >
+                  >
                   <option value="unimportant">unimportant</option>
                   <option value="not started">not started</option>
                   <option value="in progress">in progress</option>
                   <option value="completed">completed</option>
                 </select>
               </section>
-
-              <div className="edit-task-buttons">
-                <button onClick={saveEdit}>save</button>
-                <button onClick={cancelEdit}>cancel</button>
-                <button onClick={deleteFromEdit}>delete</button>
-              </div>
             </section>
+
           </div>
         </div>
       )}
