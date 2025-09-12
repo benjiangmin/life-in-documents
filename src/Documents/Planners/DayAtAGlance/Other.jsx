@@ -189,13 +189,14 @@ export default function Other() {
       {showPopup && (
         <div className="popup-overlay other-task">
           <div className="other-task-idk-what-to-name-this">
-            <section className="top-row-for-editing-class for-assignment um">
+            <section className="top-row-for-editing-class for-assignment um ah">
               <h2>add task</h2>
               <button onClick={addTask}>add</button>
               <button onClick={() => setShowPopup(false)}>cancel</button>
             </section>
             
             <input
+              className="add-task-text"
               type="text"
               placeholder="e.g do the dishes"
               value={newTask}
