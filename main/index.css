@@ -1256,6 +1256,7 @@ input[type=number]::-webkit-inner-spin-button {
     padding-left: 20px;
     font-family: "Coming Soon";
     color: #31302e;
+    font-size: 1rem;
 }
 .edit-assignments-row > select {
     width: 322px;
@@ -1266,6 +1267,7 @@ input[type=number]::-webkit-inner-spin-button {
     padding-left: 20px;
     font-family: "Coming Soon";
     color: #31302e;
+    font-size: 1rem;
 }
 .edit-assignments-row > select:hover {
     cursor: pointer;

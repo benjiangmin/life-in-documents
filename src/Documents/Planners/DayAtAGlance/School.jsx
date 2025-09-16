@@ -267,13 +267,35 @@ export default function School({ classes, setClasses, addAssignment }) {
           <div className="popup-school">
             <section className="top-row-for-new-class">
               <h3 className="add-new-class-text">add new class</h3>
-              <button onClick={() => { addClass(newClassName); setNewClassName(""); setShowClassPopup(false); }}>add</button>
+              <button
+                onClick={() => {
+                  addClass(newClassName);
+                  setNewClassName("");
+                  setShowClassPopup(false);
+                }}
+              >
+                add
+              </button>
               <button onClick={() => setShowClassPopup(false)}>cancel</button>
             </section>
-            <input type="text" value={newClassName} onChange={(e) => setNewClassName(e.target.value)} placeholder="e.g computer science" />
+            <input
+              type="text"
+              value={newClassName}
+              onChange={(e) => setNewClassName(e.target.value)}
+              placeholder="e.g computer science"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  addClass(newClassName);
+                  setNewClassName("");
+                  setShowClassPopup(false);
+                }
+              }}
+            />
           </div>
         </div>
       )}
+
 
       {/* New Assignment */}
       {showAssignmentPopup && (
@@ -293,24 +315,49 @@ export default function School({ classes, setClasses, addAssignment }) {
               </button>
               <button onClick={() => setShowAssignmentPopup(false)}>cancel</button>
             </section>
-              
-              <section className="new-assignment-container">
-                <section className="new-assignment-details-block">
-                  <h4>assignment name</h4>
-                  <input type="text" value={newAssignmentText} onChange={(e) => setNewAssignmentText(e.target.value)} placeholder="e.g textbook chap 5 problems 5-9" />
-                </section>
-                  
-                <section className="new-assignment-details-block">
-                  <h4>due date</h4>
-                  <input type="date" value={newAssignmentDue} onChange={(e) => setNewAssignmentDue(e.target.value)} />
-                </section>
+
+            <section className="new-assignment-container">
+              <section className="new-assignment-details-block">
+                <h4>assignment name</h4>
+                <input
+                  type="text"
+                  value={newAssignmentText}
+                  onChange={(e) => setNewAssignmentText(e.target.value)}
+                  placeholder="e.g textbook chap 5 problems 5-9"
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue);
+                      setNewAssignmentText("");
+                      setNewAssignmentDue("");
+                      setShowAssignmentPopup(false);
+                    }
+                  }}
+                />
               </section>
 
-            <div className="popup-buttons-school">
-            </div>
+              <section className="new-assignment-details-block">
+                <h4>due date</h4>
+                <input
+                  type="date"
+                  value={newAssignmentDue}
+                  onChange={(e) => setNewAssignmentDue(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      addAssignment(currentClassIndex, newAssignmentText, newAssignmentDue);
+                      setNewAssignmentText("");
+                      setNewAssignmentDue("");
+                      setShowAssignmentPopup(false);
+                    }
+                  }}
+                />
+              </section>
+            </section>
           </div>
         </div>
       )}
+
 
       {/* Edit Assignment */}
       {showEditAssignmentPopup && (
@@ -346,23 +393,34 @@ export default function School({ classes, setClasses, addAssignment }) {
           </div>
         </div>
       )}
-
-      {/* Edit Class */}
-      {showEditClassPopup && (
-        <div className="popup-overlay-school">
-          <section className="edit-class-popup">
-            <div className="top-row-for-editing-class">
-              <h3>edit class</h3>
-              <div className="buttons-for-editing-class">
-                <button onClick={saveClassEdit}>save</button>
-                <button onClick={() => setShowEditClassPopup(false)}>cancel</button>
-                <button onClick={deleteClass}>delete</button>
-              </div>
+    {/* Edit Class */}
+    {showEditClassPopup && (
+      <div className="popup-overlay-school">
+        <section className="edit-class-popup">
+          <div className="top-row-for-editing-class">
+            <h3>edit class</h3>
+            <div className="buttons-for-editing-class">
+              <button onClick={saveClassEdit}>save</button>
+              <button onClick={() => setShowEditClassPopup(false)}>cancel</button>
+              <button onClick={deleteClass}>delete</button>
             </div>
-            <input type="text" value={editClassName} onChange={(e) => setEditClassName(e.target.value)} placeholder="class name" />
-          </section>
-        </div>
-      )}
+          </div>
+          <input
+            type="text"
+            value={editClassName}
+            onChange={(e) => setEditClassName(e.target.value)}
+            placeholder="class name"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                saveClassEdit();
+              }
+            }}
+          />
+        </section>
+      </div>
+    )}
+
     </section>
   );
 }
