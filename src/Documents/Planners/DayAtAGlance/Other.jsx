@@ -201,10 +201,17 @@ export default function Other() {
               placeholder="e.g do the dishes"
               value={newTask}
               onChange={(e) => setNewTask(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  addTask();
+                }
+              }}
             />
           </div>
         </div>
       )}
+
 
       {/* Edit Task Popup */}
       {editingIndex !== null && (
