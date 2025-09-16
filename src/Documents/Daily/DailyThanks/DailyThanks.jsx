@@ -1,5 +1,5 @@
 export default function BiggestThanks2022() {
     return (
-        <h1>Hello from BiggestThanks2022</h1>
+        <h1>Hello from daily thanks</h1>
     )
 }

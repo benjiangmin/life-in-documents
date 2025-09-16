@@ -19,12 +19,8 @@ import WeekAtAGlance from "../src/Documents/Planners/WeekAtAGlance/WeekAtAGlance
 import ToDo from "../src/Documents/Planners/ToDo/ToDo"
 
 // Daily
-import BiggestThanks2022 from "../src/Documents/Daily/BiggestThanks2022/BiggestThanks2022"
-import BiggestThanks2023 from "../src/Documents/Daily/BiggestThanks2023/BiggestThanks2023"
-import EnormousThanks2024 from "../src/Documents/Daily/EnormousThanks2024/EnormousThanks2024"
-import LargestGratitudes2025 from "../src/Documents/Daily/LargestGratitudes2025/LargestGratitudes2025"
-import JournalPrompts1 from "../src/Documents/Daily/JournalPrompts1/JournalPrompts1"
-import JournalPrompts2 from "../src/Documents/Daily/JournalPrompts2/JournalPrompts2"
+import DailyThanks from "../src/Documents/Daily/DailyThanks/DailyThanks"
+import JournalPrompts from "../src/Documents/Daily/JournalPrompts/JournalPrompts"
 
 // Jesus
 import Bible2023 from "../src/Documents/Jesus/Bible2023/Bible2023"
@@ -116,12 +112,8 @@ const routes = [
     { path: "/planners/toDo", element: ToDo, title: "to do" },
 
     // Daily
-    { path: "/daily/BiggestThanks2022", element: BiggestThanks2022, title: "2022's biggest thanks" },
-    { path: "/daily/BiggestThanks2023", element: BiggestThanks2023, title: "2023's biggest thanks" },
-    { path: "/daily/EnormousThanks2024", element: EnormousThanks2024, title: "2024's enormous thanks" },
-    { path: "/daily/LargestGratitudes2025", element: LargestGratitudes2025, title: "2025's largest gratitudes" },
-    { path: "/daily/JournalPrompts1", element: JournalPrompts1, title: "journal prompts 1" },
-    { path: "/daily/JournalPrompts2", element: JournalPrompts2, title: "journal prompts 2" },
+    { path: "/daily/DailyThanks", element: DailyThanks, title: "daily thanks" },
+    { path: "/daily/JournalPrompts", element: JournalPrompts, title: "journal prompts" },
 
     // Jesus
     { path: "/jesus/Bible2023", element: Bible2023, title: "bible 2023" },

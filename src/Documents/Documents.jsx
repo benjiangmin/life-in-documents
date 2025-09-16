@@ -21,12 +21,8 @@ const Documents = {
         { name: "to do", path: "/planners/toDo" },
     ],
     daily: [
-        { name: "2022's biggest thanks", path: "/daily/BiggestThanks2022" },
-        { name: "2023's biggest thanks", path: "/daily/BiggestThanks2023" },
-        { name: "2024's enormous thanks", path: "/daily/EnormousThanks2024" },
-        { name: "2025's largest gratitudes", path: "/daily/LargestGratitudes2025" },
-        { name: "journal prompts 1", path: "/daily/JournalPrompts1" },
-        { name: "journal prompts 2", path: "/daily/JournalPrompts2" }
+        { name: "daily thanks", path: "/daily/DailyThanks" },
+        { name: "journal prompts", path: "/daily/JournalPrompts" }
     ],
     jesus: [
         { name: "bible 2023", path: "/jesus/bible2023" },
