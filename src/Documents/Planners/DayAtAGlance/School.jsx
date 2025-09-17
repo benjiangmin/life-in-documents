@@ -25,6 +25,7 @@ export default function School({ classes, setClasses, addAssignment }) {
   const [editAssignmentColor, setEditAssignmentColor] = useState("grey");
 
   const dotColors = { green: greenDot, red: redDot, grey: greyDot, yellow: yellowDot };
+  const statusOrder = ["red", "yellow", "green", "grey"];
 
   // -------------------------
   // Utility: Format due dates
@@ -207,6 +208,45 @@ export default function School({ classes, setClasses, addAssignment }) {
     setCurrentAssignmentId(null);
   };
 
+  const changeStatus = async (classIdx, assignmentId) => {
+    const assignment = classes[classIdx].assignments.find(a => a.id === assignmentId);
+    if (!assignment) return;
+
+    const currentColor = assignment.color || "grey";
+    const nextColor = statusOrder[(statusOrder.indexOf(currentColor) + 1) % statusOrder.length];
+
+    // Optimistically update UI first
+    setClasses((prev) => {
+      const updated = [...prev];
+      const assignmentIdx = updated[classIdx].assignments.findIndex(a => a.id === assignmentId);
+      if (assignmentIdx !== -1) {
+        updated[classIdx].assignments[assignmentIdx].color = nextColor;
+      }
+      return updated;
+    });
+
+    // Update Supabase
+    const { error } = await supabase
+      .from("assignments")
+      .update({ color: nextColor })
+      .eq("id", assignmentId);
+
+    if (error) {
+      console.error("Error updating assignment status:", error.message);
+      // Optional: revert UI if the update fails
+      setClasses((prev) => {
+        const updated = [...prev];
+        const assignmentIdx = updated[classIdx].assignments.findIndex(a => a.id === assignmentId);
+        if (assignmentIdx !== -1) {
+          updated[classIdx].assignments[assignmentIdx].color = currentColor;
+        }
+        return updated;
+      });
+    }
+  };
+
+
+
   // -------------------------
   // Render
   // -------------------------
@@ -243,7 +283,15 @@ export default function School({ classes, setClasses, addAssignment }) {
                       }}
                     >
                       <div className="assignment-left">
-                        <img src={dotColors[a.color || "grey"]} alt="status" className="assignment-dot" />
+                        <img
+                          src={dotColors[a.color || "grey"]}
+                          alt="status"
+                          className="assignment-dot"
+                          onClick={(e) => {
+                            e.stopPropagation(); // prevent opening edit popup
+                            changeStatus(index, a.id);
+                          }}
+                        />
                         <span className="assignment-text">{a.text}</span>
                       </div>
                       <span className="assignment-due-right">{a.due_in} • {a.due_date}</span>
