@@ -1,5 +1,9 @@
+import Sidebar from "../../../../main/Sidebar"
+
 export default function BiggestThanks2022() {
     return (
-        <h1>Hello from daily thanks</h1>
+        <>
+            <Sidebar />
+        </>
     )
 }
