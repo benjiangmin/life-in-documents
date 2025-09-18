@@ -365,9 +365,8 @@ export default function School({ classes, setClasses, addAssignment }) {
             </section>
 
             <section className="new-assignment-container">
-              <section className="new-assignment-details-block">
-                <h4>assignment name</h4>
                 <input
+                  className="new-assignment-input-name"
                   type="text"
                   value={newAssignmentText}
                   onChange={(e) => setNewAssignmentText(e.target.value)}
@@ -382,11 +381,8 @@ export default function School({ classes, setClasses, addAssignment }) {
                     }
                   }}
                 />
-              </section>
-
-              <section className="new-assignment-details-block">
-                <h4>due date</h4>
                 <input
+                  className="new-assignment-input-due-date"
                   type="date"
                   value={newAssignmentDue}
                   onChange={(e) => setNewAssignmentDue(e.target.value)}
@@ -400,7 +396,6 @@ export default function School({ classes, setClasses, addAssignment }) {
                     }
                   }}
                 />
-              </section>
             </section>
           </div>
         </div>
