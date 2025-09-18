@@ -1,6 +1,6 @@
 import Sidebar from "../../../../main/Sidebar"
 import Title from "./Title"
-import DisplayEntries from "./displayEntries"
+import DisplayEntries from "./DisplayEntries"
 import EnterEntry from "./EnterEntry"
 import Datebox from "./DateBox"
 
