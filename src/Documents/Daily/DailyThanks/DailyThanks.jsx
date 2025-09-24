@@ -3,8 +3,15 @@ import Title from "./Title"
 import DisplayEntries from "./DisplayEntries"
 import EnterEntry from "./EnterEntry"
 import Datebox from "./DateBox"
+import React from "react"
 
 export default function DailyThanks() {
+    const [entries, setEntries] = React.useState([])
+
+    const addEntry = (newEntry) => {
+        setEntries((prev) => [...prev, newEntry])
+    }
+
     return (
         <section className="daily-thanks-main-display">
             <Sidebar />
@@ -13,7 +20,7 @@ export default function DailyThanks() {
                     <Title />
                 </section>
                  <section className="display-entries-display">
-                    <DisplayEntries />
+                    <DisplayEntries entries={entries}/>
                 </section>
             </section>
             <section className="datebox-and-enter-entries">
@@ -21,7 +28,7 @@ export default function DailyThanks() {
                     <Datebox />
                 </section>
                 <section className="enter-entry-display"> 
-                    <EnterEntry />
+                    <EnterEntry onSubmitEntry={addEntry}/>
                 </section>
             </section>
         </section>
