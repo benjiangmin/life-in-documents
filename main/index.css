@@ -1598,7 +1598,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
 }
 .title-inner-display > h1 {
-    font-size: 6rem;
+    font-size: 5.2rem;
     margin: 0px;
     color: rgb(255, 231, 200);
 }
@@ -1606,6 +1606,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-family: "Coming Soon";
     margin: 0px;
     color: rgb(250, 218, 189);
+    font-size: 1.3rem;
 }
 
 

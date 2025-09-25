@@ -7,7 +7,9 @@ export default function EnterEntry( {onSubmitEntry} ) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmitEntry({input1, input2, input3});
+        if (input1 != "" && input2 != "" && input3 != "") {
+            onSubmitEntry({input1, input2, input3});
+        }
 
         setInput1("");
         setInput2("");
