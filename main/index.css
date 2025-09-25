@@ -1626,6 +1626,71 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 15px 15px 0px 30px;
     border-radius: 30px 30px 0px 0px;
 }
+.display-entries-main-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
+}
+.display-entries-main-display > h2 {
+    font-size: 3.5rem;
+    margin: 0px 30px 0px 30px;
+    color: rgb(234, 214, 197);
+}
+.display-entries-inner-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    margin-right: 30px;
+    background-color: red;
+    box-sizing: border-box;
+    height: 100%;
+}
+.all-gratitudes-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+.gratitude-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(53, 49, 47);
+}
+.gratitude-container > div {
+    width: 100%;
+    border: none;
+    padding-top: 1px;
+    padding-left: 20px;
+    font-size: 1rem;
+    font-family: "Coming Soon";
+    color: #bcada5;
+}
+.date-of-entry {
+    color: #c1ac9b;
+    font-size: 1.2rem;
+}
+.edit-entry-button {
+    width: 100%;
+    background: none;
+    border: none;
+}
+
+
+
+
+
+
 .datebox-display {
     background-color: rgb(244, 227, 210);
     height: 45%;
@@ -1653,7 +1718,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .enter-entry-inner-display > h1 {
     font-size: 4rem;
-    color: rgb(68, 62, 58);
+    color: rgb(110, 97, 89);
     margin-bottom: 10px;
 }
 .submitted-3-gratitudes-form {

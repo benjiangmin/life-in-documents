@@ -21,8 +21,8 @@ export default function SecondaryPage(props) {
                 className="maintext-side"
                 style={{
                     opacity: visible ? 1 : 0,
-                    transform: visible ? "translateX(0)" : "translateX(-300px)",
-                    transition: "opacity 0.5s ease, transform 1s ease",
+                    transform: visible ? "translateX(0)" : "translateX(-900px)",
+                    transition: "opacity 0s ease, transform 1s ease",
                     zIndex:"1"
                 }}
             >

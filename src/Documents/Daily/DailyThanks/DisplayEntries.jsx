@@ -1,22 +1,58 @@
 import React from "react";
 
 export default function DisplayEntries({ entries }) {
+  // helper function to add suffix to date numbers
+  const formatDayWithSuffix = (dateStr) => {
+    const date = new Date(dateStr);
+    const day = date.getDate();
+
+    const suffix =
+      day % 10 === 1 && day !== 11
+        ? "st"
+        : day % 10 === 2 && day !== 12
+        ? "nd"
+        : day % 10 === 3 && day !== 13
+        ? "rd"
+        : "th";
+
+    return `${day}${suffix}`;
+  };
+
   return (
-    <section>
-      <h2>Entries</h2>
+    <section className="display-entries-main-display">
+      <h2>entries</h2>
+      <section className="display-entries-inner-container">
+        {entries.length === 0 && <p>it's the first of the month!</p>}
 
-      {entries.length === 0 && <p>No entries for this month.</p>}
+        <div className="all-gratitudes-container">
+          {entries.map((entry, index) => (
+            <div
+              key={index}
+              style={{
+                background: "none",
+                display: "flex",
+                alignItems: "center",
+                margin: "none"
+              }}
+            >
+              <div className="date-of-entry">
+                {formatDayWithSuffix(entry.date)}
+              </div>
 
-      <div>
-        {entries.map((entry, index) => (
-          <button
-            key={index}
-            onClick={() => setEditingEntry(entry)}
-          >
-            <strong>{entry.date}</strong>: 1: {entry.input1} | 2: {entry.input2} | 3: {entry.input3}
-          </button>
-        ))}
-      </div>
+              <button
+                onClick={() => setEditingEntry(entry)}
+                className="edit-entry-button"
+              >
+                <section className="gratitude-container">
+                  <div>{entry.input1}</div>
+                  <div>{entry.input2}</div>
+                  <div>{entry.input3}</div>
+                </section>
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }
