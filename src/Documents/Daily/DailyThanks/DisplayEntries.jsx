@@ -26,29 +26,17 @@ export default function DisplayEntries({ entries }) {
 
         <div className="all-gratitudes-container">
           {entries.map((entry, index) => (
-            <div
+            <div className="individual-gratitude-container"
               key={index}
-              style={{
-                background: "none",
-                display: "flex",
-                alignItems: "center",
-                margin: "none"
-              }}
             >
               <div className="date-of-entry">
                 {formatDayWithSuffix(entry.date)}
               </div>
-
-              <button
-                onClick={() => setEditingEntry(entry)}
-                className="edit-entry-button"
-              >
-                <section className="gratitude-container">
-                  <div>{entry.input1}</div>
-                  <div>{entry.input2}</div>
-                  <div>{entry.input3}</div>
-                </section>
-              </button>
+              <section className="gratitude-container">
+                <div>- {entry.input1}</div>
+                <div>- {entry.input2}</div>
+                <div>- {entry.input3}</div>
+              </section>
             </div>
           ))}
         </div>

@@ -1599,7 +1599,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
 }
 .title-inner-display > h1 {
-    font-size: 5.2rem;
+    font-size: 4rem;
     margin: 0px;
     color: rgb(255, 231, 200);
 }
@@ -1607,7 +1607,7 @@ input[type=number]::-webkit-inner-spin-button {
     font-family: "Coming Soon";
     margin: 0px;
     color: rgb(250, 218, 189);
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 
@@ -1622,14 +1622,15 @@ input[type=number]::-webkit-inner-spin-button {
 
 .display-entries-display {
     background-color: rgb(46, 42, 37);
-    height: 65%;
+    min-height: 65%;
+    max-height: 65%;
     margin: 15px 15px 0px 30px;
     border-radius: 30px 30px 0px 0px;
+    padding: 30px 0px 30px 0px;
 }
 .display-entries-main-display {
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 100%;
     box-sizing: border-box;
 }
@@ -1640,35 +1641,28 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .display-entries-inner-container {
     flex: 1;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     overflow: auto;
     margin-right: 30px;
-    background-color: red;
     box-sizing: border-box;
     height: 100%;
+    background-color: purple;
 }
 .all-gratitudes-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 5px;
 }
 .gratitude-container {
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
     border-radius: 10px;
     background-color: rgb(53, 49, 47);
 }
 .gratitude-container > div {
-    width: 100%;
     border: none;
     padding-top: 1px;
     padding-left: 20px;
@@ -1680,10 +1674,10 @@ input[type=number]::-webkit-inner-spin-button {
     color: #c1ac9b;
     font-size: 1.2rem;
 }
-.edit-entry-button {
-    width: 100%;
-    background: none;
-    border: none;
+.individual-gratitude-container {
+    display: flex;
+    align-items: center;
+    background-color: red;
 }
 
 
