@@ -21,27 +21,27 @@ export default function EnterEntry( {onSubmitEntry} ) {
             <h1>today's entry</h1>
             <form className="submitted-3-gratitudes-form" onSubmit={handleSubmit}>
                 <label>
-                    1:
                     <input  
                         type="text"
                         value={input1}
                         onChange={(e) => setInput1(e.target.value)}
+                        placeholder="#1"
                     />
                 </label>
                 <label>
-                    2:
                     <input  
                         type="text"
                         value={input2}
                         onChange={(e) => setInput2(e.target.value)}
+                        placeholder="#2"
                     />
                 </label>
                 <label>
-                    3:
                     <input  
                         type="text"
                         value={input3}
                         onChange={(e) => setInput3(e.target.value)}
+                        placeholder="#3"
                     />
                 </label>
                 <button type="submit">enter</button>
