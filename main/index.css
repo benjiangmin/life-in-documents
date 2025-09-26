@@ -10,6 +10,7 @@ body {
     display: flex;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 .header-section {
     background-color: #b0a396;
