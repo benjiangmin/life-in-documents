@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function DisplayEntries({ entries }) {
-  // helper function to add suffix to date numbers
+export default function DisplayEntries({ entries, onSaveEntry }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentEntry, setCurrentEntry] = useState(null);
+  const [editValues, setEditValues] = useState({ input1: "", input2: "", input3: "" });
+
   const formatDayWithSuffix = (dateStr) => {
     const date = new Date(dateStr);
     const day = date.getDate();
@@ -18,6 +21,28 @@ export default function DisplayEntries({ entries }) {
     return `${day}${suffix}`;
   };
 
+  const handleClick = (entry, index) => {
+    setCurrentEntry({ ...entry, index });
+    setEditValues({ input1: entry.input1, input2: entry.input2, input3: entry.input3 });
+    setIsModalOpen(true);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = () => {
+    if (onSaveEntry && currentEntry) {
+      onSaveEntry(currentEntry.index, editValues);
+    }
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="display-entries-main-display">
       <h2>entries</h2>
@@ -26,13 +51,14 @@ export default function DisplayEntries({ entries }) {
 
         <div className="all-gratitudes-container">
           {entries.map((entry, index) => (
-            <div className="individual-gratitude-container"
-              key={index}
-            >
+            <div className="individual-gratitude-container" key={index}>
               <div className="date-of-entry">
                 {formatDayWithSuffix(entry.date)}
               </div>
-              <section className="gratitude-container">
+              <section
+                className="gratitude-container"
+                onClick={() => handleClick(entry, index)}
+              >
                 <div>- {entry.input1}</div>
                 <div>- {entry.input2}</div>
                 <div>- {entry.input3}</div>
@@ -41,6 +67,42 @@ export default function DisplayEntries({ entries }) {
           ))}
         </div>
       </section>
+
+      {/* Popup modal */}
+      {isModalOpen && (
+        <div className="edit-gratitude-entry-popup">
+          <div className="modal">
+            <h3>Edit Entry</h3>
+            <input
+              type="text"
+              name="input1"
+              value={editValues.input1}
+              onChange={handleChange}
+              placeholder="First gratitude"
+            />
+            <input
+              type="text"
+              name="input2"
+              value={editValues.input2}
+              onChange={handleChange}
+              placeholder="Second gratitude"
+            />
+            <input
+              type="text"
+              name="input3"
+              value={editValues.input3}
+              onChange={handleChange}
+              placeholder="Third gratitude"
+            />
+
+            <div className="modal-buttons">
+              <button onClick={handleSave}>Save</button>
+              <button onClick={handleCancel}>Cancel</button>
+              <button onClick={() => setIsModalOpen(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
