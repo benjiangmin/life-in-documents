@@ -1,4 +1,6 @@
 import React from "react";
+import LeftArrow from "../../../../src/images/leftArrow.png";
+import RightArrow from "../../../../src/images/rightArrow.png";
 
 export default function Datebox({ selectedMonth, selectedYear, onChangeMonth, onChangeYear }) {
   const months = [
@@ -35,15 +37,27 @@ export default function Datebox({ selectedMonth, selectedYear, onChangeMonth, on
   return (
     <div className="change-dates-for-gratitudes">
       <div className="year-row">
-        <button onClick={handlePrevYear}>&lt;</button>
-        <h2>{selectedYear}</h2>
-        <button onClick={handleNextYear}>&gt;</button>
+        <img  className="change-year-for-gratitudes-arrow left-year" 
+              src={LeftArrow} onClick={handlePrevYear} 
+              alt="prev-year"
+        />
+        <h2 style={{margin: "0px"}}>{selectedYear}</h2>
+        <img  className="change-year-for-gratitudes-arrow right-year" 
+              src={RightArrow} 
+              onClick={handleNextYear}
+        />
       </div>
 
       <div className="month-row">
-        <button onClick={handlePrevMonth}>&lt;</button>
-        <h1>{months[selectedMonth - 1]}</h1>
-        <button onClick={handleNextMonth}>&gt;</button>
+        <img  className="change-month-for-gratitudes-arrow left" 
+              src={LeftArrow} 
+              onClick={handlePrevMonth}
+        />
+        <h1 style={{margin: "0px"}}>{months[selectedMonth - 1]}</h1>
+        <img  className="change-month-for-gratitudes-arrow right" 
+              src={RightArrow} 
+              onClick={handleNextMonth}
+        />
       </div>
     </div>
   );
