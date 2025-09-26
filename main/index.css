@@ -1624,62 +1624,83 @@ input[type=number]::-webkit-inner-spin-button {
 .display-entries-display {
     background-color: rgb(46, 42, 37);
     min-height: 65%;
-    max-height: 65%;
+    max-height: 65%; /* fixed height instead of min/max */
     margin: 15px 15px 0px 30px;
     border-radius: 30px 30px 0px 0px;
-    padding: 30px 0px 30px 0px;
+    padding: 30px 0px 30px 0px; /* reduce padding so scroll area fits better */
+    box-sizing: border-box;
 }
+
 .display-entries-main-display {
     display: flex;
     align-items: center;
     height: 100%;
     box-sizing: border-box;
 }
+
 .display-entries-main-display > h2 {
-    font-size: 3.5rem;
+    padding-left: 30px;
+    font-size: 4rem;
     margin: 0px 30px 0px 30px;
     color: rgb(234, 214, 197);
+    flex-shrink: 0; /* prevent it from squishing */
 }
+
 .display-entries-inner-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: auto;
+    overflow-y: auto;   /* scrolling behavior */
     margin-right: 30px;
     box-sizing: border-box;
-    height: 100%;
-    background-color: purple;
+    height: 100%;       /* so the scroll stays inside the main box */
 }
+.display-entries-inner-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
 .all-gratitudes-container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+    width: 95%; /* ensures entries fill container width */
 }
+
 .gratitude-container {
     display: flex;
     flex-direction: column;
     text-align: left;
     border-radius: 10px;
     background-color: rgb(53, 49, 47);
+    width: 100%;
 }
+
 .gratitude-container > div {
     border: none;
-    padding-top: 1px;
-    padding-left: 20px;
+    padding-top: 2px;
+    padding-left: 15px;
     font-size: 1rem;
     font-family: "Coming Soon";
     color: #bcada5;
+    width: 100%;
 }
+
 .date-of-entry {
     color: #c1ac9b;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-right: 5px;
 }
+
 .individual-gratitude-container {
     display: flex;
     align-items: center;
-    background-color: red;
+    justify-content: flex-start;
+    border-radius: 10px 0 0 10px;
+    width: 100%;
 }
+
 
 
 
@@ -1703,12 +1724,15 @@ input[type=number]::-webkit-inner-spin-button {
     height: 55%;
     margin: 15px 0px 30px 15px;
     border-radius: 30px 0px 0px 30px;
+    display: flex;
+    flex-direction: column;
 }
 .enter-entry-inner-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
 
 }
 .enter-entry-inner-display > h1 {
@@ -1721,7 +1745,6 @@ input[type=number]::-webkit-inner-spin-button {
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    height: 100%;
 }
 .submitted-3-gratitudes-form > label {
     padding: 0px 25px 0px 25px;

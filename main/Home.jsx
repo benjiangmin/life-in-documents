@@ -42,10 +42,7 @@ export default function Home() {
                 style={{
                     opacity: visible ? 1 : 0,
                     transform: visible ? "translateY(0)" : "translateY(500px)", // subtle slide
-                    transition: "opacity 0.6s ease, transform 2.5s ease",
-                    // if you want "rise up from screen bottom" look:
-                    // transform: visible ? "translateY(0)" : "translateY(200px)",
-                    // position: "absolute", left: 0, right: 0
+                    transition: "opacity 0.6s ease, transform 2s ease",
                 }}
             >
                 <section className="welcome-text">
