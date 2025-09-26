@@ -1747,6 +1747,7 @@ input[type=number]::-webkit-inner-spin-button {
 .submitted-3-gratitudes-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
     width: 100%;
 }
@@ -1756,6 +1757,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     gap: 5px;
     font-size: 1.5rem;
+    width: 90%;
 }
 .submitted-3-gratitudes-form > label > input {
     height: 60px;
@@ -1772,12 +1774,16 @@ input[type=number]::-webkit-inner-spin-button {
     color: #d6beab;
 }
 .submitted-3-gratitudes-form > button {
-    background: none;
+    background-color: #d0bba1;
     border: none;
     font-size: 1rem;
     font-family: "Coming Soon";
+    width: 90%;
+    height: 40px;
+    border-radius: 10px 10px 20px 20px;
+    color: #2b2a29;
 }
 .submitted-3-gratitudes-form > button:hover {
     cursor: pointer;
-    color: #8a7e73;
+    font-size: 1.1rem;
 }
