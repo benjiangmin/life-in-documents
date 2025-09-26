@@ -33,18 +33,16 @@ export default function Datebox({ selectedMonth, selectedYear, onChangeMonth, on
   };
 
   return (
-    <div className="datebox" style={{ textAlign: "center" }}>
-      {/* Year row */}
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem" }}>
+    <div className="change-dates-for-gratitudes">
+      <div className="year-row">
         <button onClick={handlePrevYear}>&lt;</button>
-        <span>{selectedYear}</span>
+        <h2>{selectedYear}</h2>
         <button onClick={handleNextYear}>&gt;</button>
       </div>
 
-      {/* Month row */}
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "1rem" }}>
+      <div className="month-row">
         <button onClick={handlePrevMonth}>&lt;</button>
-        <span>{months[selectedMonth - 1]}</span>
+        <h1>{months[selectedMonth - 1]}</h1>
         <button onClick={handleNextMonth}>&gt;</button>
       </div>
     </div>
