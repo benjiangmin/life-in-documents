@@ -1,12 +1,13 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import AppRoutes from "./Routes"
 import Pages from "./Pages"
 
 export default function Home() {
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false) // <-- for animation
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export default function Home() {
         setQuery(value)
 
         if (value.trim() === "") {
-            setResults([])
+            setResults([])  // clear results if nothing typed
         } else {
             const filtered = AppRoutes.filter(route =>
                 (route.title || "").toLowerCase().includes(value.toLowerCase())
@@ -30,21 +31,20 @@ export default function Home() {
 
     const handleClick = (path) => {
         navigate(path)
-        setQuery("")
+        setQuery("") 
         setResults([])
     }
 
     return (
         <section className="layout">
-            {/* HEADER SECTION */}
             <section
                 className="header-section"
                 style={{
                     opacity: visible ? 1 : 0,
-                    transform: visible ? "translateY(0)" : "translateY(500px)", // subtle slide
-                    transition: "opacity 0.6s ease, transform 2s ease",
+                    transform: visible ? "translateY(0)" : "translateY(500px)",
+                    transition: "opacity 0.5s ease, transform 2.5s ease",
                 }}
-            >
+                >
                 <section className="welcome-text">
                     <h1>welcome back, benjamin</h1>
                 </section>
@@ -52,27 +52,26 @@ export default function Home() {
                 <div className="searchbar">
                     <label>search for a document:</label>
                     <input
-                        type="text"
-                        placeholder="e.g. unsuspicious document #8"
-                        value={query}
-                        onChange={handleChange}
+                    type="text"
+                    placeholder="e.g unsuspicious document #8"
+                    value={query}
+                    onChange={handleChange}
                     />
                     {results.length > 0 && (
-                        <div className="search-results">
-                            {results.map((r) => (
-                                <button
-                                    key={r.path}
-                                    onClick={() => handleClick(r.path)}
-                                >
-                                    {r.path}
-                                </button>
-                            ))}
-                        </div>
+                    <div className="search-results">
+                        {results.map((r) => (
+                        <button
+                            key={r.path}
+                            onClick={() => handleClick(r.path)}
+                        >
+                            {r.path}
+                        </button>
+                        ))}
+                    </div>
                     )}
                 </div>
             </section>
 
-            {/* MAIN DISPLAY SECTION */}
             <section className="main-display-section">
                 <section className="button-containers">
                     {Pages.map((page, index) => (
@@ -81,7 +80,7 @@ export default function Home() {
                             to={page.path}
                             style={{
                                 opacity: visible ? 1 : 0,
-                                transform: visible ? "translateY(0)" : "translateY(500px)",
+                                transform: visible ? "translateY(0)" : "translateY(200px)",
                                 transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`,
                             }}
                         >

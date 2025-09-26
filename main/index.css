@@ -12,6 +12,10 @@ body {
     width: 100vw;
     overflow: hidden;
 }
+.layout::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
 .header-section {
     background-color: #b0a396;
     border-radius: 30px 30px 00px 0px;
