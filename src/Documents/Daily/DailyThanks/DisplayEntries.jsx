@@ -49,26 +49,37 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
       <section className="display-entries-inner-container">
         {entries.length === 0 && <p>it's the first of the month! (so no entries yet)</p>}
 
-        <div className="all-gratitudes-container">
-          {entries
-            .slice()
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map((entry, index) => (
-            <div className="individual-gratitude-container" key={index}>
-              <div className="date-of-entry">
-                {formatDayWithSuffix(entry.date)}
+      <div className="all-gratitudes-container">
+        {entries
+          .slice()
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .map((entry) => {
+            // Find the real index in the original entries array
+            const originalIndex = entries.findIndex(
+              (e) =>
+                e.date === entry.date &&
+                e.input1 === entry.input1 &&
+                e.input2 === entry.input2 &&
+                e.input3 === entry.input3
+            );
+
+            return (
+              <div className="individual-gratitude-container" key={originalIndex}>
+                <div className="date-of-entry">
+                  {formatDayWithSuffix(entry.date)}
+                </div>
+                <section
+                  className="gratitude-container"
+                  onClick={() => handleClick(entry, originalIndex)}
+                >
+                  <div>- {entry.input1}</div>
+                  <div>- {entry.input2}</div>
+                  <div>- {entry.input3}</div>
+                </section>
               </div>
-              <section
-                className="gratitude-container"
-                onClick={() => handleClick(entry, index)}
-              >
-                <div>- {entry.input1}</div>
-                <div>- {entry.input2}</div>
-                <div>- {entry.input3}</div>
-              </section>
-            </div>
-          ))}
-        </div>
+            );
+          })}
+      </div>
       </section>
 
       {/* Popup modal */}
