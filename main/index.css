@@ -1751,6 +1751,7 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     height: 100%;
+    position: relative;
 }
 .year-row {
     display: flex;
@@ -1766,21 +1767,31 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
 }
 .month-row > h1 {
-    font-size: 5rem;
+    font-size: clamp(3rem, 5vw, 8rem);
     margin: 0px;
     color: #5b544f;
 }
 .change-year-for-gratitudes-arrow {
-    width: 50px;
-    height: 40px;
+    width: 40px;
+    height: 30px;
+    position: absolute;
 }
 .change-year-for-gratitudes-arrow:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
+.left-year {
+    top: 5px;
+    right: 80px;
+}
+.right-year {
+    top: 5px;
+    left: 80px;
+}
 .change-month-for-gratitudes-arrow {
     width: 70px;
     height: 60px;
+    position: absolute;
 }
 .change-month-for-gratitudes-arrow:hover {
     transform: scale(1.1);
