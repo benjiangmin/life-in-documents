@@ -50,7 +50,10 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
         {entries.length === 0 && <p>it's the first of the month! (so no entries yet)</p>}
 
         <div className="all-gratitudes-container">
-          {entries.map((entry, index) => (
+          {entries
+            .slice()
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((entry, index) => (
             <div className="individual-gratitude-container" key={index}>
               <div className="date-of-entry">
                 {formatDayWithSuffix(entry.date)}
