@@ -18,7 +18,7 @@ export default function EnterEntry( {onSubmitEntry} ) {
 
     return (
         <section className="enter-entry-inner-display">
-            <h1>today's entry</h1>
+            <h1>today's entry:</h1>
             <form className="submitted-3-gratitudes-form" onSubmit={handleSubmit}>
                 <label>
                     <input  
@@ -26,6 +26,7 @@ export default function EnterEntry( {onSubmitEntry} ) {
                         value={input1}
                         onChange={(e) => setInput1(e.target.value)}
                         placeholder="#1"
+                        required
                     />
                 </label>
                 <label>
@@ -34,6 +35,7 @@ export default function EnterEntry( {onSubmitEntry} ) {
                         value={input2}
                         onChange={(e) => setInput2(e.target.value)}
                         placeholder="#2"
+                        required
                     />
                 </label>
                 <label>
@@ -42,6 +44,7 @@ export default function EnterEntry( {onSubmitEntry} ) {
                         value={input3}
                         onChange={(e) => setInput3(e.target.value)}
                         placeholder="#3"
+                        required
                     />
                 </label>
                 <button type="submit">enter</button>

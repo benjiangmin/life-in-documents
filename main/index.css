@@ -1631,15 +1631,17 @@ input[type=number]::-webkit-inner-spin-button {
     max-height: 65%; /* fixed height instead of min/max */
     margin: 15px 15px 0px 30px;
     border-radius: 30px 30px 0px 0px;
-    padding: 30px 0px 30px 0px; /* reduce padding so scroll area fits better */
     box-sizing: border-box;
 }
 
 .display-entries-main-display {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
+    width: 100%;
     box-sizing: border-box;
+    padding: 30px 0px 30px 0px;
 }
 
 .display-entries-main-display > h2 {
@@ -1662,6 +1664,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .display-entries-inner-container::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
+}
+.display-entries-inner-container > p {
+    font-size: 1rem;
+    font-family: "Coming Soon";
+    color: #dabfb0;
 }
 
 .all-gratitudes-container {
@@ -1708,12 +1715,22 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
 }
 .edit-gratitude-entry-popup {
-    position: fixed;
-    background: rgba(0, 0, 0, 0.5); /* dimmed backdrop */
+  position: absolute;      
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;       
+  border-radius: 30px 30px 0px 0px;
+}
+.actual-popup-for-editing-entry {
+    background-color: rgb(206, 164, 140);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    flex-direction: column;
 }
 
 

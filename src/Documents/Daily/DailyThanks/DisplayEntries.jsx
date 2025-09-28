@@ -45,9 +45,9 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
 
   return (
     <section className="display-entries-main-display">
-      <h2>entries</h2>
+      <h2>entries:</h2>
       <section className="display-entries-inner-container">
-        {entries.length === 0 && <p>it's the first of the month!</p>}
+        {entries.length === 0 && <p>it's the first of the month! (so no entries yet)</p>}
 
         <div className="all-gratitudes-container">
           {entries.map((entry, index) => (
@@ -71,7 +71,7 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
       {/* Popup modal */}
       {isModalOpen && (
         <div className="edit-gratitude-entry-popup">
-          <div className="modal">
+          <div className="actual-popup-for-editing-entry">
             <h3>Edit Entry</h3>
             <input
               type="text"
@@ -98,7 +98,6 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
             <div className="modal-buttons">
               <button onClick={handleSave}>Save</button>
               <button onClick={handleCancel}>Cancel</button>
-              <button onClick={() => setIsModalOpen(false)}>Close</button>
             </div>
           </div>
         </div>
