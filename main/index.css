@@ -1740,7 +1740,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 .datebox-display {
-    background-color: rgb(244, 227, 210);
+    background-color: rgb(207, 185, 159);
     height: 45%;
     margin: 30px 0px 15px 15px;
     border-radius: 30px 0px 0px 30px;
@@ -1751,16 +1751,19 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     height: 100%;
-    position: relative;
 }
 .year-row {
     display: flex;
     align-items: center;
+    width: 100%;
+    text-align: center;
 }
 .year-row > h2 {
     font-size: 2rem;
     margin: 0px;
-    color: #837a71;
+    color: #8f8175;
+    margin-left: 50px;
+    width: 100%;
 }
 .month-row {
     display: flex;
@@ -1769,7 +1772,7 @@ input[type=number]::-webkit-inner-spin-button {
 .month-row > h1 {
     font-size: clamp(3rem, 5vw, 8rem);
     margin: 0px;
-    color: #5b544f;
+    color: #635a53;
 }
 .change-year-for-gratitudes-arrow {
     width: 40px;
@@ -1779,14 +1782,6 @@ input[type=number]::-webkit-inner-spin-button {
 .change-year-for-gratitudes-arrow:hover {
     transform: scale(1.1);
     cursor: pointer;
-}
-.left-year {
-    top: 5px;
-    right: 80px;
-}
-.right-year {
-    top: 5px;
-    left: 80px;
 }
 .change-month-for-gratitudes-arrow {
     width: 70px;
@@ -1804,7 +1799,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 .enter-entry-display {
-    background-color: rgb(234, 214, 197);
+    background-color: rgb(212, 191, 166);
     height: 55%;
     margin: 15px 0px 30px 15px;
     border-radius: 30px 0px 0px 30px;
@@ -1820,8 +1815,8 @@ input[type=number]::-webkit-inner-spin-button {
 
 }
 .enter-entry-inner-display > h1 {
-    font-size: clamp(3rem, 3vw, 5rem);
-    color: rgb(84, 78, 75);
+    font-size: clamp(2rem, 2.5vw, 5rem);
+    color: #635a53;
     margin: 0px 0px 10px 0px;
 }
 .submitted-3-gratitudes-form {
@@ -1842,8 +1837,8 @@ input[type=number]::-webkit-inner-spin-button {
 .submitted-3-gratitudes-form > label > input {
     height: 60px;
     width: 100%;
-    background-color: #ffeddb;
-    color: #736756;
+    background-color: #f8e2cd;
+    color: rgb(49, 46, 43);
     border: none;
     border-radius: 10px;
     font-size: 1.2rem;
@@ -1851,17 +1846,17 @@ input[type=number]::-webkit-inner-spin-button {
     font-family: "Coming Soon";
 }
 .submitted-3-gratitudes-form > label > input::placeholder {
-    color: #d6beab;
+    color: #7c6e62;
 }
 .submitted-3-gratitudes-form > button {
-    background-color: #d0bba1;
+    background-color: #635a53;
     border: none;
     font-size: 1rem;
     font-family: "Coming Soon";
     width: 90%;
     height: 40px;
     border-radius: 10px 10px 20px 20px;
-    color: #2b2a29;
+    color: #bbaa99;
 }
 .submitted-3-gratitudes-form > button:hover {
     cursor: pointer;
