@@ -1,37 +1,35 @@
-import React, { useState, useEffect } from "react"
-import Sidebar from "../../../../main/Sidebar"
-import Title from "./Title"
-import DisplayEntries from "./DisplayEntries"
-import EnterEntry from "./EnterEntry"
-import Datebox from "./DateBox"
-import { supabase } from "./supabaseClient" // make sure path matches
+import React, { useState, useEffect } from "react";
+import Sidebar from "../../../../main/Sidebar";
+import Title from "./Title";
+import DisplayEntries from "./DisplayEntries";
+import EnterEntry from "./EnterEntry";
+import Datebox from "./DateBox";
+import { supabase } from "./supabaseClient"; // adjust path if needed
 
 export default function DailyThanks() {
-  const [entries, setEntries] = useState([])
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1)
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
+  const [entries, setEntries] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
-  // Load entries from Supabase on mount
   useEffect(() => {
-    loadEntries()
-  }, [])
+    loadEntries();
+  }, []);
 
   const loadEntries = async () => {
     const { data, error } = await supabase
       .from("gratitudes")
       .select("*")
-      .order("date", { ascending: false });
+      .order("date", { ascending: false })
+      .order("created_at", { ascending: false }); // ensure newest first within same date
 
     if (error) console.error("Error loading entries:", error.message);
     else setEntries(data);
   };
 
-
-  // Add new entry (3 separate rows)
+  // Add new entry (all 3 gratitudes in one row)
   const addEntry = async (newEntry) => {
     const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 
-    // Insert one row with all 3 gratitudes
     const { data, error } = await supabase.from("gratitudes").insert([
       {
         date: today,
@@ -41,38 +39,35 @@ export default function DailyThanks() {
       }
     ]);
 
-    if (error) {
-      console.error("Error inserting entry:", error.message);
-    } else {
-      console.log("Entry added:", data);
-      loadEntries(); // refresh your state to show the new entry
-    }
+    if (error) console.error("Error inserting entry:", error.message);
+    else loadEntries(); // refresh state
   };
 
-
-  // Save edited entry from DisplayEntries modal
+  // Save edited entry
   const handleSaveEntry = async (id, updatedValues) => {
     const { data, error } = await supabase
       .from("gratitudes")
-      .update({ text: updatedValues.text })
-      .eq("id", id)
+      .update(updatedValues)
+      .eq("id", id);
 
-    if (error) {
-      console.error("Error updating:", error.message)
-    } else {
-      console.log("Updated:", data)
-      loadEntries()
-    }
-  }
+    if (error) console.error("Error updating:", error.message);
+    else loadEntries();
+  };
 
-  // Filter entries by selected month/year
-  const filteredEntries = entries.filter((entry) => {
-    const entryDate = new Date(entry.date || entry.created_at)
-    return (
-      entryDate.getFullYear() === selectedYear &&
-      entryDate.getMonth() + 1 === selectedMonth
-    )
-  })
+  // Helper to parse YYYY-MM-DD safely in local time
+  const parseDate = (dateStr) => {
+    if (!dateStr) return new Date();
+    const [year, month, day] = dateStr.split("-").map(Number);
+    return new Date(year, month - 1, day);
+  };
+
+  // Filter & sort entries by month/year
+  const filteredEntries = entries
+    .filter((entry) => {
+      const d = parseDate(entry.date);
+      return d.getFullYear() === selectedYear && d.getMonth() + 1 === selectedMonth;
+    })
+    .sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
   return (
     <section className="daily-thanks-main-display">
@@ -105,5 +100,5 @@ export default function DailyThanks() {
         </section>
       </section>
     </section>
-  )
+  );
 }

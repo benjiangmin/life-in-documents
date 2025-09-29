@@ -5,7 +5,7 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
   const [currentEntry, setCurrentEntry] = useState(null);
   const [editValues, setEditValues] = useState({ input1: "", input2: "", input3: "" });
 
-  // Format day with suffix safely without timezone issues
+  // Format day with suffix safely
   const formatDayWithSuffix = (dateStr) => {
     if (!dateStr) return "";
     const [year, month, day] = dateStr.split("-").map(Number);
@@ -48,30 +48,24 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
     <section className="display-entries-main-display">
       <h2>entries:</h2>
       <section className="display-entries-inner-container">
-        {entries.length === 0 && <p>it's the first of the month! (so no entries yet)</p>}
+        {entries.length === 0 && <p>it's the first of the month! (so no entries yet) ...or you've just been slacking</p>}
 
         <div className="all-gratitudes-container">
-          {entries
-            .slice()
-            .sort(
-              (a, b) =>
-                new Date(b.date || b.created_at) - new Date(a.date || a.created_at)
-            )
-            .map((entry) => (
-              <div className="individual-gratitude-container" key={entry.id}>
-                <div className="date-of-entry">
-                  {formatDayWithSuffix(entry.date || entry.created_at)}
-                </div>
-                <section
-                  className="gratitude-container"
-                  onClick={() => handleClick(entry)}
-                >
-                  <div>- {entry.input1}</div>
-                  <div>- {entry.input2}</div>
-                  <div>- {entry.input3}</div>
-                </section>
+          {entries.map((entry) => (
+            <div className="individual-gratitude-container" key={entry.id}>
+              <div className="date-of-entry">
+                {formatDayWithSuffix(entry.date)}
               </div>
-            ))}
+              <section
+                className="gratitude-container"
+                onClick={() => handleClick(entry)}
+              >
+                <div>- {entry.input1}</div>
+                <div>- {entry.input2}</div>
+                <div>- {entry.input3}</div>
+              </section>
+            </div>
+          ))}
         </div>
       </section>
 
