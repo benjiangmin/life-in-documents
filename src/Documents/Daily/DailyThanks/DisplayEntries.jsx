@@ -5,9 +5,10 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
   const [currentEntry, setCurrentEntry] = useState(null);
   const [editValues, setEditValues] = useState({ input1: "", input2: "", input3: "" });
 
+  // Format day with suffix safely without timezone issues
   const formatDayWithSuffix = (dateStr) => {
-    const date = new Date(dateStr);
-    const day = date.getDate();
+    if (!dateStr) return "";
+    const [year, month, day] = dateStr.split("-").map(Number);
 
     const suffix =
       day % 10 === 1 && day !== 11
@@ -21,9 +22,13 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
     return `${day}${suffix}`;
   };
 
-  const handleClick = (entry, index) => {
-    setCurrentEntry({ ...entry, index });
-    setEditValues({ input1: entry.input1, input2: entry.input2, input3: entry.input3 });
+  const handleClick = (entry) => {
+    setCurrentEntry(entry);
+    setEditValues({
+      input1: entry.input1,
+      input2: entry.input2,
+      input3: entry.input3
+    });
     setIsModalOpen(true);
   };
 
@@ -34,12 +39,8 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
 
   const handleSave = () => {
     if (onSaveEntry && currentEntry) {
-      onSaveEntry(currentEntry.index, editValues);
+      onSaveEntry(currentEntry.id, editValues);
     }
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
     setIsModalOpen(false);
   };
 
@@ -49,37 +50,29 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
       <section className="display-entries-inner-container">
         {entries.length === 0 && <p>it's the first of the month! (so no entries yet)</p>}
 
-      <div className="all-gratitudes-container">
-        {entries
-          .slice()
-          .sort((a, b) => new Date(b.date) - new Date(a.date))
-          .map((entry) => {
-            // Find the real index in the original entries array
-            const originalIndex = entries.findIndex(
-              (e) =>
-                e.date === entry.date &&
-                e.input1 === entry.input1 &&
-                e.input2 === entry.input2 &&
-                e.input3 === entry.input3
-            );
-
-            return (
-              <div className="individual-gratitude-container" key={originalIndex}>
+        <div className="all-gratitudes-container">
+          {entries
+            .slice()
+            .sort(
+              (a, b) =>
+                new Date(b.date || b.created_at) - new Date(a.date || a.created_at)
+            )
+            .map((entry) => (
+              <div className="individual-gratitude-container" key={entry.id}>
                 <div className="date-of-entry">
-                  {formatDayWithSuffix(entry.date)}
+                  {formatDayWithSuffix(entry.date || entry.created_at)}
                 </div>
                 <section
                   className="gratitude-container"
-                  onClick={() => handleClick(entry, originalIndex)}
+                  onClick={() => handleClick(entry)}
                 >
                   <div>- {entry.input1}</div>
                   <div>- {entry.input2}</div>
                   <div>- {entry.input3}</div>
                 </section>
               </div>
-            );
-          })}
-      </div>
+            ))}
+        </div>
       </section>
 
       {/* Popup modal */}
@@ -111,7 +104,7 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
 
             <div className="modal-buttons">
               <button onClick={handleSave}>Save</button>
-              <button onClick={handleCancel}>Cancel</button>
+              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
             </div>
           </div>
         </div>

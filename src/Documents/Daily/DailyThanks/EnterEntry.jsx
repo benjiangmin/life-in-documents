@@ -18,7 +18,7 @@ export default function EnterEntry( {onSubmitEntry} ) {
 
     return (
         <section className="enter-entry-inner-display">
-            <h1>today's entry:</h1>
+            <h1>today:</h1>
             <form className="submitted-3-gratitudes-form" onSubmit={handleSubmit}>
                 <label>
                     <input  

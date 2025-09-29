@@ -37,24 +37,24 @@ export default function Datebox({ selectedMonth, selectedYear, onChangeMonth, on
   return (
     <div className="change-dates-for-gratitudes">
       <div className="year-row">
-        <img  className="change-year-for-gratitudes-arrow left" 
+        <img  className="change-year-for-gratitudes-arrow left-year" 
               src={LeftArrow} onClick={handlePrevYear} 
               alt="prev-year"
         />
         <h2 style={{margin: "0px"}}>{selectedYear}</h2>
-        <img  className="change-year-for-gratitudes-arrow right" 
+        <img  className="change-year-for-gratitudes-arrow right-year" 
               src={RightArrow} 
               onClick={handleNextYear}
         />
       </div>
 
       <div className="month-row">
-        <img  className="change-month-for-gratitudes-arrow left" 
+        <img  className="change-month-for-gratitudes-arrow left-month" 
               src={LeftArrow} 
               onClick={handlePrevMonth}
         />
         <h1 style={{margin: "0px"}}>{months[selectedMonth - 1]}</h1>
-        <img  className="change-month-for-gratitudes-arrow right" 
+        <img  className="change-month-for-gratitudes-arrow right-month" 
               src={RightArrow} 
               onClick={handleNextMonth}
         />
