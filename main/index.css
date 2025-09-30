@@ -1633,7 +1633,6 @@ input[type=number]::-webkit-inner-spin-button {
     border-radius: 30px 30px 0px 0px;
     box-sizing: border-box;
 }
-
 .display-entries-main-display {
     position: relative;
     display: flex;
@@ -1643,7 +1642,6 @@ input[type=number]::-webkit-inner-spin-button {
     box-sizing: border-box;
     padding: 30px 0px 30px 0px;
 }
-
 .display-entries-main-display > h2 {
     padding-left: 30px;
     font-size: clamp(3rem, 3vw, 5rem);
@@ -1651,7 +1649,6 @@ input[type=number]::-webkit-inner-spin-button {
     color: rgb(234, 214, 197);
     flex-shrink: 0; /* prevent it from squishing */
 }
-
 .display-entries-inner-container {
     flex: 1;
     display: flex;
@@ -1670,14 +1667,12 @@ input[type=number]::-webkit-inner-spin-button {
     font-family: "Coming Soon";
     color: #dabfb0;
 }
-
 .all-gratitudes-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 95%; /* ensures entries fill container width */
 }
-
 .gratitude-container {
     display: flex;
     flex-direction: column;
@@ -1691,22 +1686,20 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #474440;
 }
 .gratitude-container > div {
+    box-sizing: border-box;
+    white-space: normal;
     border: none;
-    padding-top: 2px;
-    padding-left: 15px;
+    padding: 2px 15px 0px 15px;
     font-size: 1rem;
     font-family: "Coming Soon";
     color: #bcada5;
-    width: 100%;
 }
-
 .date-of-entry {
     color: #c1ac9b;
     font-size: 1.1rem;
     font-weight: bold;
     margin-right: 5px;
 }
-
 .individual-gratitude-container {
     display: flex;
     align-items: center;
@@ -1764,7 +1757,7 @@ input[type=number]::-webkit-inner-spin-button {
 .year-row > h2 {
     font-size: 2rem;
     margin: 0px;
-    color: #b6a392;
+    color: #ffeddd;
     margin-left: 50px;
 }
 .month-row {
@@ -1779,7 +1772,7 @@ input[type=number]::-webkit-inner-spin-button {
 .month-row > h1 {
     font-size: clamp(3rem, 5vw, 8rem);
     margin: 0px;
-    color: #9c8b7d;
+    color: #fff7f1;
 }
 .change-year-for-gratitudes-arrow {
     width: 40px;
@@ -1804,7 +1797,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 .enter-entry-display {
-    background-color: #b6a496;
+    background-color: #c1b0a4;
     height: 55%;
     margin: 15px 0px 30px 15px;
     border-radius: 30px 0px 0px 30px;

@@ -28,7 +28,7 @@ export default function DailyThanks() {
 
   // Add new entry (all 3 gratitudes in one row)
   const addEntry = async (newEntry) => {
-    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const today = new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD
 
     const { data, error } = await supabase.from("gratitudes").insert([
       {
