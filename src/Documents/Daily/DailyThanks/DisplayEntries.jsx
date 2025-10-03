@@ -48,7 +48,7 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
     <section className="display-entries-main-display">
       <h2>entries:</h2>
       <section className="display-entries-inner-container">
-        {entries.length === 0 && <p>it's the first of the month! (so no entries yet) ...or you've just been slacking</p>}
+        {entries.length === 0 && <p>no entries to see here!</p>}
 
         <div className="all-gratitudes-container">
           {entries.map((entry) => (
