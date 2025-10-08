@@ -10,10 +10,17 @@ export default function DailyThanks() {
   const [entries, setEntries] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [visible, setVisible] = React.useState(false)
 
   useEffect(() => {
     loadEntries();
   }, []);
+
+  // Animate visibility
+  React.useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 50)
+    return () => clearTimeout(timer)
+  }, [])
 
   const loadEntries = async () => {
     const { data, error } = await supabase
@@ -73,11 +80,11 @@ export default function DailyThanks() {
     <section className="daily-thanks-main-display">
       <Sidebar />
       <section className="title-and-display-entries">
-        <section className="title-display">
+        <section className={`title-display ${visible ? "visible" : ""}`}>
           <Title />
         </section>
 
-        <section className="display-entries-display">
+        <section className={`display-entries-display ${visible ? "visible" : ""}`}>
           <DisplayEntries
             entries={filteredEntries}
             onSaveEntry={handleSaveEntry}
@@ -86,7 +93,7 @@ export default function DailyThanks() {
       </section>
 
       <section className="datebox-and-enter-entries">
-        <section className="datebox-display">
+        <section className={`datebox-display ${visible ? "visible" : ""}`}>
           <Datebox
             selectedMonth={selectedMonth}
             selectedYear={selectedYear}
@@ -95,7 +102,7 @@ export default function DailyThanks() {
           />
         </section>
 
-        <section className="enter-entry-display">
+        <section className={`enter-entry-display ${visible ? "visible" : ""}`}>
           <EnterEntry onSubmitEntry={addEntry} />
         </section>
       </section>
