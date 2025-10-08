@@ -73,33 +73,36 @@ export default function DisplayEntries({ entries, onSaveEntry }) {
       {isModalOpen && (
         <div className="edit-gratitude-entry-popup">
           <div className="actual-popup-for-editing-entry">
-            <h3>Edit Entry</h3>
-            <input
-              type="text"
-              name="input1"
-              value={editValues.input1}
-              onChange={handleChange}
-              placeholder="First gratitude"
-            />
-            <input
-              type="text"
-              name="input2"
-              value={editValues.input2}
-              onChange={handleChange}
-              placeholder="Second gratitude"
-            />
-            <input
-              type="text"
-              name="input3"
-              value={editValues.input3}
-              onChange={handleChange}
-              placeholder="Third gratitude"
-            />
+            <section className="top-row-for-editing-class for-assignment">
+              <h3>edit entry</h3>
+              <button onClick={handleSave}>save</button>
+              <button onClick={() => setIsModalOpen(false)}>cancel</button>
+            </section>
+            <section className="gratitude-popup-inputs">
+              <input
+                type="text"
+                name="input1"
+                value={editValues.input1}
+                onChange={handleChange}
+                placeholder="first gratitude"
+                />
+              <input
+                type="text"
+                name="input2"
+                value={editValues.input2}
+                onChange={handleChange}
+                placeholder="second gratitude"
+                />
+              <input
+                type="text"
+                name="input3"
+                value={editValues.input3}
+                onChange={handleChange}
+                placeholder="third gratitude"
+                />
+            </section>
 
-            <div className="modal-buttons">
-              <button onClick={handleSave}>Save</button>
-              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
-            </div>
+
           </div>
         </div>
       )}
