@@ -1950,17 +1950,17 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 0px 30px 15px 30px;
     border-radius: 0px 0px 30px 30px;
 }
-.title-inner-display {
+.for-devotions {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.title-inner-display > h1 {
+.for-devotions > h1 {
     color: rgb(255, 244, 237);
     font-size: clamp(2rem, 6vw, 3.5rem);
 }
-.title-inner-display > h2 {
+.for-devotions > h2 {
     color: rgb(239, 224, 214);    
     font-size: clamp(1rem, 1vw, 1rem);
 }
