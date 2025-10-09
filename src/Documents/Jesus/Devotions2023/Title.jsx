@@ -1,7 +1,8 @@
 export default function Title() {
     return (
-        <>
-            <h1>hello from title</h1>
-        </>
+        <section className="title-inner-display">
+            <h1>devotions</h1>
+            <h2>2023</h2>
+        </section>
     )
 }
