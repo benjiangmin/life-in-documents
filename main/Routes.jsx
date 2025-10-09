@@ -23,10 +23,9 @@ import DailyThanks from "../src/Documents/Daily/DailyThanks/DailyThanks"
 import JournalPrompts from "../src/Documents/Daily/JournalPrompts/JournalPrompts"
 
 // Jesus
-import Bible2023 from "../src/Documents/Jesus/Bible2023/Bible2023"
-import Bible2024 from "../src/Documents/Jesus/Bible2024/Bible2024"
+import Devotions2023 from "../src/Documents/Jesus/Devotions2023/Devotions2023"
+import Devotions2024 from "../src/Documents/Jesus/Devotions2024/Devotions2024"
 import Devotions2025 from "../src/Documents/Jesus/Devotions2025/Devotions2025"
-import Friends70BibleStudy from "../src/Documents/Jesus/Friends7.0BibleStudy/Friends7.0BibleStudy"
 import Prayer from "../src/Documents/Jesus/Prayer/Prayer"
 
 // New Years
@@ -116,10 +115,9 @@ const routes = [
     { path: "/daily/JournalPrompts", element: JournalPrompts, title: "journal prompts" },
 
     // Jesus
-    { path: "/jesus/Bible2023", element: Bible2023, title: "bible 2023" },
-    { path: "/jesus/Bible2024", element: Bible2024, title: "bible 2024" },
+    { path: "/jesus/Devotions2023", element: Devotions2023, title: "devotions 2023" },
+    { path: "/jesus/Devotions2024", element: Devotions2024, title: "devotions 2024" },
     { path: "/jesus/Devotions2025", element: Devotions2025, title: "devotions 2025" },
-    { path: "/jesus/FriendsBibleStudy7", element: Friends70BibleStudy, title: "friends 7.0 bible study" },
     { path: "/jesus/Prayer", element: Prayer, title: "prayer" },
 
     // New Years

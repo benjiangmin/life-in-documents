@@ -25,10 +25,9 @@ const Documents = {
         { name: "journal prompts", path: "/daily/JournalPrompts" }
     ],
     jesus: [
-        { name: "bible 2023", path: "/jesus/bible2023" },
-        { name: "bible 2024", path: "/jesus/bible2024" },
+        { name: "devotions 2023", path: "/jesus/devotions2023" },
+        { name: "devotions 2024", path: "/jesus/devotions2024" },
         { name: "devotions 2025", path: "/jesus/devotions2025" },
-        { name: "friends 7.0 bible study", path: "/jesus/FriendsBibleStudy7" },
         { name: "prayer", path: "/jesus/Prayer" }
     ],
     newYearsThings: [
