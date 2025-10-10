@@ -1933,6 +1933,37 @@ input[type=number]::-webkit-inner-spin-button {
     width: 15%;
     margin: 30px 0px;
 }
+.scrollable-dates-inner-display {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dates-of-devotions-container {
+    overflow: scroll;
+    scrollbar-width: none;
+    direction: rtl;
+    height: 90%;
+    width: 100%;
+}
+.dates-of-devotions-container > * {
+    direction: ltr
+}
+.change-current-devotion-date-button {
+    background-color: rgb(92, 87, 84);
+    margin-bottom: 5px;
+    width: 100%;
+    margin-right: auto;
+    text-align: right;
+    height: 50px;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+}
+
+
+
+
 .current-devotion-display {
     box-sizing: border-box;
     background-color: rgb(61, 58, 56);
@@ -1940,6 +1971,7 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 30px;
     border-radius: 20px;
 }
+
 
 
 
@@ -1958,11 +1990,11 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .for-devotions > h1 {
     color: rgb(255, 244, 237);
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-size: clamp(2rem, 6vw, 6rem);
 }
 .for-devotions > h2 {
     color: rgb(239, 224, 214);    
-    font-size: clamp(1rem, 1vw, 1rem);
+    font-size: clamp(1rem, 1vw, 1.5rem);
 }
 
 
